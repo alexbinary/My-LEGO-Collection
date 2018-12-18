@@ -1,0 +1,639 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2912D09321D7B2A300C623A4 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2912D09221D7B2A300C623A4 /* APIClient.swift */; };
+		2912D09A21D7B37700C623A4 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2912D09921D7B37700C623A4 /* Color.swift */; };
+		2912D09D21D7B38E00C623A4 /* ResultsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2912D09C21D7B38E00C623A4 /* ResultsList.swift */; };
+		2912D09F21D7B3C700C623A4 /* Double+roundedMaxNumberOfDecimals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2912D09E21D7B3C700C623A4 /* Double+roundedMaxNumberOfDecimals.swift */; };
+		2912D0A121D7C40D00C623A4 /* Double+roundedMaxNumberOfDecimals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2912D09E21D7B3C700C623A4 /* Double+roundedMaxNumberOfDecimals.swift */; };
+		2928C63E21E93F9D0061031C /* Part.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2928C63D21E93F9D0061031C /* Part.swift */; };
+		294368A421E32CAE005A4511 /* UIColor+fromLEGOColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294368A321E32CAE005A4511 /* UIColor+fromLEGOColor.swift */; };
+		29545CB121E23BB6008C32FF /* LegoColorsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29545CB021E23BB6008C32FF /* LegoColorsListViewController.swift */; };
+		2957C6BF21E0C77600E512E5 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2957C6BE21E0C77600E512E5 /* AppController.swift */; };
+		2963B14721D7B14600B97C19 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2963B14621D7B14600B97C19 /* main.swift */; };
+		297A579321EA365F00A426CA /* Part.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297A579221EA365F00A426CA /* Part.swift */; };
+		297A579521EA3A6C00A426CA /* LegoPartsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297A579421EA3A6C00A426CA /* LegoPartsListViewController.swift */; };
+		297A579721EA3B0D00A426CA /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297A579621EA3B0D00A426CA /* DataViewController.swift */; };
+		298E162E21DD3CD9006F3C1A /* DatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298E162D21DD3CD9006F3C1A /* DatabaseController.swift */; };
+		2995231F21E52967002F8CB2 /* RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2995231E21E52967002F8CB2 /* RGB.swift */; };
+		2995232121E539AE002F8CB2 /* UIColor+fromRGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2995232021E539AE002F8CB2 /* UIColor+fromRGB.swift */; };
+		29A77BFA21E2011D009A162E /* DatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A77BF921E2011D009A162E /* DatabaseController.swift */; };
+		29A77BFF21E20364009A162E /* db.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 29A77BFE21E20364009A162E /* db.sqlite */; };
+		29A77C0221E206E7009A162E /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A77C0121E206E7009A162E /* Color.swift */; };
+		29A77C0421E213A6009A162E /* Date+elapsedTimeSince.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C6881721DBCEDD00B4A9E0 /* Date+elapsedTimeSince.swift */; };
+		29A77C0621E21A69009A162E /* Int32+isOneOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A77C0521E21A69009A162E /* Int32+isOneOf.swift */; };
+		29C6881621DBBC5300B4A9E0 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C6881521DBBC5300B4A9E0 /* APIKey.swift */; };
+		29C6881821DBCEDD00B4A9E0 /* Date+elapsedTimeSince.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C6881721DBCEDD00B4A9E0 /* Date+elapsedTimeSince.swift */; };
+		29CCEAF921EE642D00CB5EFB /* LegoPartsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CCEAF821EE642D00CB5EFB /* LegoPartsListTableViewCell.swift */; };
+		29F4EA2121C972780000B8A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F4EA2021C972780000B8A1 /* AppDelegate.swift */; };
+		29F4EA2821C9727A0000B8A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29F4EA2721C9727A0000B8A1 /* Assets.xcassets */; };
+		29F4EA2B21C9727A0000B8A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29F4EA2921C9727A0000B8A1 /* LaunchScreen.storyboard */; };
+		29FC1CAC21E686E50097C1C4 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC1CAB21E686E50097C1C4 /* AppController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2963B14221D7B14600B97C19 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		2912D09221D7B2A300C623A4 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		2912D09921D7B37700C623A4 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		2912D09C21D7B38E00C623A4 /* ResultsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsList.swift; sourceTree = "<group>"; };
+		2912D09E21D7B3C700C623A4 /* Double+roundedMaxNumberOfDecimals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+roundedMaxNumberOfDecimals.swift"; sourceTree = "<group>"; };
+		2928C63D21E93F9D0061031C /* Part.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Part.swift; sourceTree = "<group>"; };
+		294368A321E32CAE005A4511 /* UIColor+fromLEGOColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+fromLEGOColor.swift"; sourceTree = "<group>"; };
+		29545CB021E23BB6008C32FF /* LegoColorsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegoColorsListViewController.swift; sourceTree = "<group>"; };
+		2957C6BE21E0C77600E512E5 /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
+		2963B14421D7B14600B97C19 /* Database Tool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Database Tool"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2963B14621D7B14600B97C19 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		2970F8A621D797D600AC42D5 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		2970F8A821D797D600AC42D5 /* app.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = app.md; sourceTree = "<group>"; };
+		2970F8A921D797D600AC42D5 /* cli.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = cli.md; sourceTree = "<group>"; };
+		297A579221EA365F00A426CA /* Part.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Part.swift; sourceTree = "<group>"; };
+		297A579421EA3A6C00A426CA /* LegoPartsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegoPartsListViewController.swift; sourceTree = "<group>"; };
+		297A579621EA3B0D00A426CA /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
+		298E162D21DD3CD9006F3C1A /* DatabaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseController.swift; sourceTree = "<group>"; };
+		2995231E21E52967002F8CB2 /* RGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGB.swift; sourceTree = "<group>"; };
+		2995232021E539AE002F8CB2 /* UIColor+fromRGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+fromRGB.swift"; sourceTree = "<group>"; };
+		29A77BF921E2011D009A162E /* DatabaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseController.swift; sourceTree = "<group>"; };
+		29A77BFE21E20364009A162E /* db.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = db.sqlite; sourceTree = "<group>"; };
+		29A77C0121E206E7009A162E /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		29A77C0521E21A69009A162E /* Int32+isOneOf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int32+isOneOf.swift"; sourceTree = "<group>"; };
+		29C6881521DBBC5300B4A9E0 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		29C6881721DBCEDD00B4A9E0 /* Date+elapsedTimeSince.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+elapsedTimeSince.swift"; sourceTree = "<group>"; };
+		29CCEAF821EE642D00CB5EFB /* LegoPartsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegoPartsListTableViewCell.swift; sourceTree = "<group>"; };
+		29F4EA1D21C972780000B8A1 /* My LEGO Collection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My LEGO Collection.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		29F4EA2021C972780000B8A1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		29F4EA2721C9727A0000B8A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		29F4EA2A21C9727A0000B8A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		29F4EA2C21C9727A0000B8A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		29FC1CAB21E686E50097C1C4 /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2963B14121D7B14600B97C19 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		29F4EA1A21C972780000B8A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2912D09121D7B26700C623A4 /* Rebrickable */ = {
+			isa = PBXGroup;
+			children = (
+				2912D09221D7B2A300C623A4 /* APIClient.swift */,
+				29C6881521DBBC5300B4A9E0 /* APIKey.swift */,
+				2912D09821D7B36400C623A4 /* Models */,
+			);
+			path = Rebrickable;
+			sourceTree = "<group>";
+		};
+		2912D09421D7B33100C623A4 /* Src */ = {
+			isa = PBXGroup;
+			children = (
+				2957C6BD21E0C76700E512E5 /* App */,
+				298E162C21DD3CBB006F3C1A /* Database */,
+				2912D09121D7B26700C623A4 /* Rebrickable */,
+			);
+			path = Src;
+			sourceTree = "<group>";
+		};
+		2912D09521D7B33D00C623A4 /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+				29C6881721DBCEDD00B4A9E0 /* Date+elapsedTimeSince.swift */,
+				2912D09E21D7B3C700C623A4 /* Double+roundedMaxNumberOfDecimals.swift */,
+				29A77C0521E21A69009A162E /* Int32+isOneOf.swift */,
+				2995231E21E52967002F8CB2 /* RGB.swift */,
+				2995232021E539AE002F8CB2 /* UIColor+fromRGB.swift */,
+			);
+			path = Libs;
+			sourceTree = "<group>";
+		};
+		2912D09821D7B36400C623A4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2912D09921D7B37700C623A4 /* Color.swift */,
+				2928C63D21E93F9D0061031C /* Part.swift */,
+				2912D09C21D7B38E00C623A4 /* ResultsList.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2957C6BD21E0C76700E512E5 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				2957C6BE21E0C77600E512E5 /* AppController.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		2963B14521D7B14600B97C19 /* Database Tool */ = {
+			isa = PBXGroup;
+			children = (
+				2963B14621D7B14600B97C19 /* main.swift */,
+				2912D09421D7B33100C623A4 /* Src */,
+			);
+			path = "Database Tool";
+			sourceTree = "<group>";
+		};
+		2970F8A721D797D600AC42D5 /* specs */ = {
+			isa = PBXGroup;
+			children = (
+				2970F8A821D797D600AC42D5 /* app.md */,
+				2970F8A921D797D600AC42D5 /* cli.md */,
+			);
+			path = specs;
+			sourceTree = "<group>";
+		};
+		298E162C21DD3CBB006F3C1A /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				298E162D21DD3CD9006F3C1A /* DatabaseController.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		29A77BF821E200FA009A162E /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				29A77BF921E2011D009A162E /* DatabaseController.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		29A77BFB21E20319009A162E /* Res */ = {
+			isa = PBXGroup;
+			children = (
+				29A77BFE21E20364009A162E /* db.sqlite */,
+			);
+			path = Res;
+			sourceTree = "<group>";
+		};
+		29A77C0021E206CF009A162E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				29A77C0321E206F3009A162E /* LEGO */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		29A77C0321E206F3009A162E /* LEGO */ = {
+			isa = PBXGroup;
+			children = (
+				29A77C0121E206E7009A162E /* Color.swift */,
+				297A579221EA365F00A426CA /* Part.swift */,
+			);
+			path = LEGO;
+			sourceTree = "<group>";
+		};
+		29CCEAF621EE63EF00CB5EFB /* LegoColors */ = {
+			isa = PBXGroup;
+			children = (
+				294368A321E32CAE005A4511 /* UIColor+fromLEGOColor.swift */,
+				29545CB021E23BB6008C32FF /* LegoColorsListViewController.swift */,
+			);
+			path = LegoColors;
+			sourceTree = "<group>";
+		};
+		29CCEAF721EE640300CB5EFB /* LegoParts */ = {
+			isa = PBXGroup;
+			children = (
+				297A579421EA3A6C00A426CA /* LegoPartsListViewController.swift */,
+				29CCEAF821EE642D00CB5EFB /* LegoPartsListTableViewCell.swift */,
+			);
+			path = LegoParts;
+			sourceTree = "<group>";
+		};
+		29F4EA1421C972780000B8A1 = {
+			isa = PBXGroup;
+			children = (
+				2970F8A621D797D600AC42D5 /* README.md */,
+				2970F8A721D797D600AC42D5 /* specs */,
+				2912D09521D7B33D00C623A4 /* Libs */,
+				2963B14521D7B14600B97C19 /* Database Tool */,
+				29F4EA1F21C972780000B8A1 /* My LEGO Collection */,
+				29F4EA1E21C972780000B8A1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		29F4EA1E21C972780000B8A1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				29F4EA1D21C972780000B8A1 /* My LEGO Collection.app */,
+				2963B14421D7B14600B97C19 /* Database Tool */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29F4EA1F21C972780000B8A1 /* My LEGO Collection */ = {
+			isa = PBXGroup;
+			children = (
+				29F4EA2C21C9727A0000B8A1 /* Info.plist */,
+				29F4EA2721C9727A0000B8A1 /* Assets.xcassets */,
+				29A77BFB21E20319009A162E /* Res */,
+				29FC1CA921E683E40097C1C4 /* Src */,
+			);
+			path = "My LEGO Collection";
+			sourceTree = "<group>";
+		};
+		29FC1CA921E683E40097C1C4 /* Src */ = {
+			isa = PBXGroup;
+			children = (
+				29F4EA2921C9727A0000B8A1 /* LaunchScreen.storyboard */,
+				29F4EA2021C972780000B8A1 /* AppDelegate.swift */,
+				29FC1CAB21E686E50097C1C4 /* AppController.swift */,
+				29FC1CAA21E683ED0097C1C4 /* UI */,
+				29A77BF821E200FA009A162E /* Database */,
+				29A77C0021E206CF009A162E /* Models */,
+			);
+			path = Src;
+			sourceTree = "<group>";
+		};
+		29FC1CAA21E683ED0097C1C4 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				297A579621EA3B0D00A426CA /* DataViewController.swift */,
+				29CCEAF621EE63EF00CB5EFB /* LegoColors */,
+				29CCEAF721EE640300CB5EFB /* LegoParts */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2963B14321D7B14600B97C19 /* Database Tool */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2963B14A21D7B14600B97C19 /* Build configuration list for PBXNativeTarget "Database Tool" */;
+			buildPhases = (
+				2963B14021D7B14600B97C19 /* Sources */,
+				2963B14121D7B14600B97C19 /* Frameworks */,
+				2963B14221D7B14600B97C19 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Database Tool";
+			productName = "Database Tool";
+			productReference = 2963B14421D7B14600B97C19 /* Database Tool */;
+			productType = "com.apple.product-type.tool";
+		};
+		29F4EA1C21C972780000B8A1 /* My LEGO Collection */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 29F4EA2F21C9727A0000B8A1 /* Build configuration list for PBXNativeTarget "My LEGO Collection" */;
+			buildPhases = (
+				29F4EA1921C972780000B8A1 /* Sources */,
+				29F4EA1A21C972780000B8A1 /* Frameworks */,
+				29F4EA1B21C972780000B8A1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "My LEGO Collection";
+			productName = "My LEGO Collection";
+			productReference = 29F4EA1D21C972780000B8A1 /* My LEGO Collection.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29F4EA1521C972780000B8A1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = "Alexandre Bintz";
+				TargetAttributes = {
+					2963B14321D7B14600B97C19 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					29F4EA1C21C972780000B8A1 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+				};
+			};
+			buildConfigurationList = 29F4EA1821C972780000B8A1 /* Build configuration list for PBXProject "My LEGO Collection" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 29F4EA1421C972780000B8A1;
+			productRefGroup = 29F4EA1E21C972780000B8A1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				29F4EA1C21C972780000B8A1 /* My LEGO Collection */,
+				2963B14321D7B14600B97C19 /* Database Tool */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		29F4EA1B21C972780000B8A1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				29F4EA2B21C9727A0000B8A1 /* LaunchScreen.storyboard in Resources */,
+				29F4EA2821C9727A0000B8A1 /* Assets.xcassets in Resources */,
+				29A77BFF21E20364009A162E /* db.sqlite in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2963B14021D7B14600B97C19 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2912D09D21D7B38E00C623A4 /* ResultsList.swift in Sources */,
+				2957C6BF21E0C77600E512E5 /* AppController.swift in Sources */,
+				29C6881821DBCEDD00B4A9E0 /* Date+elapsedTimeSince.swift in Sources */,
+				2912D09F21D7B3C700C623A4 /* Double+roundedMaxNumberOfDecimals.swift in Sources */,
+				29C6881621DBBC5300B4A9E0 /* APIKey.swift in Sources */,
+				298E162E21DD3CD9006F3C1A /* DatabaseController.swift in Sources */,
+				2912D09A21D7B37700C623A4 /* Color.swift in Sources */,
+				2963B14721D7B14600B97C19 /* main.swift in Sources */,
+				2928C63E21E93F9D0061031C /* Part.swift in Sources */,
+				2912D09321D7B2A300C623A4 /* APIClient.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		29F4EA1921C972780000B8A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				29A77C0621E21A69009A162E /* Int32+isOneOf.swift in Sources */,
+				29A77C0421E213A6009A162E /* Date+elapsedTimeSince.swift in Sources */,
+				294368A421E32CAE005A4511 /* UIColor+fromLEGOColor.swift in Sources */,
+				2912D0A121D7C40D00C623A4 /* Double+roundedMaxNumberOfDecimals.swift in Sources */,
+				297A579321EA365F00A426CA /* Part.swift in Sources */,
+				29CCEAF921EE642D00CB5EFB /* LegoPartsListTableViewCell.swift in Sources */,
+				29F4EA2121C972780000B8A1 /* AppDelegate.swift in Sources */,
+				29FC1CAC21E686E50097C1C4 /* AppController.swift in Sources */,
+				29545CB121E23BB6008C32FF /* LegoColorsListViewController.swift in Sources */,
+				297A579721EA3B0D00A426CA /* DataViewController.swift in Sources */,
+				29A77C0221E206E7009A162E /* Color.swift in Sources */,
+				2995231F21E52967002F8CB2 /* RGB.swift in Sources */,
+				29A77BFA21E2011D009A162E /* DatabaseController.swift in Sources */,
+				297A579521EA3A6C00A426CA /* LegoPartsListViewController.swift in Sources */,
+				2995232121E539AE002F8CB2 /* UIColor+fromRGB.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		29F4EA2921C9727A0000B8A1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				29F4EA2A21C9727A0000B8A1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2963B14821D7B14600B97C19 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2N6DR3R99K;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 4.2;
+			};
+			name = Debug;
+		};
+		2963B14921D7B14600B97C19 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2N6DR3R99K;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 4.2;
+			};
+			name = Release;
+		};
+		29F4EA2D21C9727A0000B8A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		29F4EA2E21C9727A0000B8A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		29F4EA3021C9727A0000B8A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2N6DR3R99K;
+				INFOPLIST_FILE = "My LEGO Collection/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "io.bintz.My-LEGO-Collection";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		29F4EA3121C9727A0000B8A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2N6DR3R99K;
+				INFOPLIST_FILE = "My LEGO Collection/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "io.bintz.My-LEGO-Collection";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2963B14A21D7B14600B97C19 /* Build configuration list for PBXNativeTarget "Database Tool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2963B14821D7B14600B97C19 /* Debug */,
+				2963B14921D7B14600B97C19 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		29F4EA1821C972780000B8A1 /* Build configuration list for PBXProject "My LEGO Collection" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				29F4EA2D21C9727A0000B8A1 /* Debug */,
+				29F4EA2E21C9727A0000B8A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		29F4EA2F21C9727A0000B8A1 /* Build configuration list for PBXNativeTarget "My LEGO Collection" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				29F4EA3021C9727A0000B8A1 /* Debug */,
+				29F4EA3121C9727A0000B8A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29F4EA1521C972780000B8A1 /* Project object */;
+}

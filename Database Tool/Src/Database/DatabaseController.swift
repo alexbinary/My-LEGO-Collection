@@ -1,0 +1,293 @@
+
+import Foundation
+import SQLite3
+
+
+/// An object that controls the SQLite database.
+///
+/// This controller is specifically designed to seed a SQLite database at a provided path with data from the Rebrickable webservice.
+/// Currently, only LEGO parts and colors are supported.
+///
+/// The first thing to do once you have created a controller is call `prepare()` to:
+/// 1. create the database file
+/// 1. connect to the database
+/// 1. create the tables
+/// 1. compile the insert queries
+///
+/// Once the database is ready, call `insert(colors:)` to insert a set of colors,
+/// and `insert(parts:)` to insert a set of parts.
+///
+/// When you have inserted all your data, call `done()` to close the connection and release resources.
+///
+class DatabaseController {
+    
+    
+    /// The URL to the database file that this instance controls.
+    ///
+    private let databaseFileURL: URL
+    
+    
+    /// A pointer to the database connection.
+    ///
+    private var dbConnectionPointer: OpaquePointer!
+    
+    
+    /// The executable statement for the insertion of colors.
+    ///
+    private var colorInsertStatement: Statement!
+    
+    
+    /// The executable statement for insertion of parts.
+    ///
+    private var partInsertStatement: Statement!
+    
+    
+    /// Creates a new instance that controls the database at the provided URL.
+    ///
+    init(forDatabaseAt url: URL) {
+        
+        databaseFileURL = url
+        
+        print("[DatabaseController] target: \(databaseFileURL)")
+    }
+}
+
+
+extension DatabaseController {
+    
+    
+    /// Makes the database ready to receive inserts.
+    ///
+    /// You must call this method before you start inserting data. Undefined behavior if you do not.
+    /// This method:
+    /// 1. creates the database file
+    /// 1. connects to the database
+    /// 1. creates the tables
+    /// 1. compiles the insert queries
+    ///
+    /// Terminates with a fatal error if any error occurs.
+    ///
+    func prepare() {
+        
+        print("[DatabaseController] preparing database...")
+        
+        if FileManager.default.fileExists(atPath: databaseFileURL.path) {
+            
+            fatalError("🚫 [DatabaseController] Cannot create database, file exists: \(databaseFileURL.path)")
+        }
+        
+        guard sqlite3_open(databaseFileURL.path, &dbConnectionPointer) == SQLITE_OK else {
+            
+            fatalError("🚫 [DatabaseController] Opening database: \(databaseFileURL.path). SQLite error: \(sqliteErrorMessage ?? "")")
+        }
+        
+        run(query: """
+            CREATE TABLE colors(
+                name CHAR(255) NOT NULL,
+                rgb CHAR(6) NOT NULL,
+                transparent BOOL NOT NULL
+            );
+            """
+        )
+        
+        run(query: """
+            CREATE TABLE parts(
+                name CHAR(255) NOT NULL,
+                image_url CHAR(1024) NULL
+            );
+            """
+        )
+        
+        colorInsertStatement = compile(query:
+            "INSERT INTO colors (name, rgb, transparent) VALUES (?, ?, ?);"
+        )
+        
+        partInsertStatement = compile(query:
+            "INSERT INTO parts (name, image_url) VALUES (?, ?);"
+        )
+    }
+    
+    
+    /// Inserts the provided colors in the database.
+    ///
+    /// You must call `prepare()` before you call this method. Undefined behavior if you do not.
+    ///
+    /// Terminates with a fatal error if any error occurs.
+    ///
+    func insert(colors: [Rebrickable_Color]) {
+        
+        print("[DatabaseController] inserting \(colors.count) colors...")
+        
+        let insertStartTime = Date()
+        
+        colors.forEach { insert([$0.name, $0.rgb, $0.is_trans], using: colorInsertStatement) }
+        
+        print("[DatabaseController] inserted \(colors.count) colors in \(Date().elapsedTimeSince(insertStartTime))")
+    }
+    
+    
+    /// Inserts the provided parts in the database.
+    ///
+    /// You must call `prepare()` before you call this method. Undefined behavior if you do not.
+    ///
+    /// Terminates with a fatal error if any error occurs.
+    ///
+    func insert(parts: [Rebrickable_Part]) {
+        
+        print("[DatabaseController] inserting \(parts.count) parts...")
+        
+        let insertStartTime = Date()
+        
+        parts.forEach { insert([$0.name, $0.part_img_url], using: partInsertStatement) }
+        
+        print("[DatabaseController] inserted \(parts.count) parts in \(Date().elapsedTimeSince(insertStartTime))")
+    }
+    
+    
+    /// Closes the connection to the database and releases resources.
+    ///
+    /// You can only call this method after you have called `prepare()`. Undefined behavior if you have not.
+    ///
+    func done() {
+        
+        print("[DatabaseController] releasing resources...")
+        
+        sqlite3_finalize(colorInsertStatement.pointer)
+        
+        sqlite3_close(dbConnectionPointer)
+    }
+}
+
+
+private extension DatabaseController {
+    
+    
+    /// A type that groups a compiled statement pointer and the original SQL query.
+    ///
+    typealias Statement = (query: String, pointer: OpaquePointer, bindings: [Any?])
+    
+    
+    /// Compiles the given query into an executable statement.
+    ///
+    /// - Parameter query: The SQL query to compile into a statement.
+    ///
+    /// - Returns: The compiled statement.
+    ///
+    /// Terminates with a fatal error if any error occurs.
+    ///
+    private func compile(query: String) -> Statement {
+        
+        var pointer: OpaquePointer? = nil
+        
+        guard sqlite3_prepare_v2(dbConnectionPointer, query, -1, &pointer, nil) == SQLITE_OK else {
+            
+            fatalError("🚫 [DatabaseController] Compiling query: \(query). SQLite error: \(sqliteErrorMessage ?? "")")
+        }
+        
+        return Statement(query: query, pointer: pointer!, bindings: [])
+    }
+    
+    
+    /// Executes the given statement.
+    ///
+    /// - Parameter statement: The statement to execute.
+    ///
+    /// Terminates with a fatal error if any error occurs.
+    ///
+    private func run(statement: Statement) {
+        
+        guard sqlite3_step(statement.pointer) == SQLITE_DONE else {
+            
+            fatalError("🚫 [DatabaseController] Running query: \(statement.query) with bindings: \(statement.bindings). SQLite error: \(sqliteErrorMessage ?? "")")
+        }
+    }
+    
+    
+    /// Compiles then runs a given SQL query.
+    ///
+    /// - Parameter query: The SQL query to be compiled then run.
+    ///
+    /// Terminates with a fatal error if any error occurs.
+    ///
+    private func run(query: String) {
+        
+        let statement = compile(query: query)
+        
+        run(statement: statement)
+        
+        sqlite3_finalize(statement.pointer)
+    }
+    
+    
+    /// Binds given values to given statement then runs the statement.
+    ///
+    /// - Parameter values: The values to bind to the statement, in order.
+    /// - Parameter statement: The statement to bind the values to and then execute.
+    ///
+    /// Terminates with a fatal error if any error occurs.
+    ///
+    private func insert(_ values: [Any?], using statement: Statement) {
+        
+        sqlite3_reset(statement.pointer)
+        
+        values.enumerated().forEach { bind($0.element, statement: statement.pointer, index: $0.offset + 1) }
+        
+        var statementWithBindings = statement
+        
+        statementWithBindings.bindings = values
+        
+        run(statement: statementWithBindings)
+    }
+    
+    
+    /// Binds a given value to a given statement.
+    ///
+    /// - Parameter value: The value to bind to the statement.
+    /// - Parameter statement: Pointer to the statement to bind the value to.
+    /// - Parameter index: The index to bind the value at.
+    ///
+    private func bind(_ value: Any?, statement: OpaquePointer, index: Int) {
+        
+        let int32Index = Int32(exactly: index)!
+        
+        switch (value) {
+            
+        case let stringValue as String:
+            
+            let rawValue = NSString(string: stringValue).utf8String
+            
+            sqlite3_bind_text(statement, int32Index, rawValue, -1, nil)
+            
+        case let boolValue as Bool:
+            
+            let rawValue = Int32(exactly: NSNumber(value: boolValue))!
+            
+            sqlite3_bind_int(statement, int32Index, rawValue)
+            
+        case nil:
+            
+            sqlite3_bind_null(statement, int32Index)
+            
+        default:
+            
+            fatalError("🚫 [DatabaseController] Binding value: \(String(describing: value)): Unsupported type.")
+        }
+    }
+    
+    
+    /// The latest error message generated by the SQLite engine.
+    ///
+    /// This is `nil` if no error message has been generated yet.
+    ///
+    private var sqliteErrorMessage: String? {
+        
+        if let error = sqlite3_errmsg(dbConnectionPointer) {
+            
+            return String(cString: error)
+            
+        } else {
+            
+            return nil
+        }
+    }
+}
