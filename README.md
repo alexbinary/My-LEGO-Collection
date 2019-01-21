@@ -30,3 +30,23 @@ Add parts. The list should show the picture of the part provided by rebrickable.
 - [x] update [specs for the app](specs/app.md)
 - [ ] update the command line tool
 - [ ] update the app
+
+
+## Design guidelines
+
+Features should be kept to a strict minimum, just enough to explore what works and what does not.
+User interface and experience should be just enough to make things usable.
+Ease of use and visual appeal should not be of any consideration.
+
+Technical design and quality code should be the top priority.
+All code should be well documented and contracts clearly communicated.
+Code should be as simple as possible and focused on implementing the actual and current features and nothing more.
+Abstractions and indirections should be kept to a minimum.
+Refactoring should happen as often as needed to keep things well designed and reasonably maintainable.
+Performance and resource optimization is off topic.
+
+Error handling is not important and efforts should concentrate on the success scenarios.
+Error handling code should only exist to :
+- protect the integrity of the system or its outputs
+- reveal errors when they occur instead of when they start breaking things
+Crashing the app is ok and should be the preferred way to handle errors.
