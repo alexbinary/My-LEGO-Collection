@@ -34,19 +34,27 @@ extension RGB {
     /// https://www.hackingwithswift.com/example-code/language/how-to-add-a-custom-initializer-to-a-struct-without-losing-its-memberwise-initializer
     
     
-    /// Creates a new instance from a hexadecimal representation e.g. "A0D8F4".
+    /// Creates a new instance from a 6-digit hexadecimal representation e.g. "A0D8F4".
     ///
-    /// This initializer nevers fails, but terminates with a fatal error if the
-    /// input string is not a valid hexadecimal representation of a triplet of
-    /// numbers.
+    /// This initializer expects the input string to be a valid hexadecimal
+    /// representation of a number with exactly six digits, and terminates with
+    /// a fatal error if this is not the case.
+    ///
+    /// Example of valid values: `fe4e57`, `FE4E57`, `748990`
+    /// Example of invalid values: `0xfe4e57`, `eee`, `brown`
     ///
     init(fromHexString string: String) {
+        
+        guard string.count == 6 else {
+            
+            fatalError("Extracting RGB values from hexadecimal representation: invalid input: \"\(string)\". Input must be exactly 6 character long. Expected something like \"A0D8F4\".")
+        }
         
         guard let number = Int(string, radix: 16) else {
             
             fatalError("Extracting RGB values from hexadecimal representation: invalid input: \"\(string)\". Expected something like \"A0D8F4\".")
         }
-
+        
         self.r = Float((number & 0xFF0000) >> 16) / 255.0
         self.g = Float((number & 0x00FF00) >>  8) / 255.0
         self.b = Float((number & 0x0000FF) >>  0) / 255.0
