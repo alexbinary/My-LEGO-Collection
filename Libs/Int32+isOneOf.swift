@@ -5,7 +5,7 @@ import Foundation
 extension Int32 {
     
     
-    /// Returns whether the value is in the provided array.
+    /// Returns whether this value is in the provided array.
     ///
     /// - Parameter values: Array of values to compare to.
     ///
