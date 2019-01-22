@@ -12,17 +12,17 @@ struct RGB {
     
     /// The red component, specified as a value from 0.0 to 1.0.
     ///
-    let r: Float
+    let red: Float
     
     
     /// The green component, specified as a value from 0.0 to 1.0.
     ///
-    let g: Float
+    let green: Float
     
     
     /// The blue component, specified as a value from 0.0 to 1.0.
     ///
-    let b: Float
+    let blue: Float
 }
 
 
@@ -55,8 +55,8 @@ extension RGB {
             fatalError("Extracting RGB values from hexadecimal representation: invalid input: \"\(string)\". Expected something like \"A0D8F4\".")
         }
         
-        self.r = Float((number & 0xFF0000) >> 16) / 255.0
-        self.g = Float((number & 0x00FF00) >>  8) / 255.0
-        self.b = Float((number & 0x0000FF) >>  0) / 255.0
+        self.red = Float((number & 0xFF0000) >> 16) / 255.0
+        self.green = Float((number & 0x00FF00) >>  8) / 255.0
+        self.blue = Float((number & 0x0000FF) >>  0) / 255.0
     }
 }

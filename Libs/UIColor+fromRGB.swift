@@ -17,9 +17,9 @@ extension UIColor {
         
         self.init(
             
-            red: CGFloat(rgb.r),
-            green: CGFloat(rgb.g),
-            blue: CGFloat(rgb.b),
+            red: CGFloat(rgb.red),
+            green: CGFloat(rgb.green),
+            blue: CGFloat(rgb.blue),
             
             alpha: 1
         )
