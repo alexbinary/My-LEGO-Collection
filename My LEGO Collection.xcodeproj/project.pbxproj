@@ -128,7 +128,6 @@
 				29C6881721DBCEDD00B4A9E0 /* Date+elapsedTimeSince.swift */,
 				2912D09E21D7B3C700C623A4 /* Double+roundedMaxNumberOfDecimals.swift */,
 				29A77C0521E21A69009A162E /* Int32+isOneOf.swift */,
-				2995232021E539AE002F8CB2 /* UIColor+fromRGB.swift */,
 			);
 			path = Libs;
 			sourceTree = "<group>";
@@ -277,6 +276,7 @@
 		29FC1CAA21E683ED0097C1C4 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				2995232021E539AE002F8CB2 /* UIColor+fromRGB.swift */,
 				297A579621EA3B0D00A426CA /* DataViewController.swift */,
 				29CCEAF621EE63EF00CB5EFB /* LegoColors */,
 				29CCEAF721EE640300CB5EFB /* LegoParts */,
