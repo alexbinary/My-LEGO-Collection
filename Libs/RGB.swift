@@ -5,7 +5,7 @@ import Foundation
 /// A type that stores values for red, green and blue components of a color.
 ///
 /// Use this type when you need a lightweight and type-safe way to store colors
-/// without relying on UI frameworks like UIKit or CoreGraphics.
+/// without relying on UI frameworks like `UIKit` or `CoreGraphics`.
 ///
 struct RGB {
     
