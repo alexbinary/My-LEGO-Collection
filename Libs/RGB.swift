@@ -29,6 +29,11 @@ struct RGB {
 extension RGB {
     
     
+    /// Declaring a convenience initializer in an extension keeps the
+    /// automatically-generated memberwize initializer.
+    /// https://www.hackingwithswift.com/example-code/language/how-to-add-a-custom-initializer-to-a-struct-without-losing-its-memberwise-initializer
+    
+    
     /// Creates a new instance from a hexadecimal representation e.g. "A0D8F4".
     ///
     /// This initializer nevers fails, but terminates with a fatal error if the
