@@ -16,16 +16,16 @@ extension Date {
     ///
     func elapsedTimeSince(_ date: Date) -> String {
     
-        var elapsedSeconds = self.timeIntervalSince(date)
+        var number = self.timeIntervalSince(date)
         var unit: timeUnit = .seconds
         
-        if elapsedSeconds < 1 {
+        if number < 1 {
             
-            elapsedSeconds *= 1000
+            number *= 1000
             unit = .milliseconds
         }
         
-        return "\(elapsedSeconds.rounded(maxNumberOfDecimals: 2))\(unit.rawValue)"
+        return "\(number.rounded(maxNumberOfDecimals: 2))\(unit.rawValue)"
     }
     
     
