@@ -128,7 +128,6 @@
 				29C6881721DBCEDD00B4A9E0 /* Date+elapsedTimeSince.swift */,
 				2912D09E21D7B3C700C623A4 /* Double+roundedMaxNumberOfDecimals.swift */,
 				29A77C0521E21A69009A162E /* Int32+isOneOf.swift */,
-				2995231E21E52967002F8CB2 /* RGB.swift */,
 				2995232021E539AE002F8CB2 /* UIColor+fromRGB.swift */,
 			);
 			path = Libs;
@@ -197,6 +196,7 @@
 		29A77C0021E206CF009A162E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2995231E21E52967002F8CB2 /* RGB.swift */,
 				29A77C0321E206F3009A162E /* LEGO */,
 			);
 			path = Models;
