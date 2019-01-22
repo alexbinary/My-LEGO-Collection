@@ -46,4 +46,4 @@ An app-level controller offers the following features:
 
 - [x] update the Rebrickable API client to support retrieval of parts
 - [x] update the database controller to support the insertion of parts
-- [ ] update the app controller to retrieve parts and insert the data in the database
+- [x] update the app controller to retrieve parts and insert the data in the database
