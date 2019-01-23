@@ -45,7 +45,7 @@ extension DatabaseController {
         
         guard sqlite3_open(databaseFileURL.path, &dbConnectionPointer) == SQLITE_OK else {
             
-            fatalError("🚫 [DatabaseController] Opening database: \(databaseFileURL.path). SQLite error: \(sqliteErrorMessage ?? "")")
+            fatalError("[DatabaseController] Opening database: \(databaseFileURL.path). SQLite error: \(sqliteErrorMessage ?? "")")
         }
     }
     
@@ -133,7 +133,7 @@ private extension DatabaseController {
         
         guard sqlite3_prepare_v2(dbConnectionPointer, query, -1, &pointer, nil) == SQLITE_OK else {
             
-            fatalError("🚫 [DatabaseController] Compiling query: \(query). SQLite error: \(sqliteErrorMessage ?? "")")
+            fatalError("[DatabaseController] Compiling query: \(query). SQLite error: \(sqliteErrorMessage ?? "")")
         }
         
         return Statement(query: query, pointer: pointer!)
@@ -157,7 +157,7 @@ private extension DatabaseController {
             
             guard stepResult.isOneOf([SQLITE_ROW, SQLITE_DONE]) else {
                 
-                fatalError("🚫 [DatabaseController] sqlite3_step() returned \(stepResult) for query: \(statement.query). SQLite error: \(sqliteErrorMessage ?? "")")
+                fatalError("[DatabaseController] sqlite3_step() returned \(stepResult) for query: \(statement.query). SQLite error: \(sqliteErrorMessage ?? "")")
             }
             
             if stepResult == SQLITE_ROW {
@@ -208,7 +208,7 @@ private extension DatabaseController {
         
         guard value != nil else {
             
-            fatalError("🚫 [DatabaseController] Found NULL while expecting non null string value at index: \(index) for results of query: \(statement.query)")
+            fatalError("[DatabaseController] Found NULL while expecting non null string value at index: \(index) for results of query: \(statement.query)")
         }
         
         return value!
@@ -303,7 +303,7 @@ private extension DatabaseController {
         
             guard let url = URL(string: raw) else {
                 
-                fatalError("🚫 [DatabaseController] Parsing URL from string value: \"\(raw)\" at index: \(index) for results of query: \(statement.query)")
+                fatalError("[DatabaseController] Parsing URL from string value: \"\(raw)\" at index: \(index) for results of query: \(statement.query)")
             }
             
             return url

@@ -76,12 +76,12 @@ extension DatabaseController {
         
         guard !FileManager.default.fileExists(atPath: databaseFileURL.path) else {
             
-            fatalError("🚫 [DatabaseController] Cannot create database, file exists: \(databaseFileURL.path)")
+            fatalError("[DatabaseController] Cannot create database, file exists: \(databaseFileURL.path)")
         }
         
         guard sqlite3_open(databaseFileURL.path, &dbConnectionPointer) == SQLITE_OK else {
             
-            fatalError("🚫 [DatabaseController] Opening database: \(databaseFileURL.path). SQLite error: \(sqliteErrorMessage ?? "")")
+            fatalError("[DatabaseController] Opening database: \(databaseFileURL.path). SQLite error: \(sqliteErrorMessage ?? "")")
         }
         
         run(query: """
@@ -184,7 +184,7 @@ private extension DatabaseController {
         
         guard sqlite3_prepare_v2(dbConnectionPointer, query, -1, &pointer, nil) == SQLITE_OK else {
             
-            fatalError("🚫 [DatabaseController] Compiling query: \(query). SQLite error: \(sqliteErrorMessage ?? "")")
+            fatalError("[DatabaseController] Compiling query: \(query). SQLite error: \(sqliteErrorMessage ?? "")")
         }
         
         return Statement(query: query, pointer: pointer!, bindings: [])
@@ -201,7 +201,7 @@ private extension DatabaseController {
         
         guard sqlite3_step(statement.pointer) == SQLITE_DONE else {
             
-            fatalError("🚫 [DatabaseController] Running query: \(statement.query) with bindings: \(statement.bindings). SQLite error: \(sqliteErrorMessage ?? "")")
+            fatalError("[DatabaseController] Running query: \(statement.query) with bindings: \(statement.bindings). SQLite error: \(sqliteErrorMessage ?? "")")
         }
     }
     
@@ -273,7 +273,7 @@ private extension DatabaseController {
             
         default:
             
-            fatalError("🚫 [DatabaseController] Binding value: \(String(describing: value)): Unsupported type.")
+            fatalError("[DatabaseController] Binding value: \(String(describing: value)): Unsupported type.")
         }
     }
     
