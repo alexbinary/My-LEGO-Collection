@@ -159,6 +159,7 @@ extension DatabaseController {
         print("[DatabaseController] releasing resources...")
         
         sqlite3_finalize(colorInsertStatement.pointer)
+        sqlite3_finalize(partInsertStatement.pointer)
         
         sqlite3_close(dbConnectionPointer)
     }
