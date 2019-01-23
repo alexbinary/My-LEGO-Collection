@@ -59,14 +59,16 @@ extension DatabaseController {
     
     /// Makes the database ready to receive inserts.
     ///
-    /// You must call this method before you start inserting data. Undefined behavior if you do not.
+    /// You must call this method before you start inserting data. Inserting data
+    /// without calling this methid results in undefined behavior.
+    ///
     /// This method:
     /// 1. creates the database file
     /// 1. connects to the database
     /// 1. creates the tables
     /// 1. compiles the insert queries
     ///
-    /// Terminates with a fatal error if any error occurs.
+    /// Terminates with a fatal error if an error occurs at any of these steps.
     ///
     func prepare() {
         
