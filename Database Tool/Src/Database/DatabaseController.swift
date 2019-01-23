@@ -239,7 +239,7 @@ private extension DatabaseController {
         
         statementWithBindings.bindings = values
         
-        run(statement: statementWithBindings)
+        run(statementWithBindings)
     }
     
     
