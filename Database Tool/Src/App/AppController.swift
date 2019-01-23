@@ -72,7 +72,7 @@ class AppController {
                 
                 self.dbQueue.async {
                 
-                    self.db.insert(colors: colors)
+                    self.db.insert(colors)
                 }
             },
             
@@ -88,7 +88,7 @@ class AppController {
                 
                 self.dbQueue.async {
                     
-                    self.db.insert(parts: parts)
+                    self.db.insert(parts)
                 }
             },
             

@@ -15,8 +15,7 @@ import SQLite3
 /// 1. create the tables
 /// 1. compile the insert queries
 ///
-/// After you have called `prepare()`, call `insert(colors:)` to insert a set of
-/// colors and `insert(parts:)` to insert a set of parts.
+/// After you have called `prepare()`, call `insert(_:)` to insert colors or parts.
 ///
 /// When you have inserted all your data, call `done()` to close the connection
 /// and release resources.
@@ -116,7 +115,7 @@ extension DatabaseController {
     ///
     /// Terminates with a fatal error if any error occurs.
     ///
-    func insert(colors: [Rebrickable_Color]) {
+    func insert(_ colors: [Rebrickable_Color]) {
         
         print("[DatabaseController] inserting \(colors.count) colors...")
         
@@ -134,7 +133,7 @@ extension DatabaseController {
     ///
     /// Terminates with a fatal error if any error occurs.
     ///
-    func insert(parts: [Rebrickable_Part]) {
+    func insert(_ parts: [Rebrickable_Part]) {
         
         print("[DatabaseController] inserting \(parts.count) parts...")
         
