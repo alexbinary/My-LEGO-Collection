@@ -15,7 +15,7 @@ import SQLite3
 /// 1. create the tables
 /// 1. compile the insert queries
 ///
-/// After you have called `prepare()`, call `insert(_:)` to insert colors or parts.
+/// After you have called `prepare()`, call `insert(_:)` to insert data.
 ///
 /// When you have inserted all your data, call `done()` to close the connection
 /// and release resources.
@@ -113,7 +113,8 @@ extension DatabaseController {
     
     /// Inserts the provided colors in the database.
     ///
-    /// You must call `prepare()` before you call this method. Undefined behavior if you do not.
+    /// You must call `prepare()` before you call this method. Inserting data
+    /// without calling `prepare()` results in undefined behavior.
     ///
     /// Terminates with a fatal error if any error occurs.
     ///
@@ -131,7 +132,8 @@ extension DatabaseController {
     
     /// Inserts the provided parts in the database.
     ///
-    /// You must call `prepare()` before you call this method. Undefined behavior if you do not.
+    /// You must call `prepare()` before you call this method. Inserting data
+    /// without calling `prepare()` results in undefined behavior.
     ///
     /// Terminates with a fatal error if any error occurs.
     ///
@@ -149,7 +151,8 @@ extension DatabaseController {
     
     /// Closes the connection to the database and releases resources.
     ///
-    /// You can only call this method after you have called `prepare()`. Undefined behavior if you have not.
+    /// You can only call this method after you have called `prepare()`. Calling
+    /// this method without calling `prepare()` first results in undefined behavior.
     ///
     func done() {
         
