@@ -84,7 +84,7 @@ extension DatabaseController {
             fatalError("[DatabaseController] Opening database: \(databaseFileURL.path). SQLite error: \(sqliteErrorMessage ?? "")")
         }
         
-        run(query: """
+        run("""
             CREATE TABLE colors(
                 name CHAR(255) NOT NULL,
                 rgb CHAR(6) NOT NULL,
@@ -93,7 +93,7 @@ extension DatabaseController {
             """
         )
         
-        run(query: """
+        run("""
             CREATE TABLE parts(
                 name CHAR(255) NOT NULL,
                 image_url CHAR(1024) NULL
@@ -101,11 +101,11 @@ extension DatabaseController {
             """
         )
         
-        colorInsertStatement = compile(query:
+        colorInsertStatement = compile(
             "INSERT INTO colors (name, rgb, transparent) VALUES (?, ?, ?);"
         )
         
-        partInsertStatement = compile(query:
+        partInsertStatement = compile(
             "INSERT INTO parts (name, image_url) VALUES (?, ?);"
         )
     }
@@ -178,7 +178,7 @@ private extension DatabaseController {
     ///
     /// Terminates with a fatal error if any error occurs.
     ///
-    private func compile(query: String) -> Statement {
+    private func compile(_ query: String) -> Statement {
         
         var pointer: OpaquePointer? = nil
         
@@ -197,7 +197,7 @@ private extension DatabaseController {
     ///
     /// Terminates with a fatal error if any error occurs.
     ///
-    private func run(statement: Statement) {
+    private func run(_ statement: Statement) {
         
         guard sqlite3_step(statement.pointer) == SQLITE_DONE else {
             
@@ -212,11 +212,11 @@ private extension DatabaseController {
     ///
     /// Terminates with a fatal error if any error occurs.
     ///
-    private func run(query: String) {
+    private func run(_ query: String) {
         
-        let statement = compile(query: query)
+        let statement = compile(query)
         
-        run(statement: statement)
+        run(statement)
         
         sqlite3_finalize(statement.pointer)
     }
