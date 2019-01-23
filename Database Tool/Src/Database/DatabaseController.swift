@@ -60,7 +60,7 @@ extension DatabaseController {
     /// Makes the database ready to receive inserts.
     ///
     /// You must call this method before you start inserting data. Inserting data
-    /// without calling this methid results in undefined behavior.
+    /// without calling this method results in undefined behavior.
     ///
     /// This method:
     /// 1. creates the database file
