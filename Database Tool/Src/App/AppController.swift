@@ -30,7 +30,8 @@ class AppController {
     private var rebrickable: Rebrickable_APIClient!
     
     
-    /// The internal serial queue used to execute database operation in parallel of other operations.
+    /// The internal serial queue used to execute database operation in parallel
+    /// of other operations.
     ///
     private var dbQueue: DispatchQueue!
 
@@ -45,8 +46,9 @@ class AppController {
     /// This method is heavily asynchronous, you must call `dispatchMain()` to
     /// keep the app running while work initiated by this method completes.
     ///
-    /// This method downloads data from Rebrickable and inserts it in the
-    /// database. Downloads and database operations happen in parallel.
+    /// This method creates the database then downloads data from Rebrickable
+    /// and inserts it in the database. Downloads and database operations happen
+    /// in parallel.
     ///
     /// The program exits when everything is downloaded and inserted in the
     /// database.
@@ -111,7 +113,8 @@ private extension AppController {
     }
     
     
-    /// Marks the provided download as completed and finalizes the app if all downloads have completed.
+    /// Marks the provided download as completed and finalizes the app if all
+    /// downloads have completed.
     ///
     private func downloadCompleted(_ download: DownloadOperation) {
         

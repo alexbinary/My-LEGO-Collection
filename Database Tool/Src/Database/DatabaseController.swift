@@ -5,19 +5,21 @@ import SQLite3
 
 /// An object that controls the SQLite database.
 ///
-/// This controller is specifically designed to seed a SQLite database at a provided path with data from the Rebrickable webservice.
-/// Currently, only LEGO parts and colors are supported.
+/// This controller is specifically designed to seed a SQLite database at a
+/// provided path with data from the Rebrickable webservice.
 ///
-/// The first thing to do once you have created a controller is call `prepare()` to:
+/// The first thing to do once you have created a controller is to call `prepare()`.
+/// The `prepare()` method does the following things:
 /// 1. create the database file
 /// 1. connect to the database
 /// 1. create the tables
 /// 1. compile the insert queries
 ///
-/// Once the database is ready, call `insert(colors:)` to insert a set of colors,
-/// and `insert(parts:)` to insert a set of parts.
+/// After you have called `prepare()`, call `insert(colors:)` to insert a set of
+/// colors and `insert(parts:)` to insert a set of parts.
 ///
-/// When you have inserted all your data, call `done()` to close the connection and release resources.
+/// When you have inserted all your data, call `done()` to close the connection
+/// and release resources.
 ///
 class DatabaseController {
     
