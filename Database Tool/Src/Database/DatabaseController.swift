@@ -74,7 +74,7 @@ extension DatabaseController {
         
         print("[DatabaseController] preparing database...")
         
-        if FileManager.default.fileExists(atPath: databaseFileURL.path) {
+        guard !FileManager.default.fileExists(atPath: databaseFileURL.path) else {
             
             fatalError("🚫 [DatabaseController] Cannot create database, file exists: \(databaseFileURL.path)")
         }
