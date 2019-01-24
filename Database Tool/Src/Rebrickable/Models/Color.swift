@@ -2,7 +2,8 @@
 import Foundation
 
 
-/// A type that maps to the JSON model used by Rebrickable API endpoints to represent LEGO colors.
+/// A type that maps to the JSON model used by Rebrickable API endpoints to
+/// represent LEGO colors.
 ///
 struct Rebrickable_Color: Codable {
     

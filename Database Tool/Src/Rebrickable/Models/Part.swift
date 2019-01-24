@@ -2,7 +2,8 @@
 import Foundation
 
 
-/// A type that maps to the JSON model used by Rebrickable API endpoints to represent LEGO parts.
+/// A type that maps to the JSON model used by Rebrickable API endpoints to
+/// represent LEGO parts.
 ///
 struct Rebrickable_Part: Codable {
     
@@ -12,7 +13,7 @@ struct Rebrickable_Part: Codable {
     var name: String
     
     
-    /// The URL of an image that represents this part.
+    /// The URL of an image of this part.
     ///
     var part_img_url: String?
 }

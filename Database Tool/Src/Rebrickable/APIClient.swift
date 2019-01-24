@@ -9,37 +9,38 @@ struct Rebrickable_APIClient {
     
     /// The Rebrickable web service's base URL.
     ///
-    /// URLs to specific endpoints can be constructed by appending the appropriate path component to this URL.
+    /// URLs to specific endpoints can be constructed by appending the
+    /// appropriate path component to this URL.
     ///
     private let rebrickableBaseURL = URL(string: "https://rebrickable.com/api/v3/")!
     
     
-    /// The maximum number of items per page that should be requested from the API.
+    /// The maximum number of items per page that should be requested from the
+    /// web service when retrieving large amounts of items.
     ///
-    /// Rebrickable API endpoints that return multiple results use a pagination system where the items are split into multiple pages.
+    /// Rebrickable API endpoints that return multiple results use a pagination
+    /// system where the items are distributed on multiple pages.
     ///
-    /// - Note: The Rebrickable API currently supports a maximum of 1000 items per page on all endpoints.
+    /// - Note: The Rebrickable API currently supports a maximum of 1000 items
+    ///         per page on all endpoints.
     ///
     private let maxItemsPerPage = 1000
     
     
-    /// The Rebrickable API key.
+    /// The Rebrickable API key that should be used when making requests to the
+    /// Rebrickable web service.
     ///
-    /// The Rebrickable webservice requires all requests to include an API key.
-    /// This property configures the API key that should be used when issuing requests to the Rebrickable webservice.
-    ///
-    /// - Note: API keys can be generated from your Rebrickable profile's settings page.
+    /// The Rebrickable web service requires all requests to include an API key.
+    /// API keys can be generated from your Rebrickable profile's settings page.
     ///
     private let apiKey: Rebrickable_APIKey
     
     
-    /// Creates a new instance with the provided API key.
+    /// Creates a new instance that uses the provided API key to make requests
+    /// to the Rebrickable web service.
     ///
-    /// The provided API key is used for all requests made by this client.
-    ///
-    /// - Note: API keys can be generated from your Rebrickable profile's settings page.
-    ///
-    /// - Parameter apiKey: The API key that should be used when issuing requests to the Rebrickable webservice.
+    /// - Parameter apiKey: The API key that should be used when making requests
+    ///             to the Rebrickable web service.
     ///
     init(with apiKey: Rebrickable_APIKey) {
         
@@ -53,18 +54,28 @@ extension Rebrickable_APIClient {
     
     /// Fetches all the colors.
     ///
-    /// This method issues multiple requests to the Rebrickable API to fetch all available colors.
+    /// This method issues as many requests to the Rebrickable API as required
+    /// in order to fetch all available LEGO colors.
     ///
-    /// The `batchProcessor` closure is called multiple time with a subset of the items as they become available,
-    /// while the `completionHandler` closure is called at the very end.
+    /// The `batchProcessor` closure is called multiple times with a subset of
+    /// the items as they become available, while the `completionHandler`
+    /// closure is called at the very end.
     ///
-    /// The Rebrickable API uses a pagination system where the colors are split into multiple pages.
-    /// This method requests pages with the highest number of items possible and loads each page sequentially.
+    /// The Rebrickable API uses a pagination system where the items are
+    /// distributed on multiple pages. This method starts by requesting the
+    /// first page of results, then loads subsequent pages until all items are
+    /// retrieved.
     ///
-    /// Terminates with a fatal error if any error occurs.
+    /// Pages are requested with the highest possible number of items in order
+    /// to minimize the number of requests.
     ///
-    /// - Parameter batchProcessor: A closure that gets called multiple times with a subset of the items as they become available.
-    /// - Parameter completionHandler: A closure that gets called at the very end when all colors have been loaded.
+    /// Terminates with a fatal error if an error occurs.
+    ///
+    /// - Parameter batchProcessor: A closure that gets called multiple times
+    ///             with a subset of the items as they become available.
+    ///
+    /// - Parameter completionHandler: A closure that gets called at the very
+    ///             end when all items have been loaded.
     ///
     func getAllColors(
         
@@ -100,18 +111,28 @@ extension Rebrickable_APIClient {
     
     /// Fetches all the parts.
     ///
-    /// This method issues multiple requests to the Rebrickable API to fetch all available parts.
+    /// This method issues as many requests to the Rebrickable API as required
+    /// in order to fetch all available LEGO parts.
     ///
-    /// The `batchProcessor` closure is called multiple time with a subset of the items as they become available,
-    /// while the `completionHandler` closure is called at the very end.
+    /// The `batchProcessor` closure is called multiple times with a subset of
+    /// the items as they become available, while the `completionHandler`
+    /// closure is called at the very end.
     ///
-    /// The Rebrickable API uses a pagination system where the parts are split into multiple pages.
-    /// This method requests pages with the highest number of items possible and loads each page sequentially.
+    /// The Rebrickable API uses a pagination system where the items are
+    /// distributed on multiple pages. This method starts by requesting the
+    /// first page of results, then loads subsequent pages until all items are
+    /// retrieved.
     ///
-    /// Terminates with a fatal error if any error occurs.
+    /// Pages are requested with the highest possible number of items in order
+    /// to minimize the number of requests.
     ///
-    /// - Parameter batchProcessor: A closure that gets called multiple times with a subset of the items as they become available.
-    /// - Parameter completionHandler: A closure that gets called at the very end when all parts have been loaded.
+    /// Terminates with a fatal error if an error occurs.
+    ///
+    /// - Parameter batchProcessor: A closure that gets called multiple times
+    ///             with a subset of the items as they become available.
+    ///
+    /// - Parameter completionHandler: A closure that gets called at the very
+    ///             end when all items have been loaded.
     ///
     func getAllParts(
         
