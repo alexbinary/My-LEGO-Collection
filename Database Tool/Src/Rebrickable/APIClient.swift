@@ -172,20 +172,29 @@ private extension Rebrickable_APIClient {
     
     /// Loads all pages in a result list sequentially.
     ///
-    /// Rebrickable API endpoints that return multiple results use a pagination system where the items are split into multiple pages.
-    /// Use this method when you want to load all items across all pages. The generic type is the type of items (e.g. sets, parts, etc) you want to load.
+    /// Rebrickable API endpoints that return multiple results use a pagination
+    /// system where the items are distributed on multiple pages. Use this
+    /// method when you want to load all items across all pages. The type
+    /// parameter refers to the type of items (e.g. colors, parts, etc) you want
+    /// to load.
     ///
-    /// Results for each page of data contain the URL to the next page.
-    /// This method loads the provided initial URL, then loads the next page, and repeats until the URL to the next page becomes null.
+    /// Results for each page contain the URL to the next page. This method
+    /// loads the provided initial URL, then loads subsequent pages until there
+    /// is no next page.
     ///
-    /// The `pageCompletionHandler` closure is called once for each page of results and takes the page's items,
-    /// while the `globalCompletionHandler` closure is called at the very end.
+    /// The `pageCompletionHandler` closure is called once for each page and
+    /// takes the page's items, while the `globalCompletionHandler` closure is
+    /// called after the last page has been loaded.
     ///
-    /// Terminates with a fatal error if any error occurs.
+    /// Terminates with a fatal error if an error occurs.
     ///
     /// - Parameter initialURL: The URL of the first page to load.
-    /// - Parameter pageCompletionHandler: A closure that gets called once for each page of results and takes the page's items.
-    /// - Parameter globalCompletionHandler: A closure that gets called at the very end after all pages have been loaded.
+    ///
+    /// - Parameter pageCompletionHandler: A closure that gets called once for
+    ///             each page and takes the page's items.
+    ///
+    /// - Parameter globalCompletionHandler: A closure that gets called after
+    ///             the last page has been loaded.
     ///
     private func iterativePageLoad<Rebrickable_Object>(
         
