@@ -167,7 +167,7 @@ extension Rebrickable_APIClient {
 }
 
 
-extension Rebrickable_APIClient {
+private extension Rebrickable_APIClient {
     
     
     /// Loads all pages in a result list sequentially.
@@ -187,7 +187,7 @@ extension Rebrickable_APIClient {
     /// - Parameter pageCompletionHandler: A closure that gets called once for each page of results and takes the page's items.
     /// - Parameter globalCompletionHandler: A closure that gets called at the very end after all pages have been loaded.
     ///
-    func iterativePageLoad<Rebrickable_Object>(
+    private func iterativePageLoad<Rebrickable_Object>(
         
         initialURL: URL,
         pageCompletionHandler: @escaping ([Rebrickable_Object]) -> Void,
