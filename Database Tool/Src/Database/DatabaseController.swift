@@ -49,7 +49,7 @@ class DatabaseController {
         
         databaseFileURL = url
         
-        print("[DatabaseController] target: \(databaseFileURL)")
+        print("[DatabaseController] Target: \(databaseFileURL)")
     }
 }
 
@@ -72,7 +72,7 @@ extension DatabaseController {
     ///
     func prepare() {
         
-        print("[DatabaseController] preparing database...")
+        print("[DatabaseController] Preparing database...")
         
         guard !FileManager.default.fileExists(atPath: databaseFileURL.path) else {
             
@@ -120,13 +120,13 @@ extension DatabaseController {
     ///
     func insert(_ colors: [Rebrickable_Color]) {
         
-        print("[DatabaseController] inserting \(colors.count) colors...")
+        print("[DatabaseController] Inserting \(colors.count) colors...")
         
         let insertStartTime = Date()
         
         colors.forEach { insert([$0.name, $0.rgb, $0.is_trans], using: colorInsertStatement) }
         
-        print("[DatabaseController] inserted \(colors.count) colors in \(Date().elapsedTimeSince(insertStartTime))")
+        print("[DatabaseController] Inserted \(colors.count) colors in \(Date().elapsedTimeSince(insertStartTime))")
     }
     
     
@@ -139,13 +139,13 @@ extension DatabaseController {
     ///
     func insert(_ parts: [Rebrickable_Part]) {
         
-        print("[DatabaseController] inserting \(parts.count) parts...")
+        print("[DatabaseController] Inserting \(parts.count) parts...")
         
         let insertStartTime = Date()
         
         parts.forEach { insert([$0.name, $0.part_img_url], using: partInsertStatement) }
         
-        print("[DatabaseController] inserted \(parts.count) parts in \(Date().elapsedTimeSince(insertStartTime))")
+        print("[DatabaseController] Inserted \(parts.count) parts in \(Date().elapsedTimeSince(insertStartTime))")
     }
     
     
@@ -156,7 +156,7 @@ extension DatabaseController {
     ///
     func done() {
         
-        print("[DatabaseController] releasing resources...")
+        print("[DatabaseController] Releasing resources...")
         
         sqlite3_finalize(colorInsertStatement.pointer)
         sqlite3_finalize(partInsertStatement.pointer)
