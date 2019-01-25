@@ -4,14 +4,11 @@ import Foundation
 
 let databaseFileURL = URL(fileURLWithPath: FileManager.default.currentDirectoryPath).appendingPathComponent("db.sqlite")
 
-let db = DatabaseController(forDatabaseAt: databaseFileURL)
+var databaseInflator: DatabaseInflator! = DatabaseBuilder.buildDatabase(at: databaseFileURL)
 
-db.prepare()
+databaseInflator.insert([Rebrickable_Color(name: "blue", rgb: "AAAAAA", is_trans: false)])
 
-db.insert([Rebrickable_Color(name: "blue", rgb: "AAAAAA", is_trans: false)])
-
-db.done()
-
+databaseInflator = nil
 
 //AppController().start()
 //

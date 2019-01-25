@@ -20,9 +20,9 @@ class AppController {
     private let rebrickableApiKey = Rebrickable_APIKey("fbaba98cc0deb97795cc9467d12562ba")
     
     
-    /// The database controller used in the app.
+    /// The database inflator used in the app.
     ///
-    private var db: DatabaseController!
+    private var databaseInflator: DatabaseInflator!
     
     
     /// The Rebrickable API client used in the app.
@@ -55,15 +55,13 @@ class AppController {
     ///
     func start() {
 
-        db = DatabaseController(forDatabaseAt: databaseFileURL)
-        
         rebrickable = Rebrickable_APIClient(with: rebrickableApiKey)
         
         dbQueue = DispatchQueue(label: "")
         
         dbQueue.async {
         
-            self.db.prepare()
+            self.databaseInflator = DatabaseBuilder.buildDatabase(at: self.databaseFileURL)
         }
         
         rebrickable.getAllColors(
@@ -72,7 +70,7 @@ class AppController {
                 
                 self.dbQueue.async {
                 
-                    self.db.insert(colors)
+                    self.databaseInflator.insert(colors)
                 }
             },
             
@@ -88,7 +86,7 @@ class AppController {
                 
                 self.dbQueue.async {
                     
-                    self.db.insert(parts)
+                    self.databaseInflator.insert(parts)
                 }
             },
             
@@ -133,7 +131,9 @@ private extension AppController {
         
         dbQueue.sync {
             
-            db.done()
+            // db requires to be deallocated to release resources
+            // letting the program exit does not deallocate objects
+            databaseInflator = nil
         }
         
         var fileSizeString = ""
