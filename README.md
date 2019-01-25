@@ -3,6 +3,11 @@
   <img src="appicon.png">
 </p>
 
+<p align="center">
+  <img src="screenshot_colors.png">
+  <img src="screenshot_parts.png">
+</p>
+
 
 #  My LEGO Collection
 
