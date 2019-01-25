@@ -258,17 +258,17 @@ private extension Rebrickable_APIClient {
             
             guard error == nil else {
                 
-                fatalError("[Rebrickable_APIClient] data task returned an error: \(error!)")
+                fatalError("[Rebrickable_APIClient] The data task returned an error: \(error!)")
             }
             
             guard (URLResponse as? HTTPURLResponse)?.statusCode == 200 else {
                 
-                fatalError("[Rebrickable_APIClient] expected HTTP status code to be 200. Response: \(String(describing: URLResponse))")
+                fatalError("[Rebrickable_APIClient] Expected HTTP response with status code 200, got: \(String(describing: URLResponse))")
             }
             
             guard data != nil else {
                 
-                fatalError("[Rebrickable_APIClient] data is nil")
+                fatalError("[Rebrickable_APIClient] Response data is nil")
             }
             
             var decoded: ResultType
@@ -279,7 +279,7 @@ private extension Rebrickable_APIClient {
                 
             } catch {
                 
-                fatalError("[Rebrickable_APIClient] JSON decode failed: \(error)")
+                fatalError("[Rebrickable_APIClient] Failed to decode JSON: \(error). Input: \"\(String(data: data!, encoding: .utf8) ?? "<invalid utf8 string>")\"")
             }
             
             completionHandler(decoded)
