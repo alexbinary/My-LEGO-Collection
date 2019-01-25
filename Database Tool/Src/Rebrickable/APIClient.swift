@@ -226,14 +226,15 @@ private extension Rebrickable_APIClient {
 private extension Rebrickable_APIClient {
     
     
-    /// Executes the provided request, returning the JSON-decoded result.
+    /// Executes the provided request and decodes the JSON-encoded result into
+    /// the provided type parameter.
     ///
-    /// This method executes the provided requests, then attempts to JSON-decode the result into the provided type.
-    ///
-    /// Terminates with a fatal error if any error occurs.
+    /// Terminates with a fatal error if an error occurs.
     ///
     /// - Parameter request: The request to execute.
-    /// - Parameter completionHandler: A closure that takes an instance of the generic type that corresponds to the request's result.
+    ///
+    /// - Parameter completionHandler: A closure that takes an instance of the
+    ///             type parameter decoded from the request's result.
     ///
     private func execute<ResultType>(
         
@@ -284,9 +285,10 @@ private extension Rebrickable_APIClient {
     
     /// Decodes a given type from provided JSON-encoded data.
     ///
-    /// - Parameter data: The data to decode from.
+    /// - Parameter data: The JSON object to decode.
     ///
-    /// - Returns: An instance of the provided type that represents the provided data.
+    /// - Returns: An instance of the provided type parameter decoded from the
+    ///            provided data.
     ///
     private func decode<Type>(from data: Data) throws -> Type where Type: Decodable
     {
@@ -307,9 +309,12 @@ private extension Rebrickable_APIClient {
     /// Builds a URL to an endpoint using the provided parameters.
     ///
     /// - Parameter route: The Rebrickable API endpoint.
-    /// - Parameter parameters: A dictionary in which each key identifies a route parameter and each value represents the value of the corresponding parameter.
     ///
-    /// - Returns: The URL to the provided endpoint with the provided parameters.
+    /// - Parameter parameters: A dictionary in which the keys are the route
+    ///             parameters and the values are the parameter's values.
+    ///
+    /// - Returns: The URL to the provided endpoint with the provided
+    ///            parameters.
     ///
     func buildURL(for route: Rebrickable_Route, with parameters: [Rebrickable_RouteParameter: Any]) -> URL {
         
@@ -327,7 +332,8 @@ private extension Rebrickable_APIClient {
     ///
     /// - Parameter url: The URL to use in the request.
     ///
-    /// - Returns: A URL request to the provided URL that includes all necessary data, including authentication.
+    /// - Returns: A URL request to the provided URL with authentication
+    ///            information.
     ///
     private func buildGETRequest(from url: URL) -> URLRequest {
         
@@ -341,7 +347,8 @@ private extension Rebrickable_APIClient {
     
     /// Adds authentication information to the provided request.
     ///
-    /// - Parameter request: The request to modify with authentication information.
+    /// - Parameter request: The request to modify with authentication
+    ///             information.
     ///
     private func addAuthentication(to request: inout URLRequest) {
         
@@ -352,7 +359,11 @@ private extension Rebrickable_APIClient {
 
 /// Rebrickable API endpoints.
 ///
-/// Raw values are the actual URL paths that correspond to each endpoint.
+/// The elements in this enumeration represent the endpoints available on the
+/// Rebrickable web service. The raw value of each element is the actual path
+/// of the endpoint.
+///
+/// - Warning: Paths must not start with a slash.
 ///
 enum Rebrickable_Route: String {
     
@@ -363,7 +374,10 @@ enum Rebrickable_Route: String {
 
 /// Rebrickable API URL parameters.
 ///
-/// Raw values are the actual parameter names that should be used in URLs.
+/// The elements in this enumeration represent the parameters that can be used
+/// in URLs when making requests to the Rebrickable API. The raw value of each
+/// element is the name of the parameter that should be used when building the
+/// URL.
 ///
 enum Rebrickable_RouteParameter: String {
     
