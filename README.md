@@ -1,3 +1,9 @@
+
+<p align="center">
+  <img src="appicon.png">
+</p>
+
+
 #  My LEGO Collection
 
 > ⚠️ Work in progress
