@@ -4,8 +4,8 @@
 </p>
 
 <p align="center">
-  <img src="screenshot_colors.png">
-  <img src="screenshot_parts.png">
+  <img src="screenshot_colors.png" width=320>
+  <img src="screenshot_parts.png" width=320>
 </p>
 
 
