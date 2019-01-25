@@ -212,7 +212,12 @@ private extension Rebrickable_APIClient {
             
             if let nextPageURL = resultList.next {
                 
-                self.iterativePageLoad(initialURL: nextPageURL, pageCompletionHandler: pageCompletionHandler, globalCompletionHandler: globalCompletionHandler)
+                self.iterativePageLoad(
+                    
+                    initialURL: nextPageURL,
+                    pageCompletionHandler: pageCompletionHandler,
+                    globalCompletionHandler: globalCompletionHandler
+                )
                 
             } else {
                 
