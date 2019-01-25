@@ -248,7 +248,7 @@ private extension Rebrickable_APIClient {
         
     ) where ResultType: Decodable {
         
-        print("[Rebrickable_APIClient] Loading \(request.url!.absoluteString)")
+        print("[Rebrickable_APIClient] Loading \(request.url?.absoluteString ?? "")")
         
         let loadStartTime = Date()
         
