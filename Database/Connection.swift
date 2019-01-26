@@ -57,7 +57,7 @@ extension AppDatabaseConnection {
             AppDatabaseSchema.ColorsTable.name,
             ";"
             
-            ].joined(separator: " ")
+        ].joined(separator: " ")
         
         return readResults(of: query) { (statement) in
             
@@ -74,7 +74,7 @@ extension AppDatabaseConnection {
             AppDatabaseSchema.PartsTable.name,
             ";"
             
-            ].joined(separator: " ")
+        ].joined(separator: " ")
         
         return readResults(of: query) { (statement) in
             
