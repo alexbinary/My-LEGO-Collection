@@ -48,15 +48,7 @@ extension AppDatabaseConnection {
     
     func getAllColors() -> [AppDatabaseSchema.ColorsTable.TableRow] {
         
-        let query = [
-            
-            "SELECT * FROM",
-            AppDatabaseSchema.ColorsTable.name,
-            ";"
-            
-        ].joined(separator: " ")
-        
-        return readResults(of: query) { (statement) in
+        return getAllRows(AppDatabaseSchema.ColorsTable.self) { (statement) in
             
             return readColorRow(statement: statement)
         }
@@ -65,15 +57,7 @@ extension AppDatabaseConnection {
     
     func getAllParts() -> [AppDatabaseSchema.PartsTable.TableRow] {
         
-        let query = [
-            
-            "SELECT * FROM",
-            AppDatabaseSchema.PartsTable.name,
-            ";"
-            
-        ].joined(separator: " ")
-        
-        return readResults(of: query) { (statement) in
+        return getAllRows(AppDatabaseSchema.PartsTable.self) { (statement) in
             
             return readPartRow(statement: statement)
         }
@@ -96,7 +80,7 @@ extension AppDatabaseConnection {
         return AppDatabaseSchema.PartsTable.TableRow(
             
             name: statement.readString(at: 0),
-            imageURL:statement.readOptionalString(at: 1)
+            imageURL: statement.readOptionalString(at: 1)
         )
     }
 }

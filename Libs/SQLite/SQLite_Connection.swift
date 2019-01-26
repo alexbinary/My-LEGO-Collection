@@ -109,4 +109,25 @@ class SQLite_Connection
             return "CHAR(\(size))"
         }
     }
+    
+    
+    
+    func getAllRows<TableType>(_ tableType: TableType.Type, with reader: (SQLite_Statement) -> TableType.TableRow) -> [TableType.TableRow] where TableType: DatabaseTable {
+        
+        let query = SQLite_Connection.selectSQLExpression(tableType)
+        
+        return readResults(of: query, with: reader)
+    }
+    
+    
+    static func selectSQLExpression<TableType>(_ tableType: TableType.Type) -> String where TableType: DatabaseTable {
+        
+        return [
+            
+            "SELECT * FROM",
+            tableType.name,
+            ";"
+            
+        ].joined(separator: " ")
+    }
 }
