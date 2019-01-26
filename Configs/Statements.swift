@@ -5,7 +5,7 @@ import Foundation
 class ColorInsertStatement: InsertStatement<AppDatabaseSchema.ColorsTable> {
     
     
-    override func bind(_ row: AppDatabaseSchema.ColorsTable.Row) {
+    override func bind(_ row: AppDatabaseSchema.ColorsTable.TableRow) {
         
         bind([
             
@@ -21,13 +21,12 @@ class ColorInsertStatement: InsertStatement<AppDatabaseSchema.ColorsTable> {
 class PartInsertStatement: InsertStatement<AppDatabaseSchema.PartsTable> {
     
     
-    override func bind(_ row: AppDatabaseSchema.PartsTable.Row) {
+    override func bind(_ row: AppDatabaseSchema.PartsTable.TableRow) {
         
         bind([
             
             row.name,
-            row.rgb,
-            row.transparent
-            ])
+            row.imageURL,
+        ])
     }
 }

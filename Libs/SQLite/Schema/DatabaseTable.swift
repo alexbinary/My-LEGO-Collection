@@ -8,7 +8,7 @@ import Foundation
 protocol DatabaseTable {
     
     
-    associatedtype TableRow
+    associatedtype TableRow: DatabaseTableRow
    
     
     /// The table's name.

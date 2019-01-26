@@ -23,7 +23,7 @@ struct DatabaseReader {
         
         let startDate = Date()
  
-        let colors = connection.getAllRows<AppDatabaseSchema.ColorsTable.Row>().map { color(from: $0) }
+        let colors = connection.getAllColors().map { color(from: $0) }
         
         print("[DatabaseController] fetched \(colors.count) colors in \(Date().elapsedTimeSince(startDate))")
         
@@ -37,7 +37,7 @@ struct DatabaseReader {
         
         let startDate = Date()
         
-        let parts = connection.getAllRows<AppDatabaseSchema.PartsTable.Row>().map { part(from: $0) }
+        let parts = connection.getAllParts().map { part(from: $0) }
         
         print("[DatabaseController] fetched \(parts.count) parts in \(Date().elapsedTimeSince(startDate))")
         
@@ -49,7 +49,7 @@ struct DatabaseReader {
 extension DatabaseReader {
     
     
-    func color(from row: AppDatabaseSchema.ColorsTable.Row) -> LEGO_Color {
+    func color(from row: AppDatabaseSchema.ColorsTable.TableRow) -> LEGO_Color {
         
         let name = row.name
         let rgb = RGB(fromHexString: row.rgb)
@@ -64,10 +64,10 @@ extension DatabaseReader {
     }
     
     
-    private func part(from row: AppDatabaseSchema.PartsTable.Row) -> LEGO_Part {
+    private func part(from row: AppDatabaseSchema.PartsTable.TableRow) -> LEGO_Part {
         
         let name = row.name
-        let imageURL = URL(string: row.imageURL)
+        let imageURL = row.imageURL != nil ? URL(string: row.imageURL!) : nil
         
         return LEGO_Part(
             

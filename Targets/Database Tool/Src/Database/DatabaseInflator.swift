@@ -35,7 +35,7 @@ struct DatabaseInflator {
         
         colors.forEach { color in
             
-            colorInsertStatement.insert(AppDatabaseSchema.ColorsTable.Row(name: color.name, rgb: color.rgb, transparent: color.is_trans))
+            colorInsertStatement.insert(AppDatabaseSchema.ColorsTable.TableRow(name: color.name, rgb: color.rgb, transparent: color.is_trans))
         }
         
         print("[DatabaseController] Inserted \(colors.count) colors in \(Date().elapsedTimeSince(insertStartTime))")
@@ -50,7 +50,7 @@ struct DatabaseInflator {
         
         parts.forEach { part in
             
-            partInsertStatement.insert(AppDatabaseSchema.PartsTable.Row(name: part.name, imageURL: part.part_img_url))
+            partInsertStatement.insert(AppDatabaseSchema.PartsTable.TableRow(name: part.name, imageURL: part.part_img_url))
         }
         
         print("[DatabaseController] Inserted \(parts.count) parts in \(Date().elapsedTimeSince(insertStartTime))")

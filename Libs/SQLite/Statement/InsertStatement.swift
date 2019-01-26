@@ -14,7 +14,7 @@ class InsertStatement<Table>: Statement where Table: DatabaseTable {
 //    }
 //    
 //    
-    func run(_ row: Table.TableRow) {
+    func insert(_ row: Table.TableRow) {
         
         self.bind(row)
         
