@@ -41,6 +41,9 @@ class SQLite_Statement {
     
     func run() {
         
+        print(query)
+        print(boundValues)
+        
         guard sqlite3_step(pointer) == SQLITE_DONE else {
             
             fatalError("[SQLite_Statement] Running query: \(query) with bindings: \(boundValues). SQLite error: \(connection.errorMessage ?? "")")

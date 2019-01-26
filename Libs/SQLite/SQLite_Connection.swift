@@ -61,4 +61,51 @@ class SQLite_Connection
         
         return results
     }
+    
+    
+    
+    func createTable<Type>(_ type: Type.Type) where Type: DatabaseTable {
+        
+        let query = createTableSQLExpression(type)
+        
+        run(query)
+    }
+    
+    
+    func createTableSQLExpression<Type>(_ type: Type.Type) -> String where Type: DatabaseTable {
+        return [
+            
+            "CREATE TABLE \(type.name)(",
+            type.columns.map(columnSQLExpression).joined(separator: ", "),
+            ");"
+        
+        ].joined()
+    }
+    
+    
+    func columnSQLExpression(_ col: DatabaseTableColumn) -> String {
+        
+        return [
+            
+            col.name,
+            columnTypeSQLExpression(col.type),
+            col.nullable ? "NULL" : "NOT NULL"
+            
+        ].joined(separator: " ")
+    }
+    
+    
+    func columnTypeSQLExpression(_ type: DatabaseTableColumnType) -> String {
+        
+        switch (type) {
+            
+        case .bool:
+            
+            return "BOOL"
+            
+        case .char(let size):
+            
+            return "CHAR(\(size))"
+        }
+    }
 }
