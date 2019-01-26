@@ -5,6 +5,19 @@ import Foundation
 class AppDatabaseConnection: SQLite_Connection {
     
     
+    
+    func createColorsTable() {
+        
+        createTable(AppDatabaseSchema.ColorsTable.self)
+    }
+    
+    
+    func createPartsTable() {
+        
+        createTable(AppDatabaseSchema.PartsTable.self)
+    }
+    
+    
     func prepareColorInsertStatement() -> ColorInsertStatement {
         
         let query = insertSQLExpression(AppDatabaseSchema.ColorsTable.self)
@@ -20,30 +33,6 @@ class AppDatabaseConnection: SQLite_Connection {
         return PartInsertStatement(query: query, connection: self)
     }
     
-    
-//    func getAllRows<TableType, TableRowType>(_ tableType: TableType.Type) -> [TableType.TableRow] where TableType: DatabaseTable, TableRowType: DatabaseTableRow {
-    
-//    func getAllRows<TableType>(_ tableType: TableType.Type) -> [TableType.TableRow] where TableType: DatabaseTable {
-//
-//        let query = ""
-//
-//        switch tableType {
-//
-//        case AppDatabaseSchema.ColorsTable:
-//
-//            return readResults(of: query) { (statement) in
-//
-//                return readColorRow(statement: statement)
-//            }
-//
-//        case AppDatabaseSchema.PartsTable.TableRow:
-//
-//            return readResults(of: query) { (statement) in
-//
-//                return readPartRow(statement: statement)
-//            }
-//        }
-//    }
     
     func getAllColors() -> [AppDatabaseSchema.ColorsTable.TableRow] {
         

@@ -17,11 +17,11 @@ struct DatabaseBuilder {
         
         let connection = AppDatabaseConnection(toDatabaseAt: url)
         
-        connection.createTable(AppDatabaseSchema.ColorsTable.self)
-        connection.createTable(AppDatabaseSchema.PartsTable.self)
+        connection.createColorsTable()
+        connection.createPartsTable()
         
-        let colorInsertStatement: ColorInsertStatement = connection.prepareColorInsertStatement()
-        let partInsertStatement: PartInsertStatement = connection.preparePartInsertStatement()
+        let colorInsertStatement = connection.prepareColorInsertStatement()
+        let partInsertStatement = connection.preparePartInsertStatement()
         
         return DatabaseInflator(
             
