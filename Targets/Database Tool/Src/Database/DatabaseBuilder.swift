@@ -25,8 +25,6 @@ struct DatabaseBuilder {
         
         return DatabaseInflator(
             
-            connection: connection,
-            
             colorInsertStatement: colorInsertStatement,
             partInsertStatement: partInsertStatement
         )

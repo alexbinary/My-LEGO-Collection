@@ -6,22 +6,17 @@ import Foundation
 struct DatabaseInflator {
     
 
-    private var connection: AppDatabaseConnection
-    
     private var colorInsertStatement: ColorInsertStatement
     private var partInsertStatement: PartInsertStatement
     
     
     init(
         
-        connection: AppDatabaseConnection,
-        
         colorInsertStatement: ColorInsertStatement,
         partInsertStatement: PartInsertStatement
         
     ) {
         
-        self.connection = connection
         self.colorInsertStatement = colorInsertStatement
         self.partInsertStatement = partInsertStatement
     }
