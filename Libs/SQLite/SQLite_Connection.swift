@@ -36,7 +36,7 @@ class SQLite_Connection
     
     func compile(_ query: String) -> SQLite_Statement {
         
-        return SQLite_Statement(query: query, connection: self)
+        return SQLite_Statement(connection: self, query: query)
     }
     
     func run(_ query: String) {
@@ -66,13 +66,14 @@ class SQLite_Connection
     
     func createTable<Type>(_ type: Type.Type) where Type: DatabaseTable {
         
-        let query = createTableSQLExpression(type)
+        let query = SQLite_Connection.createTableSQLExpression(type)
         
         run(query)
     }
     
     
-    func createTableSQLExpression<Type>(_ type: Type.Type) -> String where Type: DatabaseTable {
+    static func createTableSQLExpression<Type>(_ type: Type.Type) -> String where Type: DatabaseTable {
+        
         return [
             
             "CREATE TABLE \(type.name)(",
@@ -83,7 +84,7 @@ class SQLite_Connection
     }
     
     
-    func columnSQLExpression(_ col: DatabaseTableColumn) -> String {
+    static func columnSQLExpression(_ col: DatabaseTableColumn) -> String {
         
         return [
             
@@ -95,7 +96,7 @@ class SQLite_Connection
     }
     
     
-    func columnTypeSQLExpression(_ type: DatabaseTableColumnType) -> String {
+    static func columnTypeSQLExpression(_ type: DatabaseTableColumnType) -> String {
         
         switch (type) {
             

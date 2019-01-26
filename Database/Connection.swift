@@ -30,17 +30,14 @@ extension AppDatabaseConnection {
     
     func prepareColorInsertStatement() -> ColorInsertStatement {
         
-        let query = insertSQLExpression(AppDatabaseSchema.ColorsTable.self)
-        
-        return ColorInsertStatement(query: query, connection: self)
+        return ColorInsertStatement(connection: self)
     }
+    
     
     
     func preparePartInsertStatement() -> PartInsertStatement {
         
-        let query = insertSQLExpression(AppDatabaseSchema.PartsTable.self)
-        
-        return PartInsertStatement(query: query, connection: self)
+        return PartInsertStatement(connection: self)
     }
 }
 
@@ -101,20 +98,5 @@ extension AppDatabaseConnection {
             name: statement.readString(at: 0),
             imageURL:statement.readOptionalString(at: 1)
         )
-    }
-    
-    
-    func insertSQLExpression<Type>(_ type: Type.Type) -> String where Type: DatabaseTable {
-        
-        return [
-            
-            "INSERT INTO",
-            type.name,
-            "(\(type.columns.map { $0.name } .joined(separator: ", ")))",
-            "VALUES",
-            "(\(type.columns.map { _ in "?" } .joined(separator: ", ")))",
-            ";"
-            
-        ].joined(separator: " ")
     }
 }

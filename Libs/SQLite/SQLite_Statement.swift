@@ -23,7 +23,7 @@ class SQLite_Statement {
     
     private(set) var boundValues: [Any?] = []
     
-    init(query: String, connection: SQLite_Connection) {
+    init(connection: SQLite_Connection, query: String) {
         
         self.connection = connection
         self.query = query
