@@ -2,8 +2,13 @@
 import Foundation
 
 
+
 class AppDatabaseConnection: SQLite_Connection {
-    
+}
+
+
+
+extension AppDatabaseConnection {
     
     
     func createColorsTable() {
@@ -16,6 +21,11 @@ class AppDatabaseConnection: SQLite_Connection {
         
         createTable(AppDatabaseSchema.PartsTable.self)
     }
+}
+
+
+
+extension AppDatabaseConnection {
     
     
     func prepareColorInsertStatement() -> ColorInsertStatement {
@@ -32,6 +42,11 @@ class AppDatabaseConnection: SQLite_Connection {
         
         return PartInsertStatement(query: query, connection: self)
     }
+}
+
+
+
+extension AppDatabaseConnection {
     
     
     func getAllColors() -> [AppDatabaseSchema.ColorsTable.TableRow] {
@@ -42,12 +57,12 @@ class AppDatabaseConnection: SQLite_Connection {
             AppDatabaseSchema.ColorsTable.name,
             ";"
             
-        ].joined(separator: " ")
+            ].joined(separator: " ")
         
-            return readResults(of: query) { (statement) in
-                
-                return readColorRow(statement: statement)
-            }
+        return readResults(of: query) { (statement) in
+            
+            return readColorRow(statement: statement)
+        }
     }
     
     
@@ -61,11 +76,11 @@ class AppDatabaseConnection: SQLite_Connection {
             
             ].joined(separator: " ")
         
-            return readResults(of: query) { (statement) in
-                
-                return readPartRow(statement: statement)
-            }
+        return readResults(of: query) { (statement) in
+            
+            return readPartRow(statement: statement)
         }
+    }
     
     
     func readColorRow(statement: SQLite_Statement) -> AppDatabaseSchema.ColorsTable.TableRow {

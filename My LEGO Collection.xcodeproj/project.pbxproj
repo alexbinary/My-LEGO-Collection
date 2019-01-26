@@ -282,14 +282,14 @@
 			path = Targets;
 			sourceTree = "<group>";
 		};
-		29C3F97621FCCC830011E1E5 /* Configs */ = {
+		29C3F97621FCCC830011E1E5 /* Database */ = {
 			isa = PBXGroup;
 			children = (
 				29C3F97721FCCC950011E1E5 /* Database.swift */,
-				29FECB3221FCF7B500254DCC /* Statements.swift */,
 				29FECB3521FCF82400254DCC /* Connection.swift */,
+				29FECB3221FCF7B500254DCC /* Statements.swift */,
 			);
-			path = Configs;
+			path = Database;
 			sourceTree = "<group>";
 		};
 		29CCEAF621EE63EF00CB5EFB /* LegoColors */ = {
@@ -316,7 +316,7 @@
 				2970F8A621D797D600AC42D5 /* README.md */,
 				2970F8A721D797D600AC42D5 /* specs */,
 				2912D09521D7B33D00C623A4 /* Libs */,
-				29C3F97621FCCC830011E1E5 /* Configs */,
+				29C3F97621FCCC830011E1E5 /* Database */,
 				29C3F97521FCCC210011E1E5 /* Targets */,
 				29F4EA1E21C972780000B8A1 /* Products */,
 			);
