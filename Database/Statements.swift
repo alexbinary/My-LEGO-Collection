@@ -2,6 +2,7 @@
 import Foundation
 
 
+
 class ColorInsertStatement: InsertStatement<AppDatabaseSchema.ColorsTable> {
     
     
