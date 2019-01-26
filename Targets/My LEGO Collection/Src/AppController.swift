@@ -31,11 +31,12 @@ class AppController {
         
         let databaseFileURL = Bundle.main.url(forResource: "db", withExtension: "sqlite")!
         
-        let db = DatabaseController(forDatabaseAt: databaseFileURL)
-        db.open()
-        let legoColors = db.getAllColors()
-        let legoParts = db.getAllParts()
-        db.close()
+        var databaseReader: DatabaseReader? = DatabaseReader(forDatabaseAt: databaseFileURL)
+        
+        let legoColors = databaseReader!.readAllColors()
+        let legoParts = databaseReader!.readAllParts()
+        
+        databaseReader = nil
         
         let dataViewController = DataViewController()
         dataViewController.legoColors = legoColors

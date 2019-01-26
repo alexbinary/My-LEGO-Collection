@@ -18,6 +18,8 @@ struct DatabaseBuilder {
         
         let connection = SQLite_Connection(toDatabaseAt: databaseFileURL)
         
+        let c = Database.schema.colorTable.nameColumn.name
+        
         connection.run("""
             CREATE TABLE colors(
                 name CHAR(255) NOT NULL,

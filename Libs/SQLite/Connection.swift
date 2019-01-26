@@ -5,7 +5,7 @@ import SQLite3
 
 class SQLite_Connection
 {
-    private var pointer: OpaquePointer!
+    private(set) var pointer: OpaquePointer!
     
     init(toDatabaseAt url: URL) {
         
@@ -22,7 +22,7 @@ class SQLite_Connection
         sqlite3_close(pointer)
     }
     
-    private var errorMessage: String? {
+    var errorMessage: String? {
         
         if let error = sqlite3_errmsg(pointer) {
             
@@ -36,35 +36,29 @@ class SQLite_Connection
     
     func compile(_ query: String) -> SQLite_Statement {
         
-        var statementPointer: OpaquePointer? = nil
-        
-        guard sqlite3_prepare_v2(pointer, query, -1, &statementPointer, nil) == SQLITE_OK else {
-            
-            fatalError("[SQLite_Connection] Compiling query: \(query). SQLite error: \(errorMessage ?? "")")
-        }
-        
-        return SQLite_Statement(pointer: statementPointer!, query: query)
-    }
-    
-    func run(_ statement: SQLite_Statement) {
-        
-        guard sqlite3_step(statement.pointer) == SQLITE_DONE else {
-            
-            fatalError("[SQLite_Statement] Running query: \(statement.query) with bindings: \(statement.boundValues). SQLite error: \(errorMessage ?? "")")
-        }
-    }
-    
-    func run(_ statement: SQLite_Statement, with values: [Any?]) {
-        
-        statement.bind(values)
-        
-        run(statement)
+        return SQLite_Statement(query: query, connection: self)
     }
     
     func run(_ query: String) {
         
         let statement = compile(query)
         
-        run(statement)
+        statement.run()
+    }
+    
+    /// Iterates over the results of a query and reads each row using the provided reader.
+    ///
+    /// - Parameter query: The SQL query to read the results of.
+    /// - Parameter reader: A closure that takes the statement and returns an instance of the provided type.
+    ///
+    /// - Returns: One instance of the provided type for each result row.
+    ///
+    func readResults<ResultType>(of query: String, with reader: (SQLite_Statement) -> ResultType) -> [ResultType] {
+        
+        let statement = compile(query)
+        
+        let results = statement.readResults(with: reader)
+        
+        return results
     }
 }
