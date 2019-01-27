@@ -53,10 +53,10 @@ class AppDatabaseSchema: DatabaseSchema {
             
             let transparent: Bool
             
-            lazy var bindings: [Any?] = [
-             
-                name, rgb, transparent
-            ]
+//            lazy var bindings: [Any?] = [
+//             
+//                name, rgb, transparent
+//            ]
         }
     }
     
@@ -68,14 +68,14 @@ class AppDatabaseSchema: DatabaseSchema {
         let name = "parts"
         
         
-        var columns: [DatabaseTableColumn] = [
+        lazy var columns: [DatabaseTableColumn] = [
             
             nameColumn,
             imageURLColumn,
         ]
         
         
-        static let nameColumn = DatabaseTableColumn(
+        let nameColumn = DatabaseTableColumn(
             
             name: "name",
             type: .char(size: 255),
@@ -83,7 +83,7 @@ class AppDatabaseSchema: DatabaseSchema {
         )
         
         
-        static let imageURLColumn = DatabaseTableColumn(
+        let imageURLColumn = DatabaseTableColumn(
             
             name: "image_url",
             type: .char(size: 1024),
@@ -98,10 +98,10 @@ class AppDatabaseSchema: DatabaseSchema {
             
             let imageURL: String?
             
-            lazy var bindings: [Any?] = [
-                
-                name, imageURL
-            ]
+//            lazy var bindings: [Any?] = [
+//                
+//                name, imageURL
+//            ]
         }
     }
 }

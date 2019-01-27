@@ -9,13 +9,16 @@ import Foundation
         let table: DatabaseTable
         
         
+        let insertQuery: SQLite_InsertQuery
+        
+        
         init(for table: DatabaseTable, connection: SQLite_Connection) {
             
             self.table = table
             
-            let query = SQLite_InsertQuery(table: table)
+            self.insertQuery = SQLite_InsertQuery(table: table)
             
-            super.init(connection: connection, query: query.sql)
+            super.init(connection: connection, query: insertQuery.sql)
         }
     
     
@@ -56,7 +59,13 @@ import Foundation
 //
 //        connection.run(query, with: values)
         
-            let rawvalues = values.map { (parameterName: $0.column.name, value: $0.value) }
+            let rawvalues = values.map { value in
+                
+                return (
+                    parameterName: insertQuery.parameters.first(where: { $0.column.name == value.column.name })!.parameterName,
+                    value: value.value
+                )
+            }
             
         run(with: rawvalues)
     }

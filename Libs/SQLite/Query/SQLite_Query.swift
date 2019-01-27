@@ -86,14 +86,30 @@ struct SQLite_InsertQuery: SQLite_Query {
     let table: DatabaseTable
     
     
+    let parameters: [(column: DatabaseTableColumn, parameterName: String)]
+    
+    
+    init(table: DatabaseTable) {
+        
+        self.table = table
+        
+        self.parameters = table.columns.map { (column: $0, parameterName: $0.name) }
+    }
+    
+    
     var sql: String {
+        
+        let columns: [DatabaseTableColumn] = table.columns
+        let parameters = columns.map { column in
+            self.parameters.first(where: { $0.column.name == column.name })!
+        }
         
         return [
         
             "INSERT INTO \(table.name) (",
-            table.columns.map { $0.name } .joined(separator: ", "),
+            columns.map { $0.name } .joined(separator: ", "),
             ") VALUES(",
-            table.columns.map { _ in "?" } .joined(separator: ", "),
+            parameters.map { $0.parameterName } .joined(separator: ", "),
             ");"
             
         ].joined()

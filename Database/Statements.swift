@@ -21,8 +21,9 @@ class ColorInsertStatement: InsertStatement {
         
         insert([
             
-            (column: colorsTable.nameColumn, value: name)
-//            name, rgb, transparent
+            (column: colorsTable.nameColumn, value: name),
+            (column: colorsTable.rgbColumn, value: rgb),
+            (column: colorsTable.transparentColumn, value: transparent),
         ])
     }
     
@@ -47,15 +48,22 @@ class ColorInsertStatement: InsertStatement {
 class PartInsertStatement: InsertStatement {
 
     
+    let partsTable = AppDatabaseSchema.PartsTable()
+    
+    
     init(connection: SQLite_Connection) {
         
-        let table = AppDatabaseSchema.PartsTable()
-        
-        super.init(for: table, connection: connection)
+        super.init(for: partsTable, connection: connection)
     }
     
     
     func insert(name: String, imageURL: String?) {
+        
+        insert([
+            
+            (column: partsTable.nameColumn, value: name),
+            (column: partsTable.imageURLColumn, value: imageURL),
+        ])
         
 //        insert(AppDatabaseSchema.PartsTable.TableRow(name: name, imageURL: imageURL))
         
