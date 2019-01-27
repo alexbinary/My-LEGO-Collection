@@ -8,17 +8,17 @@ import Foundation
 protocol DatabaseTable {
     
     
-    associatedtype TableRow: DatabaseTableRow
+//    associatedtype TableRow: DatabaseTableRow
    
     
     /// The table's name.
     ///
-    static var name: String { get }
+    var name: String { get }
     
     
     /// The table's columns.
     ///
-    static var columns: [DatabaseTableColumn] { get }
+    var columns: [DatabaseTableColumn] { get }
 //
 //    
 //    /// Creates a new description of a table that has the provided name and

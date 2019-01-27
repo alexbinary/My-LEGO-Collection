@@ -5,5 +5,5 @@ import Foundation
 protocol DatabaseTableRow {
     
     
-    var bindings: [Any?] { get }
+//    var bindings: [Any?] { get }
 }

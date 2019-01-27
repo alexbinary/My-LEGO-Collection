@@ -76,9 +76,9 @@ class SQLite_Connection
         
         return [
             
-            "CREATE TABLE \(type.name)(",
-            type.columns.map(columnSQLExpression).joined(separator: ", "),
-            ");"
+//            "CREATE TABLE \(type.name)(",
+//            type.columns.map(columnSQLExpression).joined(separator: ", "),
+//            ");"
         
         ].joined()
     }
@@ -112,21 +112,21 @@ class SQLite_Connection
     
     
     
-    func getAllRows<TableType>(_ tableType: TableType.Type, with reader: (SQLite_Statement) -> TableType.TableRow) -> [TableType.TableRow] where TableType: DatabaseTable {
-        
-        let query = SQLite_Connection.selectSQLExpression(tableType)
-        
-        return readResults(of: query, with: reader)
-    }
+//    func getAllRows<TableType>(_ tableType: TableType.Type, with reader: (SQLite_Statement) -> TableType.TableRow) -> [TableType.TableRow] where TableType: DatabaseTable {
+//        
+//        let query = SQLite_Connection.selectSQLExpression(tableType)
+//        
+//        return readResults(of: query, with: reader)
+//    }
     
     
     static func selectSQLExpression<TableType>(_ tableType: TableType.Type) -> String where TableType: DatabaseTable {
         
         return [
             
-            "SELECT * FROM",
-            tableType.name,
-            ";"
+//            "SELECT * FROM",
+//            tableType.name,
+//            ";"
             
         ].joined(separator: " ")
     }

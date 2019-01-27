@@ -1,0 +1,78 @@
+
+
+
+
+API SQLite
+
+	- OpaquePointer
+	- sqlite3_open
+	- sqlite3_close
+	- sqlite3_errmsg
+	- sqlite3_prepare_v2
+	- sqlite3_finalize
+	- sqlite3_step
+	- sqlite3_reset
+	- sqlite3_bind_*
+	- sqlite3_column_*
+
+	> connexions et statements sont gérés par un type de pointeur unique
+	> pas de vérification du type de pointeur lors des appels aux méthodes
+	> un pointeur peut désigner une connexion ouverte ou non
+	> un pointeur peut désigner un statement préparé ou non
+
+
+Surcouche basse
+
+	- SQLite_Connection
+
+		- init(url)
+		- autoclose
+		- error
+
+	- SQLite_Statement
+
+		- init(query)
+		- autorelease
+		- run
+		- bind
+		- read column
+		- read rows
+
+	> types distincts pour connexions et statements
+	> connexions et statements sont toujours dans un état connu et constant
+
+	> pas de vérification du SQL
+	> pas de vérification de la cohérences des opérations vis-à-vis des requêtes
+
+
+Surcouche haute
+
+	- createTable(tableDescription)
+	- insert(tableDescription, values)
+	- readAllRows(tableDescription) -> [values]
+
+	> génération SQL managée
+	> cohérence des opérations vis-à-vis des requêtes
+
+
+Surchouche applicative
+
+	- AppDatabaseConnection
+
+		- init(url)
+		- createColorsTable()
+		- createPartsTable()
+		- readAllColors()
+		- readAllParts()
+
+	- ColorsInsertStatement
+
+		- insert(color)
+
+	- PartsInsertStatement
+
+		- insert(part)
+
+	> typage fort lié à la structure de la base
+
+	

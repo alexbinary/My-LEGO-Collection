@@ -17,21 +17,21 @@ class InsertStatement<TableType>: Statement where TableType: DatabaseTable {
         
         return [
             
-            "INSERT INTO",
-            type.name,
-            "(\(type.columns.map { $0.name } .joined(separator: ", ")))",
-            "VALUES",
-            "(\(type.columns.map { _ in "?" } .joined(separator: ", ")))",
-            ";"
+//            "INSERT INTO",
+//            type.name,
+//            "(\(type.columns.map { $0.name } .joined(separator: ", ")))",
+//            "VALUES",
+//            "(\(type.columns.map { _ in "?" } .joined(separator: ", ")))",
+//            ";"
             
         ].joined(separator: " ")
     }
     
     
-    func insert(_ row: TableType.TableRow)
-    {
-        bind(row.bindings)
-        
-        self.run()
-    }
+//    func insert(_ row: TableType.TableRow)
+//    {
+////        bind(row.bindings)
+//        
+//        self.run()
+//    }
 }

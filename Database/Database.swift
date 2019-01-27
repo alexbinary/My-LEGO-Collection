@@ -10,10 +10,10 @@ class AppDatabaseSchema: DatabaseSchema {
     class ColorsTable: DatabaseTable {
         
         
-        static let name = "colors"
+        let name = "colors"
         
         
-        static var columns: [DatabaseTableColumn] = [
+        var columns: [DatabaseTableColumn] = [
             
             nameColumn,
             rgbColumn,
@@ -65,10 +65,10 @@ class AppDatabaseSchema: DatabaseSchema {
     class PartsTable: DatabaseTable {
         
         
-        static let name = "parts"
+        let name = "parts"
         
         
-        static var columns: [DatabaseTableColumn] = [
+        var columns: [DatabaseTableColumn] = [
             
             nameColumn,
             imageURLColumn,
