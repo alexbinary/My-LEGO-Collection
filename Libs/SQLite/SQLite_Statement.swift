@@ -56,25 +56,33 @@ class SQLite_Statement {
         }
     }
     
-    func run(with values: [Any?]) {
-        
+//    func run(with values: [Any?]) {
+    
+    func run(with values: [(parameterName: String, value: Any?)]) {
+    
         bind(values)
         
         run()
     }
     
-    func bind(_ values: [Any?]) {
-        
+//    func bind(_ values: [Any?]) {
+    
+    func bind(_ values: [(parameterName: String, value: Any?)]) {
+
         sqlite3_reset(pointer)
         
-        values.enumerated().forEach { bind($0.element, at: $0.offset + 1) }
+//        values.enumerated().forEach { bind($0.element, at: $0.offset + 1) }
+        
+        values.forEach { bind($0.value, for: $0.parameterName) }
         
         boundValues = values
     }
     
-    func bind(_ value: Any?, at index: Int) {
+//    func bind(_ value: Any?, at index: Int) {
     
-        let int32Index = Int32(exactly: index)!
+    func bind(_ value: Any?, for parameterName: String) {
+        
+        let int32Index = sqlite3_bind_parameter_index(pointer, parameterName)
         
         switch (value) {
             

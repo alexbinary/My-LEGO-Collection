@@ -23,12 +23,12 @@ class SQLite_DatabaseDriver {
     }
     
     
-    func insert(_ values: [Any?], into table: DatabaseTable) {
-        
-        let query = SQLite_InsertQuery(table: table)
-        
-        connection.run(query, with: values)
-    }
+//    func insert(_ values: [Any?], into table: DatabaseTable) {
+//        
+//        let query = SQLite_InsertQuery(table: table)
+//        
+//        connection.run(query, with: values)
+//    }
     
     
     func prepareInsert(for table: DatabaseTable) -> InsertStatement {

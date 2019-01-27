@@ -56,10 +56,7 @@ import Foundation
 //
 //        connection.run(query, with: values)
         
-            let rawvalues = table.columns.map { column in
-                
-                return values.first(where: { $0.column.name == column.name })!.value as Any?
-            }
+            let rawvalues = values.map { (parameterName: $0.column.name, value: $0.value) }
             
         run(with: rawvalues)
     }
