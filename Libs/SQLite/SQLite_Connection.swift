@@ -46,6 +46,18 @@ class SQLite_Connection
         statement.run()
     }
     
+    func run(_ query: SQLite_Query) {
+        
+        run(query.sql)
+    }
+    
+    func run(_ query: SQLite_Query, with values: [Any?]) {
+        
+        let statement = SQLite_Statement(connection: self, query: query.sql)
+        
+        statement.run(with: values)
+    }
+    
     /// Iterates over the results of a query and reads each row using the provided reader.
     ///
     /// - Parameter query: The SQL query to read the results of.

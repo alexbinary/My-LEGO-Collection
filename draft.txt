@@ -47,9 +47,16 @@ Surcouche basse
 
 Surcouche haute
 
-	- createTable(tableDescription)
-	- insert(tableDescription, values)
-	- readAllRows(tableDescription) -> [values]
+	- DatabaseDriver
+
+		- createTable(tableDescription)
+		- prepareInsert(table) -> InsertStatement
+		- insert(tableDescription, values)
+		- readAllRows(tableDescription) -> [values]
+
+	- InsertStatement
+
+		- insert(values)
 
 	> génération SQL managée
 	> cohérence des opérations vis-à-vis des requêtes

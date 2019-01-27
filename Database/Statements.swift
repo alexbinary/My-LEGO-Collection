@@ -3,8 +3,9 @@ import Foundation
 
 
 
-class ColorInsertStatement: InsertStatement<AppDatabaseSchema.ColorsTable> {
-    
+//class ColorInsertStatement: InsertStatement<AppDatabaseSchema.ColorsTable> {
+
+class ColorInsertStatement: InsertStatement {
     
     func insert(name: String, rgb: String, transparent: Bool) {
         
@@ -25,8 +26,9 @@ class ColorInsertStatement: InsertStatement<AppDatabaseSchema.ColorsTable> {
 
 
 
-class PartInsertStatement: InsertStatement<AppDatabaseSchema.PartsTable> {
-    
+//class PartInsertStatement: InsertStatement<AppDatabaseSchema.PartsTable> {
+class PartInsertStatement: InsertStatement {
+
     
     func insert(name: String, imageURL: String?) {
         

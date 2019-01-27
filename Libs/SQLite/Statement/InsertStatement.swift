@@ -2,15 +2,16 @@
 import Foundation
 
 
-class InsertStatement<TableType>: Statement where TableType: DatabaseTable {
+//class InsertStatement<TableType>: Statement where TableType: DatabaseTable {
+    class InsertStatement: Statement {
     
     
-    init(connection: SQLite_Connection) {
-        
-        let query = InsertStatement.insertSQLExpression(for: TableType.self)
-        
-        super.init(connection: connection, query: query)
-    }
+//    init(connection: SQLite_Connection) {
+//
+//        let query = InsertStatement.insertSQLExpression(for: TableType.self)
+//
+//        super.init(connection: connection, query: query)
+//    }
     
     
     static func insertSQLExpression<Type>(for type: Type.Type) -> String where Type: DatabaseTable {
@@ -34,4 +35,14 @@ class InsertStatement<TableType>: Statement where TableType: DatabaseTable {
 //        
 //        self.run()
 //    }
+    
+    
+    func insert(_ values: [Any?]) {
+        
+//        let query = SQLite_InsertQuery(table: table)
+//
+//        connection.run(query, with: values)
+        
+        run(with: values)
+    }
 }

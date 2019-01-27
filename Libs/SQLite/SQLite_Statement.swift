@@ -34,6 +34,12 @@ class SQLite_Statement {
         }
     }
     
+    
+    convenience init(connection: SQLite_Connection, query: SQLite_Query) {
+        
+        self.init(connection: connection, query: query.sql)
+    }
+    
     deinit {
         
         sqlite3_finalize(pointer)
