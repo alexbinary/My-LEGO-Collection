@@ -4,6 +4,19 @@ import Foundation
 
 //class InsertStatement<TableType>: Statement where TableType: DatabaseTable {
     class InsertStatement: Statement {
+        
+        
+        let table: DatabaseTable
+        
+        
+        init(for table: DatabaseTable, connection: SQLite_Connection) {
+            
+            self.table = table
+            
+            let query = SQLite_InsertQuery(table: table)
+            
+            super.init(connection: connection, query: query.sql)
+        }
     
     
 //    init(connection: SQLite_Connection) {
@@ -37,12 +50,17 @@ import Foundation
 //    }
     
     
-    func insert(_ values: [Any?]) {
+        func insert(_ values: [(column: DatabaseTableColumn, value: Any?)]) {
         
 //        let query = SQLite_InsertQuery(table: table)
 //
 //        connection.run(query, with: values)
         
-        run(with: values)
+            let rawvalues = table.columns.map { column in
+                
+                return values.first(where: { $0.column.name == column.name })!.value as Any?
+            }
+            
+        run(with: rawvalues)
     }
 }

@@ -73,7 +73,7 @@ class SQLite_Statement {
     }
     
     func bind(_ value: Any?, at index: Int) {
-        
+    
         let int32Index = Int32(exactly: index)!
         
         switch (value) {

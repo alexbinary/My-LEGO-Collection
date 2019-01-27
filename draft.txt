@@ -13,7 +13,8 @@ API SQLite
 	- sqlite3_step
 	- sqlite3_reset
 	- sqlite3_bind_*
-	- sqlite3_column_*
+	- sqlite3_
+column_*
 
 	> connexions et statements sont gérés par un type de pointeur unique
 	> pas de vérification du type de pointeur lors des appels aux méthodes

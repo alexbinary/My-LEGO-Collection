@@ -45,6 +45,7 @@
 		29D194AF21FDACE00095483F /* SQLite_DatabaseDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D194AE21FDACE00095483F /* SQLite_DatabaseDriver.swift */; };
 		29D194B021FDAFC90095483F /* SQLite_Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D194AB21FDA6BE0095483F /* SQLite_Query.swift */; };
 		29D194B121FDAFCD0095483F /* SQLite_DatabaseDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D194AE21FDACE00095483F /* SQLite_DatabaseDriver.swift */; };
+		29D194B321FDB1E50095483F /* AppDatabaseDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D194B221FDB1E50095483F /* AppDatabaseDriver.swift */; };
 		29F4EA2121C972780000B8A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F4EA2021C972780000B8A1 /* AppDelegate.swift */; };
 		29F4EA2821C9727A0000B8A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29F4EA2721C9727A0000B8A1 /* Assets.xcassets */; };
 		29F4EA2B21C9727A0000B8A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29F4EA2921C9727A0000B8A1 /* LaunchScreen.storyboard */; };
@@ -115,6 +116,7 @@
 		29CCEAF821EE642D00CB5EFB /* LegoPartsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegoPartsListTableViewCell.swift; sourceTree = "<group>"; };
 		29D194AB21FDA6BE0095483F /* SQLite_Query.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLite_Query.swift; sourceTree = "<group>"; };
 		29D194AE21FDACE00095483F /* SQLite_DatabaseDriver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLite_DatabaseDriver.swift; sourceTree = "<group>"; };
+		29D194B221FDB1E50095483F /* AppDatabaseDriver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDatabaseDriver.swift; sourceTree = "<group>"; };
 		29F4EA1D21C972780000B8A1 /* My LEGO Collection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My LEGO Collection.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		29F4EA2021C972780000B8A1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		29F4EA2721C9727A0000B8A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 				29C3F97721FCCC950011E1E5 /* Database.swift */,
 				29FECB3521FCF82400254DCC /* Connection.swift */,
 				29FECB3221FCF7B500254DCC /* Statements.swift */,
+				29D194B221FDB1E50095483F /* AppDatabaseDriver.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -537,6 +540,7 @@
 				29F4EA2121C972780000B8A1 /* AppDelegate.swift in Sources */,
 				29FC1CAC21E686E50097C1C4 /* AppController.swift in Sources */,
 				29545CB121E23BB6008C32FF /* LegoColorsListViewController.swift in Sources */,
+				29D194B321FDB1E50095483F /* AppDatabaseDriver.swift in Sources */,
 				297A579721EA3B0D00A426CA /* DataViewController.swift in Sources */,
 				29FECB2921FCED7800254DCC /* DatabaseTableRow.swift in Sources */,
 				29D194AF21FDACE00095483F /* SQLite_DatabaseDriver.swift in Sources */,

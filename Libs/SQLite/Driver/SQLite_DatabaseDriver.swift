@@ -3,10 +3,16 @@ import Foundation
 
 
 
-struct SQLite_DatabaseDriver {
+class SQLite_DatabaseDriver {
     
     
     let connection: SQLite_Connection
+    
+    
+    init(connection: SQLite_Connection) {
+        
+        self.connection = connection
+    }
     
     
     func createTable(table: DatabaseTable) {
@@ -27,9 +33,7 @@ struct SQLite_DatabaseDriver {
     
     func prepareInsert(for table: DatabaseTable) -> InsertStatement {
         
-        let query = SQLite_InsertQuery(table: table)
-        
-        return InsertStatement(connection: connection, query: query)
+        return InsertStatement(for: table, connection: connection)
     }
     
     
