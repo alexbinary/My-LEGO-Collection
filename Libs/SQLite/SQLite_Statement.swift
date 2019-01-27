@@ -21,7 +21,7 @@ class SQLite_Statement {
     
     private(set) var query: String
     
-    private(set) var boundValues: [Any?] = []
+    private(set) var boundValues: [(parameterName: String, value: Any?)] = []
     
     init(connection: SQLite_Connection, query: String) {
         

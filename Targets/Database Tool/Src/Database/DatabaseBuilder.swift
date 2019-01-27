@@ -20,14 +20,13 @@ struct DatabaseBuilder {
         connection.createColorsTable()
         connection.createPartsTable()
         
-//        let colorInsertStatement = connection.prepareColorInsertStatement()
-//        let partInsertStatement = connection.preparePartInsertStatement()
+        let colorInsertStatement = connection.prepareColorInsertStatement()
+        let partInsertStatement = connection.preparePartInsertStatement()
 
-        
         return DatabaseInflator(
             
-//            colorInsertStatement: colorInsertStatement,
-//            partInsertStatement: partInsertStatement
+            colorInsertStatement: colorInsertStatement,
+            partInsertStatement: partInsertStatement
         )
     }
 }

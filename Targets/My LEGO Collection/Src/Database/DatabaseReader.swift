@@ -23,7 +23,7 @@ struct DatabaseReader {
         
         let startDate = Date()
  
-        let colors = connection.getAllColors().map { color(from: $0) }
+        let colors = connection.readAllColors().map { color(from: $0) }
         
         print("[DatabaseController] fetched \(colors.count) colors in \(Date().elapsedTimeSince(startDate))")
         
@@ -37,7 +37,7 @@ struct DatabaseReader {
         
         let startDate = Date()
         
-        let parts = connection.getAllParts().map { part(from: $0) }
+        let parts = connection.readAllParts().map { part(from: $0) }
         
         print("[DatabaseController] fetched \(parts.count) parts in \(Date().elapsedTimeSince(startDate))")
         

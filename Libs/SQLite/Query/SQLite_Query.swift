@@ -93,7 +93,7 @@ struct SQLite_InsertQuery: SQLite_Query {
         
         self.table = table
         
-        self.parameters = table.columns.map { (column: $0, parameterName: $0.name) }
+        self.parameters = table.columns.map { (column: $0, parameterName: ":\($0.name)") }
     }
     
     

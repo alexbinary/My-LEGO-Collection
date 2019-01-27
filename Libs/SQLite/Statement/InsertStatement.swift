@@ -3,7 +3,7 @@ import Foundation
 
 
 //class InsertStatement<TableType>: Statement where TableType: DatabaseTable {
-    class InsertStatement: Statement {
+    class InsertStatement: SQLite_Statement {
         
         
         let table: DatabaseTable
@@ -30,19 +30,19 @@ import Foundation
 //    }
     
     
-    static func insertSQLExpression<Type>(for type: Type.Type) -> String where Type: DatabaseTable {
-        
-        return [
-            
-//            "INSERT INTO",
-//            type.name,
-//            "(\(type.columns.map { $0.name } .joined(separator: ", ")))",
-//            "VALUES",
-//            "(\(type.columns.map { _ in "?" } .joined(separator: ", ")))",
-//            ";"
-            
-        ].joined(separator: " ")
-    }
+//    static func insertSQLExpression<Type>(for type: Type.Type) -> String where Type: DatabaseTable {
+//
+//        return [
+//
+////            "INSERT INTO",
+////            type.name,
+////            "(\(type.columns.map { $0.name } .joined(separator: ", ")))",
+////            "VALUES",
+////            "(\(type.columns.map { _ in "?" } .joined(separator: ", ")))",
+////            ";"
+//
+//        ].joined(separator: " ")
+//    }
     
     
 //    func insert(_ row: TableType.TableRow)
@@ -53,17 +53,17 @@ import Foundation
 //    }
     
     
-        func insert(_ values: [(column: DatabaseTableColumn, value: Any?)]) {
+        func insert(_ bindings: [(column: DatabaseTableColumn, value: Any?)]) {
         
 //        let query = SQLite_InsertQuery(table: table)
 //
 //        connection.run(query, with: values)
         
-            let rawvalues = values.map { value in
+            let rawvalues = bindings.map { binding in
                 
                 return (
-                    parameterName: insertQuery.parameters.first(where: { $0.column.name == value.column.name })!.parameterName,
-                    value: value.value
+                    parameterName: insertQuery.parameters.first(where: { $0.column.name == binding.column.name })!.parameterName,
+                    value: binding.value
                 )
             }
             

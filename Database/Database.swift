@@ -99,7 +99,7 @@ class AppDatabaseSchema: DatabaseSchema {
             let imageURL: String?
             
 //            lazy var bindings: [Any?] = [
-//                
+//
 //                name, imageURL
 //            ]
         }
