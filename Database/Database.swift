@@ -13,7 +13,7 @@ class AppDatabaseSchema: DatabaseSchema {
         let name = "colors"
         
         
-        var columns: [DatabaseTableColumn] = [
+        lazy var columns: [DatabaseTableColumn] = [
             
             nameColumn,
             rgbColumn,
@@ -21,7 +21,7 @@ class AppDatabaseSchema: DatabaseSchema {
         ]
         
         
-        static let nameColumn = DatabaseTableColumn(
+        let nameColumn = DatabaseTableColumn(
             
             name: "name",
             type: .char(size: 255),
@@ -29,7 +29,7 @@ class AppDatabaseSchema: DatabaseSchema {
         )
         
         
-        static let rgbColumn = DatabaseTableColumn(
+        let rgbColumn = DatabaseTableColumn(
             
             name: "rgb",
             type: .char(size: 6),
@@ -37,7 +37,7 @@ class AppDatabaseSchema: DatabaseSchema {
         )
         
         
-        static let transparentColumn = DatabaseTableColumn(
+        let transparentColumn = DatabaseTableColumn(
             
             name: "transparent",
             type: .bool,

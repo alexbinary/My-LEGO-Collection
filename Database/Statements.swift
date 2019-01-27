@@ -8,15 +8,22 @@ import Foundation
 class ColorInsertStatement: InsertStatement {
     
     
+    let colorsTable = AppDatabaseSchema.ColorsTable()
+    
+    
     init(connection: SQLite_Connection) {
         
-        super.init(for: AppDatabaseSchema.ColorsTable(), connection: connection)
+        super.init(for: colorsTable, connection: connection)
     }
     
     
     func insert(name: String, rgb: String, transparent: Bool) {
         
-//        insert([name, rgb, transparent])
+        insert([
+            
+            (column: colorsTable.nameColumn, value: name)
+//            name, rgb, transparent
+        ])
     }
     
     
@@ -40,6 +47,14 @@ class ColorInsertStatement: InsertStatement {
 class PartInsertStatement: InsertStatement {
 
     
+    init(connection: SQLite_Connection) {
+        
+        let table = AppDatabaseSchema.PartsTable()
+        
+        super.init(for: table, connection: connection)
+    }
+    
+    
     func insert(name: String, imageURL: String?) {
         
 //        insert(AppDatabaseSchema.PartsTable.TableRow(name: name, imageURL: imageURL))
@@ -58,8 +73,5 @@ class PartInsertStatement: InsertStatement {
 //    }
     
     
-    init(connection: SQLite_Connection) {
-        
-        super.init(for: AppDatabaseSchema.PartsTable(), connection: connection)
-    }
+    
 }

@@ -23,12 +23,12 @@ class AppDatabaseDriver: SQLite_DatabaseDriver {
     }
 
 
-//    func preparePartInsertStatement() -> PartInsertStatement {
-//
-//
-//    }
-//
-//
+    func preparePartInsertStatement() -> PartInsertStatement {
+
+        return PartInsertStatement(connection: connection)
+    }
+
+
 //    func readAllColors() -> [AppDatabaseSchema.ColorsTable.TableRow] {
 //
 //
