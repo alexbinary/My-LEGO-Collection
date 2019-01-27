@@ -30,14 +30,8 @@ class InsertStatement<TableType>: Statement where TableType: DatabaseTable {
     
     func insert(_ row: TableType.TableRow)
     {
-        self.bind(row)
+        bind(row.bindings)
         
         self.run()
-    }
-    
-    
-    func bind(_ row: TableType.TableRow) {
-        
-        fatalError("Must override")
     }
 }

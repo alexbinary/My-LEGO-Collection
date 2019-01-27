@@ -52,6 +52,11 @@ class AppDatabaseSchema: DatabaseSchema {
             let rgb: String
             
             let transparent: Bool
+            
+            lazy var bindings: [Any?] = [
+             
+                name, rgb, transparent
+            ]
         }
     }
     
@@ -88,9 +93,15 @@ class AppDatabaseSchema: DatabaseSchema {
         
         struct TableRow: DatabaseTableRow {
             
+            
             let name: String
             
             let imageURL: String?
+            
+            lazy var bindings: [Any?] = [
+                
+                name, imageURL
+            ]
         }
     }
 }
