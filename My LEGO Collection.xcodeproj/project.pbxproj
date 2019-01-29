@@ -33,7 +33,6 @@
 		29A77C0221E206E7009A162E /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A77C0121E206E7009A162E /* Color.swift */; };
 		29A77C0421E213A6009A162E /* Date+elapsedTimeSince.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C6881721DBCEDD00B4A9E0 /* Date+elapsedTimeSince.swift */; };
 		29A77C0621E21A69009A162E /* Int32+isOneOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A77C0521E21A69009A162E /* Int32+isOneOf.swift */; };
-		29C3F96F21FCCA910011E1E5 /* DatabaseSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3F96E21FCCA910011E1E5 /* DatabaseSchema.swift */; };
 		29C3F97221FCCAD30011E1E5 /* DatabaseTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3F97121FCCAD30011E1E5 /* DatabaseTable.swift */; };
 		29C3F97421FCCADD0011E1E5 /* DatabaseTableColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3F97321FCCADD0011E1E5 /* DatabaseTableColumn.swift */; };
 		29C3F97821FCCC950011E1E5 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3F97721FCCC950011E1E5 /* Database.swift */; };
@@ -53,15 +52,12 @@
 		29FECB2321FCEBEF00254DCC /* Statement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FECB2221FCEBEF00254DCC /* Statement.swift */; };
 		29FECB2521FCEC2300254DCC /* CreateTableStatement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FECB2421FCEC2300254DCC /* CreateTableStatement.swift */; };
 		29FECB2721FCEC4000254DCC /* InsertStatement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FECB2621FCEC4000254DCC /* InsertStatement.swift */; };
-		29FECB2921FCED7800254DCC /* DatabaseTableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FECB2821FCED7800254DCC /* DatabaseTableRow.swift */; };
 		29FECB2A21FCF47B00254DCC /* Int32+isOneOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A77C0521E21A69009A162E /* Int32+isOneOf.swift */; };
 		29FECB2B21FCF49000254DCC /* Statement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FECB2221FCEBEF00254DCC /* Statement.swift */; };
 		29FECB2C21FCF49300254DCC /* CreateTableStatement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FECB2421FCEC2300254DCC /* CreateTableStatement.swift */; };
 		29FECB2D21FCF49700254DCC /* InsertStatement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FECB2621FCEC4000254DCC /* InsertStatement.swift */; };
-		29FECB2E21FCF49A00254DCC /* DatabaseSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3F96E21FCCA910011E1E5 /* DatabaseSchema.swift */; };
 		29FECB2F21FCF49E00254DCC /* DatabaseTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3F97121FCCAD30011E1E5 /* DatabaseTable.swift */; };
 		29FECB3021FCF4A100254DCC /* DatabaseTableColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3F97321FCCADD0011E1E5 /* DatabaseTableColumn.swift */; };
-		29FECB3121FCF4A400254DCC /* DatabaseTableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FECB2821FCED7800254DCC /* DatabaseTableRow.swift */; };
 		29FECB3321FCF7B500254DCC /* Statements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FECB3221FCF7B500254DCC /* Statements.swift */; };
 		29FECB3421FCF7ED00254DCC /* Statements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FECB3221FCF7B500254DCC /* Statements.swift */; };
 		29FECB3621FCF82400254DCC /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FECB3521FCF82400254DCC /* Connection.swift */; };
@@ -107,7 +103,6 @@
 		29A77BFE21E20364009A162E /* db.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = db.sqlite; sourceTree = "<group>"; };
 		29A77C0121E206E7009A162E /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		29A77C0521E21A69009A162E /* Int32+isOneOf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int32+isOneOf.swift"; sourceTree = "<group>"; };
-		29C3F96E21FCCA910011E1E5 /* DatabaseSchema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSchema.swift; sourceTree = "<group>"; };
 		29C3F97121FCCAD30011E1E5 /* DatabaseTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseTable.swift; sourceTree = "<group>"; };
 		29C3F97321FCCADD0011E1E5 /* DatabaseTableColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseTableColumn.swift; sourceTree = "<group>"; };
 		29C3F97721FCCC950011E1E5 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
@@ -126,7 +121,6 @@
 		29FECB2221FCEBEF00254DCC /* Statement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statement.swift; sourceTree = "<group>"; };
 		29FECB2421FCEC2300254DCC /* CreateTableStatement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTableStatement.swift; sourceTree = "<group>"; };
 		29FECB2621FCEC4000254DCC /* InsertStatement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertStatement.swift; sourceTree = "<group>"; };
-		29FECB2821FCED7800254DCC /* DatabaseTableRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseTableRow.swift; sourceTree = "<group>"; };
 		29FECB3221FCF7B500254DCC /* Statements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statements.swift; sourceTree = "<group>"; };
 		29FECB3521FCF82400254DCC /* Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -196,7 +190,7 @@
 			children = (
 				2932C78821FB988D00C481EA /* SQLite_Connection.swift */,
 				2932C78A21FB98BC00C481EA /* SQLite_Statement.swift */,
-				29D194AA21FDA6AA0095483F /* Query */,
+				29D194AB21FDA6BE0095483F /* SQLite_Query.swift */,
 				29FECB2121FCEBE000254DCC /* Statement */,
 				29C3F97021FCCAB40011E1E5 /* Schema */,
 				29D194AD21FDACCD0095483F /* Driver */,
@@ -275,10 +269,8 @@
 		29C3F97021FCCAB40011E1E5 /* Schema */ = {
 			isa = PBXGroup;
 			children = (
-				29C3F96E21FCCA910011E1E5 /* DatabaseSchema.swift */,
 				29C3F97121FCCAD30011E1E5 /* DatabaseTable.swift */,
 				29C3F97321FCCADD0011E1E5 /* DatabaseTableColumn.swift */,
-				29FECB2821FCED7800254DCC /* DatabaseTableRow.swift */,
 			);
 			path = Schema;
 			sourceTree = "<group>";
@@ -319,14 +311,6 @@
 				29CCEAF821EE642D00CB5EFB /* LegoPartsListTableViewCell.swift */,
 			);
 			path = LegoParts;
-			sourceTree = "<group>";
-		};
-		29D194AA21FDA6AA0095483F /* Query */ = {
-			isa = PBXGroup;
-			children = (
-				29D194AB21FDA6BE0095483F /* SQLite_Query.swift */,
-			);
-			path = Query;
 			sourceTree = "<group>";
 		};
 		29D194AD21FDACCD0095483F /* Driver */ = {
@@ -512,12 +496,10 @@
 				2912D09A21D7B37700C623A4 /* Color.swift in Sources */,
 				2963B14721D7B14600B97C19 /* main.swift in Sources */,
 				29D194B121FDAFCD0095483F /* SQLite_DatabaseDriver.swift in Sources */,
-				29FECB2E21FCF49A00254DCC /* DatabaseSchema.swift in Sources */,
 				2928C63E21E93F9D0061031C /* Part.swift in Sources */,
 				29C3F97921FCCF670011E1E5 /* Database.swift in Sources */,
 				29FECB3721FCF85700254DCC /* Connection.swift in Sources */,
 				29D194B021FDAFC90095483F /* SQLite_Query.swift in Sources */,
-				29FECB3121FCF4A400254DCC /* DatabaseTableRow.swift in Sources */,
 				29FECB3021FCF4A100254DCC /* DatabaseTableColumn.swift in Sources */,
 				2912D09321D7B2A300C623A4 /* APIClient.swift in Sources */,
 				29FECB2B21FCF49000254DCC /* Statement.swift in Sources */,
@@ -542,7 +524,6 @@
 				29545CB121E23BB6008C32FF /* LegoColorsListViewController.swift in Sources */,
 				29D194B321FDB1E50095483F /* AppDatabaseDriver.swift in Sources */,
 				297A579721EA3B0D00A426CA /* DataViewController.swift in Sources */,
-				29FECB2921FCED7800254DCC /* DatabaseTableRow.swift in Sources */,
 				29D194AF21FDACE00095483F /* SQLite_DatabaseDriver.swift in Sources */,
 				29C3F97821FCCC950011E1E5 /* Database.swift in Sources */,
 				29D194AC21FDA6BE0095483F /* SQLite_Query.swift in Sources */,
@@ -556,7 +537,6 @@
 				297A579521EA3A6C00A426CA /* LegoPartsListViewController.swift in Sources */,
 				2995232121E539AE002F8CB2 /* UIColor+fromRGB.swift in Sources */,
 				29FECB3321FCF7B500254DCC /* Statements.swift in Sources */,
-				29C3F96F21FCCA910011E1E5 /* DatabaseSchema.swift in Sources */,
 				29FECB2321FCEBEF00254DCC /* Statement.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

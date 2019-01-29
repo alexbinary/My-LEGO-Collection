@@ -3,8 +3,24 @@ import Foundation
 
 
 
-class AppDatabaseSchema: DatabaseSchema {
+struct Database {
+
     
+    static let schema = AppDatabaseSchema()
+}
+
+
+
+class AppDatabaseSchema {
+    
+    
+    let colorsTable = ColorsTable()
+    
+    let partsTable = PartsTable()
+}
+
+
+extension AppDatabaseSchema {
     
     
     class ColorsTable: DatabaseTable {
@@ -45,21 +61,19 @@ class AppDatabaseSchema: DatabaseSchema {
         )
         
         
-        struct TableRow: DatabaseTableRow {
+        struct Row {
             
             let name: String
             
             let rgb: String
             
             let transparent: Bool
-            
-//            lazy var bindings: [Any?] = [
-//             
-//                name, rgb, transparent
-//            ]
         }
     }
-    
+}
+
+
+extension AppDatabaseSchema {
     
     
     class PartsTable: DatabaseTable {
@@ -91,17 +105,11 @@ class AppDatabaseSchema: DatabaseSchema {
         )
         
         
-        struct TableRow: DatabaseTableRow {
-            
+        struct Row {
             
             let name: String
             
             let imageURL: String?
-            
-//            lazy var bindings: [Any?] = [
-//
-//                name, imageURL
-//            ]
         }
     }
 }

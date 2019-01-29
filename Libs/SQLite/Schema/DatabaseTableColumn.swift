@@ -5,7 +5,7 @@ import Foundation
 
 /// A type that describes a column in a database table.
 ///
-class DatabaseTableColumn {
+struct DatabaseTableColumn {
     
     
     /// The column's name.
@@ -21,21 +21,6 @@ class DatabaseTableColumn {
     /// Whether the column can contain the value NULL.
     ///
     let nullable: Bool
-    
-    
-    /// Creates a new description of a column with the provided name, type, and
-    /// nullability.
-    ///
-    /// - Parameter name: The column's name.
-    /// - Parameter type: The column's type.
-    /// - Parameter nullable: Whether the column can have the value NULL.
-    ///
-    init(name: String, type: DatabaseTableColumnType, nullable: Bool) {
-        
-        self.name = name
-        self.type = type
-        self.nullable = nullable
-    }
 }
 
 
