@@ -11,7 +11,7 @@ struct Database {
 
 
 
-class AppDatabaseSchema {
+struct AppDatabaseSchema {
     
     
     let colorsTable = ColorsTable()

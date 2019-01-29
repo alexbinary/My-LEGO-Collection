@@ -6,20 +6,17 @@ import Foundation
 protocol SQLite_SQLRepresentable {
     
     
-    var sql: String { get }
+    var sqlString: String { get }
 }
 
 
 
-struct SQLite_ColumnTypeDescription: SQLite_SQLRepresentable {
+extension DatabaseTableColumnType: SQLite_SQLRepresentable {
     
     
-    let type: DatabaseTableColumnType
-    
-    
-    var sql: String {
+    var sqlString: String {
         
-        switch (type) {
+        switch (self) {
             
         case .bool:
             
@@ -40,12 +37,12 @@ struct SQLite_ColumnDescription: SQLite_SQLRepresentable {
     let column: DatabaseTableColumn
     
     
-    var sql: String {
+    var sqlString: String {
         
         return [
             
             column.name,
-            SQLite_ColumnTypeDescription(type: column.type).sql,
+            column.type.sqlString,
             column.nullable ? "NULL" : "NOT NULL",
             
         ].joined(separator: " ")
@@ -66,12 +63,12 @@ struct SQLite_CreateTableQuery: SQLite_Query {
     let table: DatabaseTable
     
     
-    var sql: String {
+    var sqlString: String {
         
         return [
         
             "CREATE TABLE \(table.name) (",
-            table.columns.map { SQLite_ColumnDescription(column: $0).sql } .joined(separator: ", "),
+            table.columns.map { SQLite_ColumnDescription(column: $0).sqlString } .joined(separator: ", "),
             ");",
             
         ].joined()
@@ -97,7 +94,7 @@ struct SQLite_InsertQuery: SQLite_Query {
     }
     
     
-    var sql: String {
+    var sqlString: String {
         
         let columns: [DatabaseTableColumn] = table.columns
         let parameters = columns.map { column in
@@ -124,7 +121,7 @@ struct SQLite_SelectQuery: SQLite_Query {
     let table: DatabaseTable
     
     
-    var sql: String {
+    var sqlString: String {
         
         return "SELECT * FROM \(table.name);"
     }

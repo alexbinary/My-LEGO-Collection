@@ -3,17 +3,12 @@ import Foundation
 
 
 
-//class ColorInsertStatement: InsertStatement<AppDatabaseSchema.ColorsTable> {
-
 class ColorInsertStatement: InsertStatement {
-    
-    
-    let colorsTable = AppDatabaseSchema.ColorsTable()
     
     
     init(connection: SQLite_Connection) {
         
-        super.init(for: colorsTable, connection: connection)
+        super.init(for: Database.schema.colorsTable, connection: connection)
     }
     
     
@@ -21,39 +16,21 @@ class ColorInsertStatement: InsertStatement {
         
         insert([
             
-            (column: colorsTable.nameColumn, value: name),
-            (column: colorsTable.rgbColumn, value: rgb),
-            (column: colorsTable.transparentColumn, value: transparent),
+            (column: Database.schema.colorsTable.nameColumn, value: name),
+            (column: Database.schema.colorsTable.rgbColumn, value: rgb),
+            (column: Database.schema.colorsTable.transparentColumn, value: transparent),
         ])
     }
-    
-    
-//    override func bind(_ row: AppDatabaseSchema.ColorsTable.TableRow) {
-//
-//        bind([
-//
-//            row.name,
-//            row.rgb,
-//            row.transparent
-//        ])
-//    }
-    
-    
-    
 }
 
 
 
-//class PartInsertStatement: InsertStatement<AppDatabaseSchema.PartsTable> {
 class PartInsertStatement: InsertStatement {
 
     
-    let partsTable = AppDatabaseSchema.PartsTable()
-    
-    
     init(connection: SQLite_Connection) {
         
-        super.init(for: partsTable, connection: connection)
+        super.init(for: Database.schema.partsTable, connection: connection)
     }
     
     
@@ -61,25 +38,8 @@ class PartInsertStatement: InsertStatement {
         
         insert([
             
-            (column: partsTable.nameColumn, value: name),
-            (column: partsTable.imageURLColumn, value: imageURL),
+            (column: Database.schema.partsTable.nameColumn, value: name),
+            (column: Database.schema.partsTable.imageURLColumn, value: imageURL),
         ])
-        
-//        insert(AppDatabaseSchema.PartsTable.TableRow(name: name, imageURL: imageURL))
-        
-//        insert([name, imageURL])
     }
-    
-    
-//    override func bind(_ row: AppDatabaseSchema.PartsTable.TableRow) {
-//
-//        bind([
-//
-//            row.name,
-//            row.imageURL,
-//        ])
-//    }
-    
-    
-    
 }

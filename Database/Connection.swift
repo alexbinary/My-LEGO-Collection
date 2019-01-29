@@ -45,13 +45,13 @@ extension AppDatabaseConnection {
     
     func readAllColors() -> [AppDatabaseSchema.ColorsTable.Row] {
         
-        return readAllRows(from: AppDatabaseSchema.ColorsTable()).map { values in
+        return readAllRows(from: Database.schema.colorsTable).map { values in
             
             return AppDatabaseSchema.ColorsTable.Row(
                 
-                name: values.first(where: { $0.column.name == AppDatabaseSchema.ColorsTable().nameColumn.name })!.value as! String,
-                rgb: values.first(where: { $0.column.name == AppDatabaseSchema.ColorsTable().rgbColumn.name })!.value as! String,
-                transparent: values.first(where: { $0.column.name == AppDatabaseSchema.ColorsTable().transparentColumn.name })!.value as! Bool
+                name: values.first(where: { $0.column.name == Database.schema.colorsTable.nameColumn.name })!.value as! String,
+                rgb: values.first(where: { $0.column.name == Database.schema.colorsTable.rgbColumn.name })!.value as! String,
+                transparent: values.first(where: { $0.column.name == Database.schema.colorsTable.transparentColumn.name })!.value as! Bool
             )
         }
     }
@@ -59,12 +59,12 @@ extension AppDatabaseConnection {
     
     func readAllParts() -> [AppDatabaseSchema.PartsTable.Row] {
         
-        return readAllRows(from: AppDatabaseSchema.PartsTable()).map { values in
+        return readAllRows(from: Database.schema.partsTable).map { values in
             
             return AppDatabaseSchema.PartsTable.Row(
                 
-                name: values.first(where: { $0.column.name == AppDatabaseSchema.PartsTable().nameColumn.name })!.value as! String,
-                imageURL: values.first(where: { $0.column.name == AppDatabaseSchema.PartsTable().imageURLColumn.name })!.value as! String?
+                name: values.first(where: { $0.column.name == Database.schema.partsTable.nameColumn.name })!.value as! String,
+                imageURL: values.first(where: { $0.column.name == Database.schema.partsTable.imageURLColumn.name })!.value as! String?
             )
         }
     }
