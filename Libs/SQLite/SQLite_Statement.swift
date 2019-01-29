@@ -104,13 +104,7 @@ extension SQLite_Statement {
 
 extension SQLite_Statement {
     
-    /// Iterates over the results of a prepared statement and reads each row using the provided reader.
-    ///
-    /// - Parameter statement: The prepared statement to read the results of.
-    /// - Parameter reader: A closure that takes the statement and returns an instance of the provided type.
-    ///
-    /// - Returns: One instance of the provided type for each result row.
-    ///
+    
     func readResults<ResultType>(with reader: (SQLite_Statement) -> ResultType) -> [ResultType] {
         
         var results: [ResultType] = []
@@ -136,42 +130,20 @@ extension SQLite_Statement {
         
         return results
     }
-    
-    
 }
 
 
 extension SQLite_Statement {
     
-    /// Reads a result value from a query as a string, expecting the value cannot be `NULL`.
-    ///
-    /// - Parameter statement: The prepared statement to read the value from.
-    /// - Parameter index: The index of the column for which the value should be returned.
-    ///
-    /// - Returns: The result value as a string.
-    ///
-    /// Terminates with a fatal error if the value is `NULL`.
-    ///
-    func readString(at index: Int) -> String {
+    
+    func readBool(at index: Int) -> Bool {
         
-        let value = readOptionalString(at: index)
+        let raw = sqlite3_column_int(pointer, Int32(index))
         
-        guard value != nil else {
-            
-            fatalError("[DatabaseController] Found NULL while expecting non null string value at index: \(index) for results of query: \(query)")
-        }
-        
-        return value!
+        return raw != 0
     }
     
     
-    /// Reads a result value from a query as a string, expecting the value can be `NULL`.
-    ///
-    /// - Parameter statement: The prepared statement to read the value from.
-    /// - Parameter index: The index of the column for which the value should be returned.
-    ///
-    /// - Returns: The result value as a string, or nil if the database value was `NULL`.
-    ///
     func readOptionalString(at index: Int) -> String? {
         
         if let raw = sqlite3_column_text(pointer, Int32(index)) {
@@ -185,26 +157,21 @@ extension SQLite_Statement {
     }
     
     
-    /// Reads a result value from a query as a boolean value.
-    ///
-    /// - Note: Reading a boolean value when the database value is `NULL` produces `false`.
-    ///
-    /// - Parameter statement: The prepared statement to read the value from.
-    /// - Parameter index: The index of the column for which the value should be returned.
-    ///
-    /// - Returns: The result value as a boolean value.
-    ///
-    func readBool(at index: Int) -> Bool {
+    func readString(at index: Int) -> String {
         
-        let raw = sqlite3_column_int(pointer, Int32(index))
+        let value = readOptionalString(at: index)
         
-        return raw != 0
+        guard value != nil else {
+            
+            fatalError("[DatabaseController] Found NULL while expecting non null string value at index: \(index) for results of query: \(query)")
+        }
+        
+        return value!
     }
 }
 
 
 
-//class InsertStatement<TableType>: Statement where TableType: DatabaseTable {
 class InsertStatement: SQLite_Statement {
     
     
@@ -224,44 +191,9 @@ class InsertStatement: SQLite_Statement {
     }
     
     
-    //    init(connection: SQLite_Connection) {
-    //
-    //        let query = InsertStatement.insertSQLExpression(for: TableType.self)
-    //
-    //        super.init(connection: connection, query: query)
-    //    }
-    
-    
-    //    static func insertSQLExpression<Type>(for type: Type.Type) -> String where Type: DatabaseTable {
-    //
-    //        return [
-    //
-    ////            "INSERT INTO",
-    ////            type.name,
-    ////            "(\(type.columns.map { $0.name } .joined(separator: ", ")))",
-    ////            "VALUES",
-    ////            "(\(type.columns.map { _ in "?" } .joined(separator: ", ")))",
-    ////            ";"
-    //
-    //        ].joined(separator: " ")
-    //    }
-    
-    
-    //    func insert(_ row: TableType.TableRow)
-    //    {
-    ////        bind(row.bindings)
-    //
-    //        self.run()
-    //    }
-    
-    
     func insert(_ bindings: [(column: DatabaseTableColumn, value: Any?)]) {
         
-        //        let query = SQLite_InsertQuery(table: table)
-        //
-        //        connection.run(query, with: values)
-        
-        let rawvalues = bindings.map { binding in
+        let values = bindings.map { binding in
             
             return (
                 parameterName: insertQuery.parameters.first(where: { $0.column.name == binding.column.name })!.parameterName,
@@ -269,6 +201,6 @@ class InsertStatement: SQLite_Statement {
             )
         }
         
-        run(with: rawvalues)
+        run(with: values)
     }
 }
