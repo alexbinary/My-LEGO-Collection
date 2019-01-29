@@ -3,52 +3,45 @@ import Foundation
 import SQLite3
 
 
-/// A SQL query compiled into an executable form.
-///
-/// Use `SQLite_Connection.compile(query:)` to compile a query into a statement.
-/// A statement holds a strong reference to the connection that was used to
-/// produce it. It is important that you let statements be deallocated when you
-/// do not use them anymore so that resources can be released.
-///
-/// Use the `run()` method to execute a statement. Use the `run(with:)` method
-/// if your query contains parameters.
-///
+
 class SQLite_Statement {
+
     
     private(set) var connection: SQLite_Connection!
     
+    
     private(set) var pointer: OpaquePointer!
     
-    private(set) var query: String
+    
+    private(set) var query: SQLite_Query
+    
     
     private(set) var boundValues: [(parameterName: String, value: Any?)] = []
     
-    init(connection: SQLite_Connection, query: String) {
+    
+    init(connection: SQLite_Connection, query: SQLite_Query) {
         
         self.connection = connection
         self.query = query
         
-        guard sqlite3_prepare_v2(connection.pointer, query, -1, &pointer, nil) == SQLITE_OK else {
+        guard sqlite3_prepare_v2(connection.pointer, query.sqlString, -1, &pointer, nil) == SQLITE_OK else {
             
             fatalError("[SQLite_Statement] Preparing query: \(query). SQLite error: \(connection.errorMessage ?? "")")
         }
     }
     
     
-    convenience init(connection: SQLite_Connection, query: SQLite_Query) {
-        
-        self.init(connection: connection, query: query.sqlString)
-    }
-    
     deinit {
         
         sqlite3_finalize(pointer)
     }
+}
+
+
+extension SQLite_Statement {
+    
     
     func run() {
-        
-        print(query)
-        print(boundValues)
         
         guard sqlite3_step(pointer) == SQLITE_DONE else {
             
@@ -56,7 +49,6 @@ class SQLite_Statement {
         }
     }
     
-//    func run(with values: [Any?]) {
     
     func run(with values: [(parameterName: String, value: Any?)]) {
     
@@ -64,22 +56,22 @@ class SQLite_Statement {
         
         run()
     }
+}
+
+
+extension SQLite_Statement {
     
-//    func bind(_ values: [Any?]) {
     
     func bind(_ values: [(parameterName: String, value: Any?)]) {
 
         sqlite3_reset(pointer)
-        
-//        values.enumerated().forEach { bind($0.element, at: $0.offset + 1) }
         
         values.forEach { bind($0.value, for: $0.parameterName) }
         
         boundValues = values
     }
     
-//    func bind(_ value: Any?, at index: Int) {
-    
+
     func bind(_ value: Any?, for parameterName: String) {
         
         let int32Index = sqlite3_bind_parameter_index(pointer, parameterName)
@@ -228,7 +220,7 @@ class InsertStatement: SQLite_Statement {
         
         self.insertQuery = SQLite_InsertQuery(table: table)
         
-        super.init(connection: connection, query: insertQuery.sqlString)
+        super.init(connection: connection, query: insertQuery)
     }
     
     
