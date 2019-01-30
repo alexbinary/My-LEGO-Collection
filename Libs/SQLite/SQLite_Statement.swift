@@ -4,6 +4,19 @@ import SQLite3
 
 
 
+/// A prepared SQL statement.
+///
+/// A prepared statement is a SQL query that has been compiled into an
+/// executable form. You compile a query with the `init(connection: , query:)`
+/// initializer.
+///
+/// A statement is bound to a connection. The connection is used to compile the
+/// query. You provide the connection in the initializer.
+///
+/// Instances of this class hold a pointeur to the underlying statement object.
+/// It is important that you let the object be deallocated when you are done to
+/// destroy the statement and release associated resources.
+///
 class SQLite_Statement {
 
     
@@ -172,6 +185,11 @@ extension SQLite_Statement {
 
 
 
+/// A statement that inserts data into a table.
+///
+/// This class provides convenience methods that facilitate the execution of
+/// statements that insert data into a table.
+///
 class InsertStatement: SQLite_Statement {
     
     

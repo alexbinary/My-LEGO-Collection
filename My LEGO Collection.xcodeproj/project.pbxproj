@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		290E1C0D2202327C0077D841 /* DatabaseTableColumnType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290E1C0C2202327C0077D841 /* DatabaseTableColumnType.swift */; };
 		2912D09321D7B2A300C623A4 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2912D09221D7B2A300C623A4 /* APIClient.swift */; };
 		2912D09A21D7B37700C623A4 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2912D09921D7B37700C623A4 /* Color.swift */; };
 		2912D09D21D7B38E00C623A4 /* ResultsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2912D09C21D7B38E00C623A4 /* ResultsList.swift */; };
@@ -68,6 +69,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		290E1C0C2202327C0077D841 /* DatabaseTableColumnType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseTableColumnType.swift; sourceTree = "<group>"; };
 		2912D09221D7B2A300C623A4 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		2912D09921D7B37700C623A4 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		2912D09C21D7B38E00C623A4 /* ResultsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsList.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 			children = (
 				29C3F97121FCCAD30011E1E5 /* DatabaseTable.swift */,
 				29C3F97321FCCADD0011E1E5 /* DatabaseTableColumn.swift */,
+				290E1C0C2202327C0077D841 /* DatabaseTableColumnType.swift */,
 			);
 			path = Schema;
 			sourceTree = "<group>";
@@ -484,6 +487,7 @@
 				29545CB121E23BB6008C32FF /* LegoColorsListViewController.swift in Sources */,
 				297A579721EA3B0D00A426CA /* DataViewController.swift in Sources */,
 				29C3F97821FCCC950011E1E5 /* Database.swift in Sources */,
+				290E1C0D2202327C0077D841 /* DatabaseTableColumnType.swift in Sources */,
 				29D194AC21FDA6BE0095483F /* SQLite_Query.swift in Sources */,
 				29A77C0221E206E7009A162E /* Color.swift in Sources */,
 				2932C79021FB995C00C481EA /* SQLite_Connection.swift in Sources */,

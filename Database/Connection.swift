@@ -13,13 +13,13 @@ extension AppDatabaseConnection {
     
     func createColorsTable() {
         
-        createTable(table: Database.schema.colorsTable)
+        create(table: Database.schema.colorsTable)
     }
     
     
     func createPartsTable() {
         
-        createTable(table: Database.schema.partsTable)
+        create(table: Database.schema.partsTable)
     }
 }
 
