@@ -81,41 +81,45 @@ class SQLite_Statement {
 }
 
 
-
-/// A statement that inserts data into a table.
-///
-/// This class provides convenience methods that facilitate the execution of
-/// statements that insert data into a table.
-///
-class InsertStatement: SQLite_Statement {
+extension SQLite_Statement {
     
     
-    let table: SQLite_Table
-    
-    
-    let insertQuery: SQLite_InsertQuery
-    
-    
-    init(for table: SQLite_Table, connection: SQLite_Connection) {
+    func bind(_ values: [(parameterName: String, value: Any?)]) {
         
-        self.table = table
+        sqlite3_reset(pointer)
         
-        self.insertQuery = SQLite_InsertQuery(table: table)
+        values.forEach { bind($0.value, for: $0.parameterName) }
         
-        super.init(connection: connection, query: insertQuery)
+        boundValues = values
     }
     
     
-    func insert(_ bindings: [(column: SQLite_Column, value: Any?)]) {
+    func bind(_ value: Any?, for parameterName: String) {
         
-        let values = bindings.map { binding in
+        let int32Index = sqlite3_bind_parameter_index(pointer, parameterName)
+        
+        switch (value) {
             
-            return (
-                parameterName: insertQuery.parameters.first(where: { $0.column.name == binding.column.name })!.parameterName,
-                value: binding.value
-            )
+        case let stringValue as String:
+            
+            let rawValue = NSString(string: stringValue).utf8String
+            
+            sqlite3_bind_text(pointer, int32Index, rawValue, -1, nil)
+            
+        case let boolValue as Bool:
+            
+            let rawValue = Int32(exactly: NSNumber(value: boolValue))!
+            
+            sqlite3_bind_int(pointer, int32Index, rawValue)
+            
+        case nil:
+            
+            sqlite3_bind_null(pointer, int32Index)
+            
+        default:
+            
+            fatalError("[SQLite_Statement] Binding value: \(String(describing: value)): unsupported type.")
         }
-        
-        run(with: values)
     }
 }
+

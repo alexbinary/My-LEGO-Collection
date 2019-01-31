@@ -3,7 +3,7 @@ import Foundation
 
 
 
-class ColorInsertStatement: InsertStatement {
+class ColorInsertStatement: SQLite_InsertStatement {
     
     
     init(connection: SQLite_Connection) {
@@ -25,7 +25,7 @@ class ColorInsertStatement: InsertStatement {
 
 
 
-class PartInsertStatement: InsertStatement {
+class PartInsertStatement: SQLite_InsertStatement {
 
     
     init(connection: SQLite_Connection) {

@@ -10,7 +10,7 @@ extension SQLite_Connection {
     ///
     /// - Parameter table: A description of the table to create.
     ///
-    func create(table: DatabaseTable) {
+    func create(table: SQLite_Table) {
         
         let query = SQLite_CreateTableQuery(table: table)
         
