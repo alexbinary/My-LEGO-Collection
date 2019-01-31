@@ -28,7 +28,7 @@ struct SQLite_InsertQuery: SQLite_Query {
         }
         
         return [
-        
+            
             "INSERT INTO \(table.name) (",
             columns.map { $0.name } .joined(separator: ", "),
             ") VALUES(",
