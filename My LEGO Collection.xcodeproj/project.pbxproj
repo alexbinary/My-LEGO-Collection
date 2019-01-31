@@ -186,10 +186,9 @@
 		2932C78721FB987900C481EA /* SQLite */ = {
 			isa = PBXGroup;
 			children = (
-				2932C78821FB988D00C481EA /* SQLite_Connection.swift */,
-				2932C78A21FB98BC00C481EA /* SQLite_Statement.swift */,
-				29D194AB21FDA6BE0095483F /* SQLite_Query.swift */,
-				29C3F97021FCCAB40011E1E5 /* Schema */,
+				29413B3022037FE20092B99C /* Core */,
+				29C3F97021FCCAB40011E1E5 /* DatabaseSchema */,
+				29413B2F22037FDA0092B99C /* Query */,
 			);
 			path = SQLite;
 			sourceTree = "<group>";
@@ -208,6 +207,23 @@
 				29413B2022037CFC0092B99C /* SQLite_Connection+readAllRows.swift */,
 			);
 			path = Libs;
+			sourceTree = "<group>";
+		};
+		29413B2F22037FDA0092B99C /* Query */ = {
+			isa = PBXGroup;
+			children = (
+				29D194AB21FDA6BE0095483F /* SQLite_Query.swift */,
+			);
+			path = Query;
+			sourceTree = "<group>";
+		};
+		29413B3022037FE20092B99C /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				2932C78821FB988D00C481EA /* SQLite_Connection.swift */,
+				2932C78A21FB98BC00C481EA /* SQLite_Statement.swift */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 		2957C6BD21E0C76700E512E5 /* App */ = {
@@ -282,14 +298,14 @@
 			path = LEGO;
 			sourceTree = "<group>";
 		};
-		29C3F97021FCCAB40011E1E5 /* Schema */ = {
+		29C3F97021FCCAB40011E1E5 /* DatabaseSchema */ = {
 			isa = PBXGroup;
 			children = (
 				29C3F97121FCCAD30011E1E5 /* DatabaseTable.swift */,
 				29C3F97321FCCADD0011E1E5 /* DatabaseTableColumn.swift */,
 				290E1C0C2202327C0077D841 /* DatabaseTableColumnType.swift */,
 			);
-			path = Schema;
+			path = DatabaseSchema;
 			sourceTree = "<group>";
 		};
 		29C3F97621FCCC830011E1E5 /* Database */ = {
