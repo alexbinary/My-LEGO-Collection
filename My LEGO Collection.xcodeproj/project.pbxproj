@@ -25,6 +25,7 @@
 		29413B2922037E1B0092B99C /* AppDatabaseConnection+read.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29413B2822037E1B0092B99C /* AppDatabaseConnection+read.swift */; };
 		29413B2A22037E220092B99C /* AppDatabaseConnection+createTables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29413B2422037E030092B99C /* AppDatabaseConnection+createTables.swift */; };
 		29413B2B22037E270092B99C /* AppDatabaseConnection+prepareInsertStatements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29413B2622037E110092B99C /* AppDatabaseConnection+prepareInsertStatements.swift */; };
+		29413B2E22037EC70092B99C /* DatabaseTableColumnType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290E1C0C2202327C0077D841 /* DatabaseTableColumnType.swift */; };
 		294368A421E32CAE005A4511 /* UIColor+fromLEGOColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294368A321E32CAE005A4511 /* UIColor+fromLEGOColor.swift */; };
 		29545CB121E23BB6008C32FF /* LegoColorsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29545CB021E23BB6008C32FF /* LegoColorsListViewController.swift */; };
 		2957C6BF21E0C77600E512E5 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2957C6BE21E0C77600E512E5 /* AppController.swift */; };
@@ -186,13 +187,27 @@
 			isa = PBXGroup;
 			children = (
 				2932C78821FB988D00C481EA /* SQLite_Connection.swift */,
-				29413B1D22037CBD0092B99C /* SQLite_Connection+createTable.swift */,
-				29413B2022037CFC0092B99C /* SQLite_Connection+readAllRows.swift */,
 				2932C78A21FB98BC00C481EA /* SQLite_Statement.swift */,
 				29D194AB21FDA6BE0095483F /* SQLite_Query.swift */,
 				29C3F97021FCCAB40011E1E5 /* Schema */,
 			);
 			path = SQLite;
+			sourceTree = "<group>";
+		};
+		29413B2C22037E920092B99C /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+				29413B1D22037CBD0092B99C /* SQLite_Connection+createTable.swift */,
+			);
+			path = Libs;
+			sourceTree = "<group>";
+		};
+		29413B2D22037EA00092B99C /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+				29413B2022037CFC0092B99C /* SQLite_Connection+readAllRows.swift */,
+			);
+			path = Libs;
 			sourceTree = "<group>";
 		};
 		2957C6BD21E0C76700E512E5 /* App */ = {
@@ -206,6 +221,7 @@
 		2963B14521D7B14600B97C19 /* Database Tool */ = {
 			isa = PBXGroup;
 			children = (
+				29413B2C22037E920092B99C /* Libs */,
 				2912D09421D7B33100C623A4 /* Src */,
 			);
 			path = "Database Tool";
@@ -223,6 +239,8 @@
 		298E162C21DD3CBB006F3C1A /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				29413B2422037E030092B99C /* AppDatabaseConnection+createTables.swift */,
+				29413B2622037E110092B99C /* AppDatabaseConnection+prepareInsertStatements.swift */,
 				2932C79121FBA0BC00C481EA /* DatabaseBuilder.swift */,
 				2932C78C21FB992700C481EA /* DatabaseInflator.swift */,
 			);
@@ -232,6 +250,7 @@
 		29A77BF821E200FA009A162E /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				29413B2822037E1B0092B99C /* AppDatabaseConnection+read.swift */,
 				29A77BF921E2011D009A162E /* DatabaseReader.swift */,
 			);
 			path = Database;
@@ -287,9 +306,6 @@
 			children = (
 				29C3F97721FCCC950011E1E5 /* AppDatabaseSchema.swift */,
 				29FECB3521FCF82400254DCC /* AppDatabaseConnection.swift */,
-				29413B2422037E030092B99C /* AppDatabaseConnection+createTables.swift */,
-				29413B2622037E110092B99C /* AppDatabaseConnection+prepareInsertStatements.swift */,
-				29413B2822037E1B0092B99C /* AppDatabaseConnection+read.swift */,
 				29FECB3221FCF7B500254DCC /* InsertStatements.swift */,
 			);
 			path = Database;
@@ -339,6 +355,7 @@
 			children = (
 				29F4EA2C21C9727A0000B8A1 /* Info.plist */,
 				29F4EA2721C9727A0000B8A1 /* Assets.xcassets */,
+				29413B2D22037EA00092B99C /* Libs */,
 				29A77BFB21E20319009A162E /* Res */,
 				29FC1CA921E683E40097C1C4 /* Src */,
 			);
@@ -474,6 +491,7 @@
 				2912D09F21D7B3C700C623A4 /* Double+roundedMaxNumberOfDecimals.swift in Sources */,
 				29C6881621DBBC5300B4A9E0 /* APIKey.swift in Sources */,
 				29413B2B22037E270092B99C /* AppDatabaseConnection+prepareInsertStatements.swift in Sources */,
+				29413B2E22037EC70092B99C /* DatabaseTableColumnType.swift in Sources */,
 				2932C78E21FB995200C481EA /* SQLite_Connection.swift in Sources */,
 				2932C79221FBA0BC00C481EA /* DatabaseBuilder.swift in Sources */,
 				2912D09A21D7B37700C623A4 /* Color.swift in Sources */,
