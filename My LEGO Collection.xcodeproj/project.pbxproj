@@ -292,15 +292,6 @@
 			path = Schema;
 			sourceTree = "<group>";
 		};
-		29C3F97521FCCC210011E1E5 /* Targets */ = {
-			isa = PBXGroup;
-			children = (
-				2963B14521D7B14600B97C19 /* Database Tool */,
-				29F4EA1F21C972780000B8A1 /* My LEGO Collection */,
-			);
-			path = Targets;
-			sourceTree = "<group>";
-		};
 		29C3F97621FCCC830011E1E5 /* Database */ = {
 			isa = PBXGroup;
 			children = (
@@ -336,7 +327,8 @@
 				2970F8A721D797D600AC42D5 /* specs */,
 				2912D09521D7B33D00C623A4 /* Libs */,
 				29C3F97621FCCC830011E1E5 /* Database */,
-				29C3F97521FCCC210011E1E5 /* Targets */,
+				2963B14521D7B14600B97C19 /* Database Tool */,
+				29F4EA1F21C972780000B8A1 /* My LEGO Collection */,
 				29F4EA1E21C972780000B8A1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -699,7 +691,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2N6DR3R99K;
-				INFOPLIST_FILE = "$(SRCROOT)/Targets/My LEGO Collection/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/My LEGO Collection/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -717,7 +709,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2N6DR3R99K;
-				INFOPLIST_FILE = "$(SRCROOT)/Targets/My LEGO Collection/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/My LEGO Collection/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
