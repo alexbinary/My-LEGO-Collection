@@ -3,43 +3,6 @@ import Foundation
 
 
 
-class AppDatabaseConnection: SQLite_Connection {
-    
-}
-
-
-extension AppDatabaseConnection {
-    
-    
-    func createColorsTable() {
-        
-        create(table: Database.schema.colorsTable)
-    }
-    
-    
-    func createPartsTable() {
-        
-        create(table: Database.schema.partsTable)
-    }
-}
-
-
-extension AppDatabaseConnection {
-    
-    
-    func prepareColorInsertStatement() -> ColorInsertStatement {
-        
-        return ColorInsertStatement(connection: self)
-    }
-    
-    
-    func preparePartInsertStatement() -> PartInsertStatement {
-        
-        return PartInsertStatement(connection: self)
-    }
-}
-
-
 extension AppDatabaseConnection {
     
     
