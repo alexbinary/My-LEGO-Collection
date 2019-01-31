@@ -20,6 +20,8 @@
 		2932C78F21FB995600C481EA /* SQLite_Statement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2932C78A21FB98BC00C481EA /* SQLite_Statement.swift */; };
 		2932C79021FB995C00C481EA /* SQLite_Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2932C78821FB988D00C481EA /* SQLite_Connection.swift */; };
 		2932C79221FBA0BC00C481EA /* DatabaseBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2932C79121FBA0BC00C481EA /* DatabaseBuilder.swift */; };
+		29413B1F22037CC30092B99C /* SQLite_Connection+createTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29413B1D22037CBD0092B99C /* SQLite_Connection+createTable.swift */; };
+		29413B2122037CFC0092B99C /* SQLite_Connection+readAllRows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29413B2022037CFC0092B99C /* SQLite_Connection+readAllRows.swift */; };
 		294368A421E32CAE005A4511 /* UIColor+fromLEGOColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294368A321E32CAE005A4511 /* UIColor+fromLEGOColor.swift */; };
 		29545CB121E23BB6008C32FF /* LegoColorsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29545CB021E23BB6008C32FF /* LegoColorsListViewController.swift */; };
 		2957C6BF21E0C77600E512E5 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2957C6BE21E0C77600E512E5 /* AppController.swift */; };
@@ -79,6 +81,8 @@
 		2932C78A21FB98BC00C481EA /* SQLite_Statement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLite_Statement.swift; sourceTree = "<group>"; };
 		2932C78C21FB992700C481EA /* DatabaseInflator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseInflator.swift; sourceTree = "<group>"; };
 		2932C79121FBA0BC00C481EA /* DatabaseBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseBuilder.swift; sourceTree = "<group>"; };
+		29413B1D22037CBD0092B99C /* SQLite_Connection+createTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SQLite_Connection+createTable.swift"; sourceTree = "<group>"; };
+		29413B2022037CFC0092B99C /* SQLite_Connection+readAllRows.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SQLite_Connection+readAllRows.swift"; sourceTree = "<group>"; };
 		294368A321E32CAE005A4511 /* UIColor+fromLEGOColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+fromLEGOColor.swift"; sourceTree = "<group>"; };
 		29545CB021E23BB6008C32FF /* LegoColorsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegoColorsListViewController.swift; sourceTree = "<group>"; };
 		2957C6BE21E0C77600E512E5 /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
@@ -177,6 +181,8 @@
 			isa = PBXGroup;
 			children = (
 				2932C78821FB988D00C481EA /* SQLite_Connection.swift */,
+				29413B1D22037CBD0092B99C /* SQLite_Connection+createTable.swift */,
+				29413B2022037CFC0092B99C /* SQLite_Connection+readAllRows.swift */,
 				2932C78A21FB98BC00C481EA /* SQLite_Statement.swift */,
 				29D194AB21FDA6BE0095483F /* SQLite_Query.swift */,
 				29C3F97021FCCAB40011E1E5 /* Schema */,
@@ -448,6 +454,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				29FECB2A21FCF47B00254DCC /* Int32+isOneOf.swift in Sources */,
+				29413B1F22037CC30092B99C /* SQLite_Connection+createTable.swift in Sources */,
 				29FECB3421FCF7ED00254DCC /* Statements.swift in Sources */,
 				2912D09D21D7B38E00C623A4 /* ResultsList.swift in Sources */,
 				2957C6BF21E0C77600E512E5 /* AppController.swift in Sources */,
@@ -480,6 +487,7 @@
 				29A77C0421E213A6009A162E /* Date+elapsedTimeSince.swift in Sources */,
 				294368A421E32CAE005A4511 /* UIColor+fromLEGOColor.swift in Sources */,
 				2912D0A121D7C40D00C623A4 /* Double+roundedMaxNumberOfDecimals.swift in Sources */,
+				29413B2122037CFC0092B99C /* SQLite_Connection+readAllRows.swift in Sources */,
 				297A579321EA365F00A426CA /* Part.swift in Sources */,
 				29CCEAF921EE642D00CB5EFB /* LegoPartsListTableViewCell.swift in Sources */,
 				29F4EA2121C972780000B8A1 /* AppDelegate.swift in Sources */,
