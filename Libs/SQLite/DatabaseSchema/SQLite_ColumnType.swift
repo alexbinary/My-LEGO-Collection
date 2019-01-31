@@ -4,7 +4,7 @@ import Foundation
 
 /// The set of possible column types.
 ///
-enum DatabaseTableColumnType {
+enum SQLite_ColumnType {
     
     
     /// A column that contains a small amount of text.

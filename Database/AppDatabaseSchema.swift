@@ -23,13 +23,13 @@ struct AppDatabaseSchema {
 extension AppDatabaseSchema {
     
     
-    class ColorsTable: DatabaseTable {
+    class ColorsTable: SQLite_Table {
         
         
         let name = "colors"
         
         
-        lazy var columns: [DatabaseTableColumn] = [
+        lazy var columns: [SQLite_Column] = [
             
             nameColumn,
             rgbColumn,
@@ -37,7 +37,7 @@ extension AppDatabaseSchema {
         ]
         
         
-        let nameColumn = DatabaseTableColumn(
+        let nameColumn = SQLite_Column(
             
             name: "name",
             type: .char(size: 255),
@@ -45,7 +45,7 @@ extension AppDatabaseSchema {
         )
         
         
-        let rgbColumn = DatabaseTableColumn(
+        let rgbColumn = SQLite_Column(
             
             name: "rgb",
             type: .char(size: 6),
@@ -53,7 +53,7 @@ extension AppDatabaseSchema {
         )
         
         
-        let transparentColumn = DatabaseTableColumn(
+        let transparentColumn = SQLite_Column(
             
             name: "transparent",
             type: .bool,
@@ -76,20 +76,20 @@ extension AppDatabaseSchema {
 extension AppDatabaseSchema {
     
     
-    class PartsTable: DatabaseTable {
+    class PartsTable: SQLite_Table {
         
         
         let name = "parts"
         
         
-        lazy var columns: [DatabaseTableColumn] = [
+        lazy var columns: [SQLite_Column] = [
             
             nameColumn,
             imageURLColumn,
         ]
         
         
-        let nameColumn = DatabaseTableColumn(
+        let nameColumn = SQLite_Column(
             
             name: "name",
             type: .char(size: 255),
@@ -97,7 +97,7 @@ extension AppDatabaseSchema {
         )
         
         
-        let imageURLColumn = DatabaseTableColumn(
+        let imageURLColumn = SQLite_Column(
             
             name: "image_url",
             type: .char(size: 1024),

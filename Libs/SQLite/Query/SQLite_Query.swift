@@ -11,7 +11,7 @@ protocol SQLite_SQLRepresentable {
 
 
 
-extension DatabaseTableColumnType: SQLite_SQLRepresentable {
+extension SQLite_ColumnType: SQLite_SQLRepresentable {
     
     
     var sqlString: String {
@@ -34,7 +34,7 @@ extension DatabaseTableColumnType: SQLite_SQLRepresentable {
 struct SQLite_ColumnDescription: SQLite_SQLRepresentable {
     
     
-    let column: DatabaseTableColumn
+    let column: SQLite_Column
     
     
     var sqlString: String {
@@ -60,7 +60,7 @@ protocol SQLite_Query: SQLite_SQLRepresentable {
 struct SQLite_CreateTableQuery: SQLite_Query {
     
     
-    let table: DatabaseTable
+    let table: SQLite_Table
     
     
     var sqlString: String {
@@ -80,13 +80,13 @@ struct SQLite_CreateTableQuery: SQLite_Query {
 struct SQLite_InsertQuery: SQLite_Query {
     
     
-    let table: DatabaseTable
+    let table: SQLite_Table
     
     
-    let parameters: [(column: DatabaseTableColumn, parameterName: String)]
+    let parameters: [(column: SQLite_Column, parameterName: String)]
     
     
-    init(table: DatabaseTable) {
+    init(table: SQLite_Table) {
         
         self.table = table
         
@@ -96,7 +96,7 @@ struct SQLite_InsertQuery: SQLite_Query {
     
     var sqlString: String {
         
-        let columns: [DatabaseTableColumn] = table.columns
+        let columns: [SQLite_Column] = table.columns
         let parameters = columns.map { column in
             self.parameters.first(where: { $0.column.name == column.name })!
         }
@@ -118,7 +118,7 @@ struct SQLite_InsertQuery: SQLite_Query {
 struct SQLite_SelectQuery: SQLite_Query {
     
     
-    let table: DatabaseTable
+    let table: SQLite_Table
     
     
     var sqlString: String {

@@ -5,7 +5,7 @@ import Foundation
 
 /// A type that describes a column in a database table.
 ///
-struct DatabaseTableColumn {
+struct SQLite_Column {
     
     
     /// The column's name.
@@ -15,7 +15,7 @@ struct DatabaseTableColumn {
     
     /// The column's type.
     ///
-    let type: DatabaseTableColumnType
+    let type: SQLite_ColumnType
     
     
     /// Whether the column can contain the value NULL.

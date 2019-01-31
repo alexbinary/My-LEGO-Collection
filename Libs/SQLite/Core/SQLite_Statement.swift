@@ -193,13 +193,13 @@ extension SQLite_Statement {
 class InsertStatement: SQLite_Statement {
     
     
-    let table: DatabaseTable
+    let table: SQLite_Table
     
     
     let insertQuery: SQLite_InsertQuery
     
     
-    init(for table: DatabaseTable, connection: SQLite_Connection) {
+    init(for table: SQLite_Table, connection: SQLite_Connection) {
         
         self.table = table
         
@@ -209,7 +209,7 @@ class InsertStatement: SQLite_Statement {
     }
     
     
-    func insert(_ bindings: [(column: DatabaseTableColumn, value: Any?)]) {
+    func insert(_ bindings: [(column: SQLite_Column, value: Any?)]) {
         
         let values = bindings.map { binding in
             
