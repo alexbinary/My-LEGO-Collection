@@ -20,7 +20,6 @@
 		2932C78F21FB995600C481EA /* SQLite_Statement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2932C78A21FB98BC00C481EA /* SQLite_Statement.swift */; };
 		2932C79021FB995C00C481EA /* SQLite_Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2932C78821FB988D00C481EA /* SQLite_Connection.swift */; };
 		2932C79221FBA0BC00C481EA /* DatabaseBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2932C79121FBA0BC00C481EA /* DatabaseBuilder.swift */; };
-		29413B2122037CFC0092B99C /* SQLite_Connection+readAllRows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29413B2022037CFC0092B99C /* SQLite_Connection+readAllRows.swift */; };
 		29413B2922037E1B0092B99C /* AppDatabaseConnection+read.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29413B2822037E1B0092B99C /* AppDatabaseConnection+read.swift */; };
 		29413B2A22037E220092B99C /* AppDatabaseConnection+createTables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29413B2422037E030092B99C /* AppDatabaseConnection+createTables.swift */; };
 		29413B2B22037E270092B99C /* AppDatabaseConnection+prepareInsertStatements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29413B2622037E110092B99C /* AppDatabaseConnection+prepareInsertStatements.swift */; };
@@ -29,7 +28,6 @@
 		29413B34220380B90092B99C /* SQLite_ColumnType+SQLite_SQLRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29413B33220380B90092B99C /* SQLite_ColumnType+SQLite_SQLRepresentable.swift */; };
 		29413B36220381270092B99C /* SQLite_ColumnDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29413B35220381270092B99C /* SQLite_ColumnDescription.swift */; };
 		29413B3C220381720092B99C /* SQLite_SelectQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29413B3B220381720092B99C /* SQLite_SelectQuery.swift */; };
-		29413B3F220387760092B99C /* SQLite_Statement+read.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29413B3E220387760092B99C /* SQLite_Statement+read.swift */; };
 		29413B4C220388CE0092B99C /* SQLite_SQLRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29413B312203809D0092B99C /* SQLite_SQLRepresentable.swift */; };
 		29413B4D220388DF0092B99C /* SQLite_InsertStatement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29413B46220388460092B99C /* SQLite_InsertStatement.swift */; };
 		29413B4E220389500092B99C /* SQLite_ColumnType+SQLite_SQLRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29413B33220380B90092B99C /* SQLite_ColumnType+SQLite_SQLRepresentable.swift */; };
@@ -49,6 +47,7 @@
 		2992AB8822049ED3001DD82C /* SQLite_ColumnValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2992AB8622049EC5001DD82C /* SQLite_ColumnValue.swift */; };
 		2992AB8D2204A57E001DD82C /* SQLite_QueryParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2992AB7F2204977F001DD82C /* SQLite_QueryParameter.swift */; };
 		2992AB8E2204B241001DD82C /* SQLite_CreateTableQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29413B37220381400092B99C /* SQLite_CreateTableQuery.swift */; };
+		2992AB8F2204B34C001DD82C /* SQLite_SelectQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29413B3B220381720092B99C /* SQLite_SelectQuery.swift */; };
 		2995231F21E52967002F8CB2 /* RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2995231E21E52967002F8CB2 /* RGB.swift */; };
 		2995232121E539AE002F8CB2 /* UIColor+fromRGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2995232021E539AE002F8CB2 /* UIColor+fromRGB.swift */; };
 		29A77BFA21E2011D009A162E /* DatabaseReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A77BF921E2011D009A162E /* DatabaseReader.swift */; };
@@ -101,7 +100,6 @@
 		2932C78A21FB98BC00C481EA /* SQLite_Statement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLite_Statement.swift; sourceTree = "<group>"; };
 		2932C78C21FB992700C481EA /* DatabaseInflator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseInflator.swift; sourceTree = "<group>"; };
 		2932C79121FBA0BC00C481EA /* DatabaseBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseBuilder.swift; sourceTree = "<group>"; };
-		29413B2022037CFC0092B99C /* SQLite_Connection+readAllRows.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SQLite_Connection+readAllRows.swift"; sourceTree = "<group>"; };
 		29413B2422037E030092B99C /* AppDatabaseConnection+createTables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDatabaseConnection+createTables.swift"; sourceTree = "<group>"; };
 		29413B2622037E110092B99C /* AppDatabaseConnection+prepareInsertStatements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDatabaseConnection+prepareInsertStatements.swift"; sourceTree = "<group>"; };
 		29413B2822037E1B0092B99C /* AppDatabaseConnection+read.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDatabaseConnection+read.swift"; sourceTree = "<group>"; };
@@ -110,7 +108,6 @@
 		29413B35220381270092B99C /* SQLite_ColumnDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLite_ColumnDescription.swift; sourceTree = "<group>"; };
 		29413B37220381400092B99C /* SQLite_CreateTableQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLite_CreateTableQuery.swift; sourceTree = "<group>"; };
 		29413B3B220381720092B99C /* SQLite_SelectQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLite_SelectQuery.swift; sourceTree = "<group>"; };
-		29413B3E220387760092B99C /* SQLite_Statement+read.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SQLite_Statement+read.swift"; sourceTree = "<group>"; };
 		29413B46220388460092B99C /* SQLite_InsertStatement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLite_InsertStatement.swift; sourceTree = "<group>"; };
 		294368A321E32CAE005A4511 /* UIColor+fromLEGOColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+fromLEGOColor.swift"; sourceTree = "<group>"; };
 		29545CB021E23BB6008C32FF /* LegoColorsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegoColorsListViewController.swift; sourceTree = "<group>"; };
@@ -221,14 +218,6 @@
 			path = SQLite;
 			sourceTree = "<group>";
 		};
-		29413B2D22037EA00092B99C /* Libs */ = {
-			isa = PBXGroup;
-			children = (
-				29413B4A220388970092B99C /* SQLite */,
-			);
-			path = Libs;
-			sourceTree = "<group>";
-		};
 		29413B2F22037FDA0092B99C /* SQL */ = {
 			isa = PBXGroup;
 			children = (
@@ -260,23 +249,6 @@
 				29413B3B220381720092B99C /* SQLite_SelectQuery.swift */,
 			);
 			path = Query;
-			sourceTree = "<group>";
-		};
-		29413B4A220388970092B99C /* SQLite */ = {
-			isa = PBXGroup;
-			children = (
-				29413B4B2203889D0092B99C /* Core */,
-			);
-			path = SQLite;
-			sourceTree = "<group>";
-		};
-		29413B4B2203889D0092B99C /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				29413B2022037CFC0092B99C /* SQLite_Connection+readAllRows.swift */,
-				29413B3E220387760092B99C /* SQLite_Statement+read.swift */,
-			);
-			path = Core;
 			sourceTree = "<group>";
 		};
 		2957C6BD21E0C76700E512E5 /* App */ = {
@@ -416,7 +388,6 @@
 			children = (
 				29F4EA2C21C9727A0000B8A1 /* Info.plist */,
 				29F4EA2721C9727A0000B8A1 /* Assets.xcassets */,
-				29413B2D22037EA00092B99C /* Libs */,
 				29A77BFB21E20319009A162E /* Res */,
 				29FC1CA921E683E40097C1C4 /* Src */,
 			);
@@ -552,6 +523,7 @@
 				29FECB2F21FCF49E00254DCC /* SQLite_Table.swift in Sources */,
 				29413B4F220389540092B99C /* SQLite_ColumnDescription.swift in Sources */,
 				2992AB8822049ED3001DD82C /* SQLite_ColumnValue.swift in Sources */,
+				2992AB8F2204B34C001DD82C /* SQLite_SelectQuery.swift in Sources */,
 				2912D09F21D7B3C700C623A4 /* Double+roundedMaxNumberOfDecimals.swift in Sources */,
 				29AAA5FD22038B6500876DF9 /* SQLite_InsertQuery.swift in Sources */,
 				29C6881621DBBC5300B4A9E0 /* APIKey.swift in Sources */,
@@ -582,13 +554,11 @@
 				29C3F97421FCCADD0011E1E5 /* SQLite_Column.swift in Sources */,
 				29C3F97221FCCAD30011E1E5 /* SQLite_Table.swift in Sources */,
 				2992AB8522049E82001DD82C /* SQLite_QueryParameterValue.swift in Sources */,
-				29413B3F220387760092B99C /* SQLite_Statement+read.swift in Sources */,
 				2992AB8E2204B241001DD82C /* SQLite_CreateTableQuery.swift in Sources */,
 				29A77C0421E213A6009A162E /* Date+elapsedTimeSince.swift in Sources */,
 				294368A421E32CAE005A4511 /* UIColor+fromLEGOColor.swift in Sources */,
 				29413B2922037E1B0092B99C /* AppDatabaseConnection+read.swift in Sources */,
 				2912D0A121D7C40D00C623A4 /* Double+roundedMaxNumberOfDecimals.swift in Sources */,
-				29413B2122037CFC0092B99C /* SQLite_Connection+readAllRows.swift in Sources */,
 				297A579321EA365F00A426CA /* Part.swift in Sources */,
 				29CCEAF921EE642D00CB5EFB /* LegoPartsListTableViewCell.swift in Sources */,
 				29F4EA2121C972780000B8A1 /* AppDelegate.swift in Sources */,
