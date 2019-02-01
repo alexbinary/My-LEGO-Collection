@@ -16,9 +16,9 @@ extension SQLite_Statement {
     }
     
     
-    func run(with values: [(parameterName: String, value: Any?)]) {
+    func run(with parameterValues: [SQLite_QueryParameter: SQLite_QueryParameterValue]) {
     
-        bind(values)
+        bind(parameterValues)
         
         run()
     }

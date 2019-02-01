@@ -12,9 +12,9 @@ extension AppDatabaseConnection {
             
             return AppDatabaseSchema.ColorsTable.Row(
                 
-                name: values.first(where: { $0.column.name == Database.schema.colorsTable.nameColumn.name })!.value as! String,
-                rgb: values.first(where: { $0.column.name == Database.schema.colorsTable.rgbColumn.name })!.value as! String,
-                transparent: values.first(where: { $0.column.name == Database.schema.colorsTable.transparentColumn.name })!.value as! Bool
+                name: values[Database.schema.colorsTable.nameColumn] as! String,
+                rgb: values[Database.schema.colorsTable.rgbColumn] as! String,
+                transparent: values[Database.schema.colorsTable.transparentColumn] as! Bool
             )
         }
     }
@@ -26,8 +26,8 @@ extension AppDatabaseConnection {
             
             return AppDatabaseSchema.PartsTable.Row(
                 
-                name: values.first(where: { $0.column.name == Database.schema.partsTable.nameColumn.name })!.value as! String,
-                imageURL: values.first(where: { $0.column.name == Database.schema.partsTable.imageURLColumn.name })!.value as! String?
+                name: values[Database.schema.partsTable.nameColumn] as! String,
+                imageURL: values[Database.schema.partsTable.imageURLColumn] as! String?
             )
         }
     }

@@ -16,9 +16,9 @@ class ColorInsertStatement: SQLite_InsertStatement {
         
         insert([
             
-            (column: Database.schema.colorsTable.nameColumn, value: name),
-            (column: Database.schema.colorsTable.rgbColumn, value: rgb),
-            (column: Database.schema.colorsTable.transparentColumn, value: transparent),
+            Database.schema.colorsTable.nameColumn: name,
+            Database.schema.colorsTable.rgbColumn: rgb,
+            Database.schema.colorsTable.transparentColumn: transparent,
         ])
     }
 }
@@ -38,8 +38,8 @@ class PartInsertStatement: SQLite_InsertStatement {
         
         insert([
             
-            (column: Database.schema.partsTable.nameColumn, value: name),
-            (column: Database.schema.partsTable.imageURLColumn, value: imageURL),
+            Database.schema.partsTable.nameColumn: name,
+            Database.schema.partsTable.imageURLColumn: imageURL,
         ])
     }
 }

@@ -50,7 +50,7 @@ class SQLite_Statement {
     /// using the `bind(values:)` method. Previous bound values or replaces
     /// each time `bind(values:)` is called.
     ///
-    private(set) var boundValues: [(parameterName: String, value: Any?)] = []
+    private(set) var boundValues: [SQLite_QueryParameter: SQLite_QueryParameterValue] = [:]
     
     
     /// Creates a new prepared statement on a given connection from a SQL query.
@@ -84,19 +84,26 @@ class SQLite_Statement {
 extension SQLite_Statement {
     
     
-    func bind(_ values: [(parameterName: String, value: Any?)]) {
+    /// Bind values to the statement.
+    ///
+    /// - Parameter values: The values to bind for each query parameter.
+    ///
+    func bind(_ values: [SQLite_QueryParameter: SQLite_QueryParameterValue]) {
         
         sqlite3_reset(pointer)
         
-        values.forEach { bind($0.value, for: $0.parameterName) }
+        for (parameter, value) in values {
+        
+            bind(value, for: parameter)
+        }
         
         boundValues = values
     }
     
     
-    func bind(_ value: Any?, for parameterName: String) {
+    func bind(_ value: SQLite_QueryParameterValue, for parameter: SQLite_QueryParameter) {
         
-        let int32Index = sqlite3_bind_parameter_index(pointer, parameterName)
+        let int32Index = sqlite3_bind_parameter_index(pointer, parameter.name)
         
         switch (value) {
             

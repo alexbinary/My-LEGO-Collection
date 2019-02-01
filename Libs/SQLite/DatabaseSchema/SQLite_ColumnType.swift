@@ -4,7 +4,7 @@ import Foundation
 
 /// The set of possible column types.
 ///
-enum SQLite_ColumnType {
+enum SQLite_ColumnType: Hashable {
     
     
     /// A column that contains a small amount of text.

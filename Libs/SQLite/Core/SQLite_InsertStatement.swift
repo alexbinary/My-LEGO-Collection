@@ -27,14 +27,15 @@ class SQLite_InsertStatement: SQLite_Statement {
     }
     
     
-    func insert(_ bindings: [(column: SQLite_Column, value: Any?)]) {
+    func insert(_ bindings: [SQLite_Column: SQLite_QueryParameterValue]) {
         
-        let values = bindings.map { binding in
-            
-            return (
-                parameterName: insertQuery.parameters.first(where: { $0.column.name == binding.column.name })!.parameterName,
-                value: binding.value
-            )
+        var values: [SQLite_QueryParameter: SQLite_QueryParameterValue] = [:]
+        
+        for (column, value) in bindings {
+        
+            let parameter = insertQuery.parameters[column]!
+
+            values[parameter] = value
         }
         
         run(with: values)

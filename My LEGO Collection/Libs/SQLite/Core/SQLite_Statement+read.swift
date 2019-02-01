@@ -38,6 +38,32 @@ extension SQLite_Statement {
 extension SQLite_Statement {
     
     
+    func readValue(for column: SQLite_Column, at index: Int) -> SQLite_ColumnValue {
+        
+        switch column.type {
+            
+        case .bool:
+            
+            return readBool(at: index)
+            
+        case .char:
+            
+            if column.nullable {
+                
+                return readOptionalString(at: index)
+                
+            } else {
+                
+                return readString(at: index)
+            }
+        }
+    }
+}
+
+
+extension SQLite_Statement {
+    
+    
     func readBool(at index: Int) -> Bool {
         
         let raw = sqlite3_column_int(pointer, Int32(index))

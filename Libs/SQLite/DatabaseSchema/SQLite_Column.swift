@@ -5,8 +5,8 @@ import Foundation
 
 /// A type that describes a column in a database table.
 ///
-struct SQLite_Column {
-    
+struct SQLite_Column: Hashable {
+
     
     /// The column's name.
     ///

@@ -12,7 +12,7 @@ extension SQLite_Connection {
     ///
     /// - Returns: A dictionnary containing the value of each column.
     ///
-    func readAllRows(from table: SQLite_Table) -> [[(column: SQLite_Column, value: Any?)]] {
+    func readAllRows(from table: SQLite_Table) -> [[SQLite_Column: SQLite_ColumnValue]] {
         
         let query = SQLite_SelectQuery(table: table)
         
@@ -20,26 +20,14 @@ extension SQLite_Connection {
         
         return statement.readResults() { statement in
             
-            table.columns.enumerated().map { (index, column) in
+            var row: [SQLite_Column: SQLite_ColumnValue] = [:]
+            
+            for (index, column) in table.columns.enumerated() {
                 
-                switch column.type {
-                    
-                case .bool:
-                    
-                    return (column: column, value: statement.readBool(at: index) as Any?)
-                    
-                case .char:
-                    
-                    if column.nullable {
-                        
-                        return (column: column, value: statement.readOptionalString(at: index))
-                        
-                    } else {
-                        
-                        return (column: column, value: statement.readString(at: index))
-                    }
-                }
+                row[column] = statement.readValue(for: column, at: index)
             }
+            
+            return row
         }
     }
 }
