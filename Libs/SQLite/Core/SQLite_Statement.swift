@@ -171,13 +171,14 @@ extension SQLite_Statement {
     
     /// Executes a statement and reads all result rows.
     ///
-    /// - Parameter reader: A closure that should read values from the statement for each column.
+    /// - Parameter tableModel: A description of the table to use to read the
+    ///             rows.
     ///
-    /// - Returns: An array of result objects.
+    /// - Returns: The rows.
     ///
-    func readAllRows(using tableModel: SQLite_Table) -> [[SQLite_Column: SQLite_ColumnValue]] {
+    func readAllRows(using tableModel: SQLite_Table) -> [SQLite_TableRow] {
         
-        var rows: [[SQLite_Column: SQLite_ColumnValue]] = []
+        var rows: [SQLite_TableRow] = []
         
         while true {
             
@@ -204,9 +205,18 @@ extension SQLite_Statement {
     }
     
     
-    func readRow(using tableModel: SQLite_Table) -> [SQLite_Column: SQLite_ColumnValue]  {
+    /// Reads a row of result from a statement.
+    ///
+    /// This method assumes a row of result is available for reading.
+    ///
+    /// - Parameter tableModel: A description of the table to use to read the
+    ///             row.
+    ///
+    /// - Returns: The row.
+    ///
+    func readRow(using tableModel: SQLite_Table) -> SQLite_TableRow {
         
-        var row: [SQLite_Column: SQLite_ColumnValue] = [:]
+        var row = SQLite_TableRow()
         
         for (index, column) in tableModel.columns.enumerated() {
             

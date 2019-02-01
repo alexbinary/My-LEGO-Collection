@@ -102,7 +102,7 @@ extension SQLite_Connection {
     /// - Returns: An array of dictionnaries that contain the value of each
     ///            column for each row.
     ///
-    func readAllRows(from table: SQLite_Table) -> [[SQLite_Column: SQLite_ColumnValue]] {
+    func readAllRows(from table: SQLite_Table) -> [SQLite_TableRow] {
         
         let query = SQLite_SelectQuery(table: table)
         
