@@ -37,18 +37,10 @@ struct LEGODatabase_Schema {
     /// A description of the table that stores data about the official LEGO
     /// colors.
     ///
-    class ColorsTable: SQLite_Table {
+    struct ColorsTable: SQLite_Table {
         
         
         let name = "colors"
-        
-        
-        lazy var columns: Set<SQLite_Column> = [
-            
-            nameColumn,
-            rgbColumn,
-            transparentColumn,
-        ]
         
         
         let nameColumn = SQLite_Column(
@@ -75,6 +67,20 @@ struct LEGODatabase_Schema {
         )
         
         
+        var columns: Set<SQLite_Column>
+        
+        
+        init() {
+            
+            self.columns = [
+                
+                nameColumn,
+                rgbColumn,
+                transparentColumn,
+            ]
+        }
+        
+        
         struct Row {
             
             let name: String
@@ -89,17 +95,10 @@ struct LEGODatabase_Schema {
     /// A description of the table that stores data about the official LEGO
     /// parts.
     ///
-    class PartsTable: SQLite_Table {
+    struct PartsTable: SQLite_Table {
         
         
         let name = "parts"
-        
-        
-        lazy var columns: Set<SQLite_Column> = [
-            
-            nameColumn,
-            imageURLColumn,
-        ]
         
         
         let nameColumn = SQLite_Column(
@@ -116,6 +115,19 @@ struct LEGODatabase_Schema {
             type: .char(size: 1024),
             nullable: true
         )
+        
+        
+        var columns: Set<SQLite_Column>
+        
+        
+        init() {
+            
+            self.columns = [
+                
+                nameColumn,
+                imageURLColumn,
+            ]
+        }
         
         
         struct Row {
