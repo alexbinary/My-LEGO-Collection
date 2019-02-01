@@ -86,7 +86,7 @@ extension SQLite_Statement {
     
     /// Bind values to the statement.
     ///
-    /// - Parameter values: The values to bind for each query parameter.
+    /// - Parameter values: The values to bind to each query parameter.
     ///
     func bind(_ values: [SQLite_QueryParameter: SQLite_QueryParameterValue]) {
         
@@ -94,16 +94,21 @@ extension SQLite_Statement {
         
         for (parameter, value) in values {
         
-            bind(value, for: parameter)
+            bind(value, to: parameter)
         }
         
         boundValues = values
     }
     
     
-    func bind(_ value: SQLite_QueryParameterValue, for parameter: SQLite_QueryParameter) {
+    /// Bind a value to the statment for a specific parameter.
+    ///
+    /// - Parameter value: The value to bind.
+    /// - Parameter parameter: The query parameter to bind the value to.
+    ///
+    func bind(_ value: SQLite_QueryParameterValue, to parameter: SQLite_QueryParameter) {
         
-        let int32Index = sqlite3_bind_parameter_index(pointer, parameter.name)
+        let index = sqlite3_bind_parameter_index(pointer, parameter.name)
         
         switch (value) {
             
@@ -111,22 +116,21 @@ extension SQLite_Statement {
             
             let rawValue = NSString(string: stringValue).utf8String
             
-            sqlite3_bind_text(pointer, int32Index, rawValue, -1, nil)
+            sqlite3_bind_text(pointer, index, rawValue, -1, nil)
             
         case let boolValue as Bool:
             
             let rawValue = Int32(exactly: NSNumber(value: boolValue))!
             
-            sqlite3_bind_int(pointer, int32Index, rawValue)
+            sqlite3_bind_int(pointer, index, rawValue)
             
         case nil:
             
-            sqlite3_bind_null(pointer, int32Index)
+            sqlite3_bind_null(pointer, index)
             
         default:
             
-            fatalError("[SQLite_Statement] Binding value: \(String(describing: value)): unsupported type.")
+            fatalError("[SQLite_Statement] Trying to bind a value of unsupported type: \(String(describing: value)) to query: \(query.sqlString)")
         }
     }
 }
-
