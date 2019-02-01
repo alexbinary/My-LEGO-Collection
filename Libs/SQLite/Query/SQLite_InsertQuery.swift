@@ -12,7 +12,7 @@ struct SQLite_InsertQuery: SQLite_Query {
     let parameters: [SQLite_Column: SQLite_QueryParameter]
     
     
-    init(table: SQLite_Table) {
+    init(for table: SQLite_Table) {
         
         self.table = table
         

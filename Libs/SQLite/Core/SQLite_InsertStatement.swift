@@ -6,38 +6,53 @@ import Foundation
 /// A statement that inserts data into a table.
 ///
 /// This class provides convenience methods that facilitate the execution of
-/// statements that insert data into a table.
+/// "INSERT INTO" statements.
 ///
 class SQLite_InsertStatement: SQLite_Statement {
     
     
+    /// The table the statement inserts data into.
+    ///
     let table: SQLite_Table
     
     
+    /// The insert query that was used to compile the statement.
+    ///
     let insertQuery: SQLite_InsertQuery
     
     
+    /// Creates a new statement for a given table.
+    ///
+    /// - Parameter table: The table the statement should insert data into.
+    /// - Parameter connection: The connection to use to compile the query.
+    ///
     init(for table: SQLite_Table, connection: SQLite_Connection) {
         
         self.table = table
-        
-        self.insertQuery = SQLite_InsertQuery(table: table)
+        self.insertQuery = SQLite_InsertQuery(for: table)
         
         super.init(connection: connection, query: insertQuery)
     }
     
     
-    func insert(_ bindings: [SQLite_Column: SQLite_QueryParameterValue]) {
+    /// Inserts values in the table.
+    ///
+    /// - Parameter columnValues: The value to insert in each column.
+    ///
+    func insert(_ columnValues: [SQLite_Column: SQLite_QueryParameterValue]) {
         
-        var values: [SQLite_QueryParameter: SQLite_QueryParameterValue] = [:]
+        var parameterValues: [SQLite_QueryParameter: SQLite_QueryParameterValue] = [:]
         
-        for (column, value) in bindings {
+        for (column, parameter) in insertQuery.parameters {
         
-            let parameter = insertQuery.parameters[column]!
-
-            values[parameter] = value
+            guard let value = columnValues[column] else {
+                
+                fatalError("[SQLite_InsertStatement] Missing value for column: \(column). Trying to insert into table: \(table.name), values: \(columnValues)")
+            }
+            
+            parameterValues[parameter] = value
         }
         
-        run(with: values)
+        run(with: parameterValues)
     }
 }
