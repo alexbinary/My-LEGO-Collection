@@ -171,12 +171,12 @@ extension SQLite_Statement {
     
     /// Executes a statement and reads all result rows.
     ///
-    /// - Parameter tableModel: A description of the table to use to read the
-    ///             rows.
+    /// - Parameter tableDescription: A description of the table to use to read
+    ///             the rows.
     ///
     /// - Returns: The rows.
     ///
-    func readAllRows(using tableModel: SQLite_Table) -> [SQLite_TableRow] {
+    func readAllRows(using tableDescription: SQLite_Table) -> [SQLite_TableRow] {
         
         var rows: [SQLite_TableRow] = []
         
@@ -191,7 +191,7 @@ extension SQLite_Statement {
             
             if stepResult == SQLITE_ROW {
                 
-                let row = readRow(using: tableModel)
+                let row = readRow(using: tableDescription)
                 
                 rows.append(row)
                 
@@ -209,18 +209,18 @@ extension SQLite_Statement {
     ///
     /// This method assumes a row of result is available for reading.
     ///
-    /// - Parameter tableModel: A description of the table to use to read the
-    ///             row.
+    /// - Parameter tableDescription: A description of the table to use to read
+    ///             the row.
     ///
     /// - Returns: The row.
     ///
-    func readRow(using tableModel: SQLite_Table) -> SQLite_TableRow {
+    func readRow(using tableDescription: SQLite_Table) -> SQLite_TableRow {
         
         var row = SQLite_TableRow()
         
-        for (index, column) in tableModel.columns.enumerated() {
+        for (index, column) in tableDescription.columns.enumerated() {
             
-            row[column] = readValue(for: column, at: index)
+            row[column] = readValue(at: index, using: column)
         }
         
         return row
@@ -231,9 +231,20 @@ extension SQLite_Statement {
 extension SQLite_Statement {
     
     
-    func readValue(for column: SQLite_Column, at index: Int) -> SQLite_ColumnValue {
+    /// Reads a single value from a statement.
+    ///
+    /// This method assumes a row of result is available for reading.
+    ///
+    /// - Parameter index: The index of the value in the result row.
+    ///
+    /// - Parameter columnDescription: A description of the column to use to
+    ///             read the value.
+    ///
+    /// - Returns: The value.
+    ///
+    func readValue(at index: Int, using columnDescription: SQLite_Column) -> SQLite_ColumnValue {
         
-        switch column.type {
+        switch columnDescription.type {
             
         case .bool:
             
@@ -241,7 +252,7 @@ extension SQLite_Statement {
             
         case .char:
             
-            if column.nullable {
+            if columnDescription.nullable {
                 
                 return readOptionalString(at: index)
                 
@@ -257,36 +268,85 @@ extension SQLite_Statement {
 extension SQLite_Statement {
     
     
+    /// Returns whether a value in a result row is `NULL`.
+    ///
+    /// This method assumes a row of result is available for reading.
+    ///
+    /// - Parameter index: The index of the value in the result row.
+    ///
+    /// - Returns: `true` if the value is `NULL`, `false` otherwise.
+    ///
+    func valueIsNull(at index: Int) -> Bool {
+        
+        return sqlite3_column_type(pointer, Int32(index)) == SQLITE_NULL
+    }
+    
+    
+    /// Reads a boolean value from the statement, expecting a non-NULL value.
+    ///
+    /// This method assumes a row of result is available for reading.
+    ///
+    /// This method triggers a fatal error if the value is `NULL`.
+    ///
+    /// - Parameter index: The index of the value in the result row.
+    ///
+    /// - Returns: The value as a boolean.
+    ///
     func readBool(at index: Int) -> Bool {
         
-        let raw = sqlite3_column_int(pointer, Int32(index))
-        
-        return raw != 0
-    }
-    
-    
-    func readOptionalString(at index: Int) -> String? {
-        
-        if let raw = sqlite3_column_text(pointer, Int32(index)) {
+        guard !valueIsNull(at: index) else {
             
-            return String(cString: raw)
-            
-        } else {
-            
-            return nil
+            fatalError("[DatabaseController] Found `NULL` while expecting non-null boolean value at index: \(index). Query: \(query.sqlString)")
         }
+        
+        return sqlite3_column_int(pointer, Int32(index)) != 0
     }
     
     
+    /// Reads a string value from the statement, expecting a non-NULL value.
+    ///
+    /// This method assumes a row of result is available for reading.
+    ///
+    /// This method triggers a fatal error if the value is `NULL`.
+    ///
+    /// - Parameter index: The index of the value in the result row.
+    ///
+    /// - Returns: The value as a string.
+    ///
     func readString(at index: Int) -> String {
         
-        let value = readOptionalString(at: index)
-        
-        guard value != nil else {
+        guard !valueIsNull(at: index) else {
             
-            fatalError("[DatabaseController] Found NULL while expecting non null string value at index: \(index) for results of query: \(query)")
+            fatalError("[DatabaseController] Found `NULL` while expecting non-null string value at index: \(index). Query: \(query.sqlString)")
         }
         
-        return value!
+        guard let raw = sqlite3_column_text(pointer, Int32(index)) else {
+            
+            fatalError("[DatabaseController] sqlite3_column_text() returned a nil pointer at index: \(index). Query: \(query.sqlString)")
+        }
+        
+        return String(cString: raw)
+    }
+    
+    
+    /// Reads a string value from the statement, expecting a potentially NULL
+    /// value.
+    ///
+    /// This method assumes a row of result is available for reading.
+    ///
+    /// - Parameter index: The index of the value in the result row.
+    ///
+    /// - Returns: The value as an optional string.
+    ///
+    func readOptionalString(at index: Int) -> String? {
+        
+        if valueIsNull(at: index) {
+            
+            return nil
+            
+        } else {
+         
+            return readString(at: index)
+        }
     }
 }
