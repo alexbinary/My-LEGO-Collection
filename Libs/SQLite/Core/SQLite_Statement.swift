@@ -83,6 +83,36 @@ class SQLite_Statement {
 
 extension SQLite_Statement {
     
+
+    /// Executes the statement.
+    ///
+    func run() {
+        
+        let stepResult = sqlite3_step(pointer)
+        
+        guard stepResult == SQLITE_DONE else {
+            
+            fatalError("[SQLite_Statement] sqlite3_step() returned an unexpected value: \(stepResult). Expected value was: \(SQLITE_DONE). Query: \(query.sqlString). Bound values: \(boundValues). SQLite error: \(connection.errorMessage ?? "")")
+        }
+    }
+    
+    
+    /// Run the statement with values.
+    ///
+    /// - Parameter parameterValue: A dictionnary that indicates values to bind
+    ///             that should be bound to parameters.
+    ///
+    func run(with parameterValues: [SQLite_QueryParameter: SQLite_QueryParameterValue]) {
+        
+        bind(parameterValues)
+        
+        run()
+    }
+}
+
+
+extension SQLite_Statement {
+    
     
     /// Bind values to the statement.
     ///
