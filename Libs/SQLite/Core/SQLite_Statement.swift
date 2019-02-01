@@ -336,7 +336,7 @@ extension SQLite_Statement {
     ///
     /// - Parameter index: The index of the value in the result row.
     ///
-    /// - Returns: The value as an optional string.
+    /// - Returns: The value as a string if not `NULL`, `nil` otherwise.
     ///
     func readOptionalString(at index: Int) -> String? {
         
