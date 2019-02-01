@@ -8,7 +8,7 @@ import Foundation
 struct SQLite_QueryParameter: Hashable {
     
     
-    /// The parameter name.
+    /// The parameter's name.
     ///
     let name: String
 }

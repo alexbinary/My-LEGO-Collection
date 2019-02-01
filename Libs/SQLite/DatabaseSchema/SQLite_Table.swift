@@ -3,7 +3,7 @@ import Foundation
 
 
 
-/// A type that describes a table in a database.
+/// A description of SQLite databse table.
 ///
 protocol SQLite_Table {
    
@@ -15,5 +15,5 @@ protocol SQLite_Table {
     
     /// The table's columns.
     ///
-    var columns: [SQLite_Column] { get }
+    var columns: Set<SQLite_Column> { get }
 }

@@ -29,7 +29,7 @@ extension AppDatabaseSchema {
         let name = "colors"
         
         
-        lazy var columns: [SQLite_Column] = [
+        lazy var columns: Set<SQLite_Column> = [
             
             nameColumn,
             rgbColumn,
@@ -82,7 +82,7 @@ extension AppDatabaseSchema {
         let name = "parts"
         
         
-        lazy var columns: [SQLite_Column] = [
+        lazy var columns: Set<SQLite_Column> = [
             
             nameColumn,
             imageURLColumn,

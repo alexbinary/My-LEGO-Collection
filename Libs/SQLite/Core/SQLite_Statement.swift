@@ -63,9 +63,9 @@ class SQLite_Statement {
         self.connection = connection
         self.query = query
         
-        guard sqlite3_prepare_v2(connection.pointer, query.sqlString, -1, &pointer, nil) == SQLITE_OK else {
+        guard sqlite3_prepare_v2(connection.pointer, query.sqlRepresentation, -1, &pointer, nil) == SQLITE_OK else {
             
-            fatalError("[SQLite_Statement] Preparing query: \(query.sqlString). SQLite error: \(connection.errorMessage ?? "")")
+            fatalError("[SQLite_Statement] Preparing query: \(query.sqlRepresentation). SQLite error: \(connection.errorMessage ?? "")")
         }
     }
     
@@ -92,7 +92,7 @@ extension SQLite_Statement {
         
         guard stepResult == SQLITE_DONE else {
             
-            fatalError("[SQLite_Statement] sqlite3_step() returned an unexpected value: \(stepResult). Expected value was: \(SQLITE_DONE). Query: \(query.sqlString). Bound values: \(boundValues). SQLite error: \(connection.errorMessage ?? "")")
+            fatalError("[SQLite_Statement] sqlite3_step() returned an unexpected value: \(stepResult). Expected value was: \(SQLITE_DONE). Query: \(query.sqlRepresentation). Bound values: \(boundValues). SQLite error: \(connection.errorMessage ?? "")")
         }
     }
     
@@ -160,7 +160,7 @@ extension SQLite_Statement {
             
         default:
             
-            fatalError("[SQLite_Statement] Trying to bind a value of unsupported type: \(String(describing: value)) to query: \(query.sqlString)")
+            fatalError("[SQLite_Statement] Trying to bind a value of unsupported type: \(String(describing: value)) to query: \(query.sqlRepresentation)")
         }
     }
 }
@@ -296,7 +296,7 @@ extension SQLite_Statement {
         
         guard !valueIsNull(at: index) else {
             
-            fatalError("[DatabaseController] Found `NULL` while expecting non-null boolean value at index: \(index). Query: \(query.sqlString)")
+            fatalError("[DatabaseController] Found `NULL` while expecting non-null boolean value at index: \(index). Query: \(query.sqlRepresentation)")
         }
         
         return sqlite3_column_int(pointer, Int32(index)) != 0
@@ -317,12 +317,12 @@ extension SQLite_Statement {
         
         guard !valueIsNull(at: index) else {
             
-            fatalError("[DatabaseController] Found `NULL` while expecting non-null string value at index: \(index). Query: \(query.sqlString)")
+            fatalError("[DatabaseController] Found `NULL` while expecting non-null string value at index: \(index). Query: \(query.sqlRepresentation)")
         }
         
         guard let raw = sqlite3_column_text(pointer, Int32(index)) else {
             
-            fatalError("[DatabaseController] sqlite3_column_text() returned a nil pointer at index: \(index). Query: \(query.sqlString)")
+            fatalError("[DatabaseController] sqlite3_column_text() returned a nil pointer at index: \(index). Query: \(query.sqlRepresentation)")
         }
         
         return String(cString: raw)

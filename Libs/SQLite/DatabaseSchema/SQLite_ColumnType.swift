@@ -2,7 +2,7 @@ import Foundation
 
 
 
-/// The set of possible column types.
+/// The set of possible data types for column in a SQLite database table.
 ///
 enum SQLite_ColumnType: Hashable {
     
@@ -18,4 +18,29 @@ enum SQLite_ColumnType: Hashable {
     /// A column that contains a boolean value.
     ///
     case bool
+}
+
+
+extension SQLite_ColumnType: SQLite_SQLRepresentable {
+    
+    
+    /// The SQL string that represents the column type.
+    ///
+    /// This property returns the SQL fragment that can be used in
+    /// "CREATE TABLE" queries and other type of SQL queries where a column type
+    /// need to be expressed.
+    ///
+    var sqlRepresentation: String {
+        
+        switch (self) {
+            
+        case .bool:
+            
+            return "BOOL"
+            
+        case .char(let size):
+            
+            return "CHAR(\(size))"
+        }
+    }
 }

@@ -13,12 +13,12 @@ class SQLite_InsertStatement: SQLite_Statement {
     
     /// The table the statement inserts data into.
     ///
-    let table: SQLite_Table
+    private let table: SQLite_Table
     
     
     /// The insert query that was used to compile the statement.
     ///
-    let insertQuery: SQLite_InsertQuery
+    private let insertQuery: SQLite_InsertQuery
     
     
     /// Creates a new statement for a given table.
@@ -29,10 +29,14 @@ class SQLite_InsertStatement: SQLite_Statement {
     init(for table: SQLite_Table, connection: SQLite_Connection) {
         
         self.table = table
-        self.insertQuery = SQLite_InsertQuery(for: table)
+        self.insertQuery = SQLite_InsertQuery(insertingInto: table)
         
         super.init(connection: connection, query: insertQuery)
     }
+}
+
+
+extension SQLite_InsertStatement {
     
     
     /// Inserts values in the table.
