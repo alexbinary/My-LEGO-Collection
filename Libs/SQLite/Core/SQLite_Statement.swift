@@ -25,7 +25,7 @@ class SQLite_Statement {
     /// This pointer is guaranteed to always represent a valid, prepared
     /// statment.
     ///
-    private(set) var pointer: OpaquePointer!
+    private var pointer: OpaquePointer!
     
     
     /// The connection the statement is bound to.
@@ -33,7 +33,7 @@ class SQLite_Statement {
     /// A statement is bound to the connection that was used to compile the
     /// query.
     ///
-    private(set) var connection: SQLite_Connection!
+    private var connection: SQLite_Connection!
     
     
     /// The SQL query that the statement was compiled from.
@@ -41,7 +41,7 @@ class SQLite_Statement {
     /// Use this property to access the original SQL query that the statement
     /// was compiled from.
     ///
-    private(set) var query: SQLite_Query
+    private var query: SQLite_Query
     
     
     /// The values that have been bound to the statement.
@@ -50,7 +50,7 @@ class SQLite_Statement {
     /// using the `bind(values:)` method. Previous bound values or replaces
     /// each time `bind(values:)` is called.
     ///
-    private(set) var boundValues: [SQLite_QueryParameter: SQLite_QueryParameterValue] = [:]
+    private var boundValues: [SQLite_QueryParameter: SQLite_QueryParameterValue] = [:]
     
     
     /// Creates a new prepared statement on a given connection from a SQL query.
@@ -214,7 +214,7 @@ extension SQLite_Statement {
     ///
     /// - Returns: The row.
     ///
-    func readRow(using tableDescription: SQLite_Table) -> SQLite_TableRow {
+    private func readRow(using tableDescription: SQLite_Table) -> SQLite_TableRow {
         
         var row = SQLite_TableRow()
         
@@ -242,7 +242,7 @@ extension SQLite_Statement {
     ///
     /// - Returns: The value.
     ///
-    func readValue(at index: Int, using columnDescription: SQLite_Column) -> SQLite_ColumnValue {
+    private func readValue(at index: Int, using columnDescription: SQLite_Column) -> SQLite_ColumnValue {
         
         switch columnDescription.type {
             
@@ -276,7 +276,7 @@ extension SQLite_Statement {
     ///
     /// - Returns: `true` if the value is `NULL`, `false` otherwise.
     ///
-    func valueIsNull(at index: Int) -> Bool {
+    private func valueIsNull(at index: Int) -> Bool {
         
         return sqlite3_column_type(pointer, Int32(index)) == SQLITE_NULL
     }
@@ -292,7 +292,7 @@ extension SQLite_Statement {
     ///
     /// - Returns: The value as a boolean.
     ///
-    func readBool(at index: Int) -> Bool {
+    private func readBool(at index: Int) -> Bool {
         
         guard !valueIsNull(at: index) else {
             
@@ -313,7 +313,7 @@ extension SQLite_Statement {
     ///
     /// - Returns: The value as a string.
     ///
-    func readString(at index: Int) -> String {
+    private func readString(at index: Int) -> String {
         
         guard !valueIsNull(at: index) else {
             
@@ -338,7 +338,7 @@ extension SQLite_Statement {
     ///
     /// - Returns: The value as a string if not `NULL`, `nil` otherwise.
     ///
-    func readOptionalString(at index: Int) -> String? {
+    private func readOptionalString(at index: Int) -> String? {
         
         if valueIsNull(at: index) {
             
