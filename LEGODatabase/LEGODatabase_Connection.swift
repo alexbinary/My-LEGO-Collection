@@ -27,15 +27,15 @@ extension LEGODatabase_Connection {
 extension LEGODatabase_Connection {
     
     
-    func prepareColorInsertStatement() -> ColorInsert_Statement {
+    func prepareColorInsertStatement() -> LEGODatabase_ColorInsertStatement {
         
-        return ColorInsert_Statement(connection: self)
+        return LEGODatabase_ColorInsertStatement(connection: self)
     }
     
     
-    func preparePartInsertStatement() -> PartInsertStatement {
+    func preparePartInsertStatement() -> LEGODatabase_PartInsertStatement {
         
-        return PartInsertStatement(connection: self)
+        return LEGODatabase_PartInsertStatement(connection: self)
     }
 }
 
