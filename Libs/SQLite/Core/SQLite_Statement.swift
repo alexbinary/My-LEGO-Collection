@@ -169,9 +169,15 @@ extension SQLite_Statement {
 extension SQLite_Statement {
     
     
-    func readAllRows<ResultType>(with reader: (SQLite_Statement) -> ResultType) -> [ResultType] {
+    /// Executes a statement and reads all result rows.
+    ///
+    /// - Parameter reader: A closure that should read values from the statement for each column.
+    ///
+    /// - Returns: An array of result objects.
+    ///
+    func readAllRows(using tableModel: SQLite_Table) -> [[SQLite_Column: SQLite_ColumnValue]] {
         
-        var results: [ResultType] = []
+        var rows: [[SQLite_Column: SQLite_ColumnValue]] = []
         
         while true {
             
@@ -184,7 +190,9 @@ extension SQLite_Statement {
             
             if stepResult == SQLITE_ROW {
                 
-                results.append(reader(self))
+                let row = readRow(using: tableModel)
+                
+                rows.append(row)
                 
             } else {
                 
@@ -192,7 +200,20 @@ extension SQLite_Statement {
             }
         }
         
-        return results
+        return rows
+    }
+    
+    
+    func readRow(using tableModel: SQLite_Table) -> [SQLite_Column: SQLite_ColumnValue]  {
+        
+        var row: [SQLite_Column: SQLite_ColumnValue] = [:]
+        
+        for (index, column) in tableModel.columns.enumerated() {
+            
+            row[column] = readValue(for: column, at: index)
+        }
+        
+        return row
     }
 }
 

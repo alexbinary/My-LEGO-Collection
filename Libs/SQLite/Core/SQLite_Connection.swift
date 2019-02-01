@@ -108,16 +108,6 @@ extension SQLite_Connection {
         
         let statement = SQLite_Statement(connection: self, query: query)
         
-        return statement.readAllRows { statement in
-            
-            var row: [SQLite_Column: SQLite_ColumnValue] = [:]
-            
-            for (index, column) in table.columns.enumerated() {
-                
-                row[column] = statement.readValue(for: column, at: index)
-            }
-            
-            return row
-        }
+        return statement.readAllRows(using: table)
     }
 }
