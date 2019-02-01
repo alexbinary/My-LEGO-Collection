@@ -6,13 +6,13 @@ import Foundation
 struct DatabaseInflator {
     
 
-    private var colorInsertStatement: ColorInsertStatement
+    private var colorInsertStatement: ColorInsert_Statement
     private var partInsertStatement: PartInsertStatement
     
     
     init(
         
-        colorInsertStatement: ColorInsertStatement,
+        colorInsertStatement: ColorInsert_Statement,
         partInsertStatement: PartInsertStatement
         
     ) {

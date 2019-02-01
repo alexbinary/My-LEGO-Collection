@@ -3,12 +3,12 @@ import Foundation
 
 
 
-extension AppDatabaseConnection {
+extension LEGODatabase_Connection {
     
     
-    func prepareColorInsertStatement() -> ColorInsertStatement {
+    func prepareColorInsertStatement() -> ColorInsert_Statement {
         
-        return ColorInsertStatement(connection: self)
+        return ColorInsert_Statement(connection: self)
     }
     
     

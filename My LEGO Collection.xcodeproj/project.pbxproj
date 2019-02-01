@@ -47,6 +47,8 @@
 		2992AB912204B556001DD82C /* SQLite_TableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2992AB902204B556001DD82C /* SQLite_TableRow.swift */; };
 		2992AB922204B57A001DD82C /* SQLite_TableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2992AB902204B556001DD82C /* SQLite_TableRow.swift */; };
 		2992AB932204D273001DD82C /* SQLite_InsertQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AAA5FB22038B5300876DF9 /* SQLite_InsertQuery.swift */; };
+		2992AB942204D731001DD82C /* LEGODatabase_InsertStatements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FECB3221FCF7B500254DCC /* LEGODatabase_InsertStatements.swift */; };
+		2992AB952204D748001DD82C /* SQLite_InsertStatement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29413B46220388460092B99C /* SQLite_InsertStatement.swift */; };
 		2995231F21E52967002F8CB2 /* RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2995231E21E52967002F8CB2 /* RGB.swift */; };
 		2995232121E539AE002F8CB2 /* UIColor+fromRGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2995232021E539AE002F8CB2 /* UIColor+fromRGB.swift */; };
 		29A77BFA21E2011D009A162E /* DatabaseReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A77BF921E2011D009A162E /* DatabaseReader.swift */; };
@@ -57,8 +59,8 @@
 		29AAA5FD22038B6500876DF9 /* SQLite_InsertQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AAA5FB22038B5300876DF9 /* SQLite_InsertQuery.swift */; };
 		29C3F97221FCCAD30011E1E5 /* SQLite_Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3F97121FCCAD30011E1E5 /* SQLite_Table.swift */; };
 		29C3F97421FCCADD0011E1E5 /* SQLite_Column.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3F97321FCCADD0011E1E5 /* SQLite_Column.swift */; };
-		29C3F97821FCCC950011E1E5 /* AppDatabaseSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3F97721FCCC950011E1E5 /* AppDatabaseSchema.swift */; };
-		29C3F97921FCCF670011E1E5 /* AppDatabaseSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3F97721FCCC950011E1E5 /* AppDatabaseSchema.swift */; };
+		29C3F97821FCCC950011E1E5 /* LEGODatabase_Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3F97721FCCC950011E1E5 /* LEGODatabase_Schema.swift */; };
+		29C3F97921FCCF670011E1E5 /* LEGODatabase_Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3F97721FCCC950011E1E5 /* LEGODatabase_Schema.swift */; };
 		29C6881621DBBC5300B4A9E0 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C6881521DBBC5300B4A9E0 /* APIKey.swift */; };
 		29C6881821DBCEDD00B4A9E0 /* Date+elapsedTimeSince.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C6881721DBCEDD00B4A9E0 /* Date+elapsedTimeSince.swift */; };
 		29CCEAF921EE642D00CB5EFB /* LegoPartsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CCEAF821EE642D00CB5EFB /* LegoPartsListTableViewCell.swift */; };
@@ -71,9 +73,9 @@
 		29FECB2A21FCF47B00254DCC /* Int32+isOneOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A77C0521E21A69009A162E /* Int32+isOneOf.swift */; };
 		29FECB2F21FCF49E00254DCC /* SQLite_Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3F97121FCCAD30011E1E5 /* SQLite_Table.swift */; };
 		29FECB3021FCF4A100254DCC /* SQLite_Column.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3F97321FCCADD0011E1E5 /* SQLite_Column.swift */; };
-		29FECB3421FCF7ED00254DCC /* InsertStatements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FECB3221FCF7B500254DCC /* InsertStatements.swift */; };
-		29FECB3621FCF82400254DCC /* AppDatabaseConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FECB3521FCF82400254DCC /* AppDatabaseConnection.swift */; };
-		29FECB3721FCF85700254DCC /* AppDatabaseConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FECB3521FCF82400254DCC /* AppDatabaseConnection.swift */; };
+		29FECB3421FCF7ED00254DCC /* LEGODatabase_InsertStatements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FECB3221FCF7B500254DCC /* LEGODatabase_InsertStatements.swift */; };
+		29FECB3621FCF82400254DCC /* LEGODatabase_Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FECB3521FCF82400254DCC /* LEGODatabase_Connection.swift */; };
+		29FECB3721FCF85700254DCC /* LEGODatabase_Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FECB3521FCF82400254DCC /* LEGODatabase_Connection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -130,7 +132,7 @@
 		29AAA5FB22038B5300876DF9 /* SQLite_InsertQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLite_InsertQuery.swift; sourceTree = "<group>"; };
 		29C3F97121FCCAD30011E1E5 /* SQLite_Table.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLite_Table.swift; sourceTree = "<group>"; };
 		29C3F97321FCCADD0011E1E5 /* SQLite_Column.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLite_Column.swift; sourceTree = "<group>"; };
-		29C3F97721FCCC950011E1E5 /* AppDatabaseSchema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDatabaseSchema.swift; sourceTree = "<group>"; };
+		29C3F97721FCCC950011E1E5 /* LEGODatabase_Schema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LEGODatabase_Schema.swift; sourceTree = "<group>"; };
 		29C6881521DBBC5300B4A9E0 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		29C6881721DBCEDD00B4A9E0 /* Date+elapsedTimeSince.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+elapsedTimeSince.swift"; sourceTree = "<group>"; };
 		29CCEAF821EE642D00CB5EFB /* LegoPartsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegoPartsListTableViewCell.swift; sourceTree = "<group>"; };
@@ -141,8 +143,8 @@
 		29F4EA2A21C9727A0000B8A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		29F4EA2C21C9727A0000B8A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		29FC1CAB21E686E50097C1C4 /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
-		29FECB3221FCF7B500254DCC /* InsertStatements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertStatements.swift; sourceTree = "<group>"; };
-		29FECB3521FCF82400254DCC /* AppDatabaseConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDatabaseConnection.swift; sourceTree = "<group>"; };
+		29FECB3221FCF7B500254DCC /* LEGODatabase_InsertStatements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LEGODatabase_InsertStatements.swift; sourceTree = "<group>"; };
+		29FECB3521FCF82400254DCC /* LEGODatabase_Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LEGODatabase_Connection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -330,14 +332,14 @@
 			path = DatabaseSchema;
 			sourceTree = "<group>";
 		};
-		29C3F97621FCCC830011E1E5 /* Database */ = {
+		29C3F97621FCCC830011E1E5 /* LEGODatabase */ = {
 			isa = PBXGroup;
 			children = (
-				29C3F97721FCCC950011E1E5 /* AppDatabaseSchema.swift */,
-				29FECB3521FCF82400254DCC /* AppDatabaseConnection.swift */,
-				29FECB3221FCF7B500254DCC /* InsertStatements.swift */,
+				29C3F97721FCCC950011E1E5 /* LEGODatabase_Schema.swift */,
+				29FECB3521FCF82400254DCC /* LEGODatabase_Connection.swift */,
+				29FECB3221FCF7B500254DCC /* LEGODatabase_InsertStatements.swift */,
 			);
-			path = Database;
+			path = LEGODatabase;
 			sourceTree = "<group>";
 		};
 		29CCEAF621EE63EF00CB5EFB /* LegoColors */ = {
@@ -364,7 +366,7 @@
 				2970F8A621D797D600AC42D5 /* README.md */,
 				2970F8A721D797D600AC42D5 /* specs */,
 				2912D09521D7B33D00C623A4 /* Libs */,
-				29C3F97621FCCC830011E1E5 /* Database */,
+				29C3F97621FCCC830011E1E5 /* LEGODatabase */,
 				2963B14521D7B14600B97C19 /* Database Tool */,
 				29F4EA1F21C972780000B8A1 /* My LEGO Collection */,
 				29F4EA1E21C972780000B8A1 /* Products */,
@@ -509,7 +511,7 @@
 			files = (
 				29FECB2A21FCF47B00254DCC /* Int32+isOneOf.swift in Sources */,
 				29413B2A22037E220092B99C /* AppDatabaseConnection+createTables.swift in Sources */,
-				29FECB3421FCF7ED00254DCC /* InsertStatements.swift in Sources */,
+				29FECB3421FCF7ED00254DCC /* LEGODatabase_InsertStatements.swift in Sources */,
 				2912D09D21D7B38E00C623A4 /* ResultsList.swift in Sources */,
 				29413B4D220388DF0092B99C /* SQLite_InsertStatement.swift in Sources */,
 				2957C6BF21E0C77600E512E5 /* AppController.swift in Sources */,
@@ -532,8 +534,8 @@
 				2912D09A21D7B37700C623A4 /* Color.swift in Sources */,
 				2963B14721D7B14600B97C19 /* main.swift in Sources */,
 				2928C63E21E93F9D0061031C /* Part.swift in Sources */,
-				29C3F97921FCCF670011E1E5 /* AppDatabaseSchema.swift in Sources */,
-				29FECB3721FCF85700254DCC /* AppDatabaseConnection.swift in Sources */,
+				29C3F97921FCCF670011E1E5 /* LEGODatabase_Schema.swift in Sources */,
+				29FECB3721FCF85700254DCC /* LEGODatabase_Connection.swift in Sources */,
 				29D194B021FDAFC90095483F /* SQLite_Query.swift in Sources */,
 				2992AB922204B57A001DD82C /* SQLite_TableRow.swift in Sources */,
 				29FECB3021FCF4A100254DCC /* SQLite_Column.swift in Sources */,
@@ -549,8 +551,10 @@
 				29A77C0621E21A69009A162E /* Int32+isOneOf.swift in Sources */,
 				29C3F97421FCCADD0011E1E5 /* SQLite_Column.swift in Sources */,
 				29C3F97221FCCAD30011E1E5 /* SQLite_Table.swift in Sources */,
+				2992AB942204D731001DD82C /* LEGODatabase_InsertStatements.swift in Sources */,
 				2992AB8522049E82001DD82C /* SQLite_QueryParameterValue.swift in Sources */,
 				2992AB8E2204B241001DD82C /* SQLite_CreateTableQuery.swift in Sources */,
+				2992AB952204D748001DD82C /* SQLite_InsertStatement.swift in Sources */,
 				29A77C0421E213A6009A162E /* Date+elapsedTimeSince.swift in Sources */,
 				294368A421E32CAE005A4511 /* UIColor+fromLEGOColor.swift in Sources */,
 				29413B2922037E1B0092B99C /* AppDatabaseConnection+read.swift in Sources */,
@@ -563,7 +567,7 @@
 				2992AB8722049EC5001DD82C /* SQLite_ColumnValue.swift in Sources */,
 				2992AB932204D273001DD82C /* SQLite_InsertQuery.swift in Sources */,
 				297A579721EA3B0D00A426CA /* DataViewController.swift in Sources */,
-				29C3F97821FCCC950011E1E5 /* AppDatabaseSchema.swift in Sources */,
+				29C3F97821FCCC950011E1E5 /* LEGODatabase_Schema.swift in Sources */,
 				29413B322203809D0092B99C /* SQLite_SQLRepresentable.swift in Sources */,
 				290E1C0D2202327C0077D841 /* SQLite_ColumnType.swift in Sources */,
 				29D194AC21FDA6BE0095483F /* SQLite_Query.swift in Sources */,
@@ -571,7 +575,7 @@
 				29413B3C220381720092B99C /* SQLite_SelectQuery.swift in Sources */,
 				2932C79021FB995C00C481EA /* SQLite_Connection.swift in Sources */,
 				2932C78B21FB98BC00C481EA /* SQLite_Statement.swift in Sources */,
-				29FECB3621FCF82400254DCC /* AppDatabaseConnection.swift in Sources */,
+				29FECB3621FCF82400254DCC /* LEGODatabase_Connection.swift in Sources */,
 				2995231F21E52967002F8CB2 /* RGB.swift in Sources */,
 				2992AB8D2204A57E001DD82C /* SQLite_QueryParameter.swift in Sources */,
 				2992AB912204B556001DD82C /* SQLite_TableRow.swift in Sources */,

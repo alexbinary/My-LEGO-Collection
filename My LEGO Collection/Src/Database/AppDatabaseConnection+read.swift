@@ -3,31 +3,31 @@ import Foundation
 
 
 
-extension AppDatabaseConnection {
+extension LEGODatabase_Connection {
     
     
-    func readAllColors() -> [AppDatabaseSchema.ColorsTable.Row] {
+    func readAllColors() -> [LEGODatabase_Schema.ColorsTable.Row] {
         
-        return readAllRows(from: Database.schema.colorsTable).map { values in
+        return readAllRows(from: LEGODatabase.schema.colorsTable).map { values in
             
-            return AppDatabaseSchema.ColorsTable.Row(
+            return LEGODatabase_Schema.ColorsTable.Row(
                 
-                name: values[Database.schema.colorsTable.nameColumn] as! String,
-                rgb: values[Database.schema.colorsTable.rgbColumn] as! String,
-                transparent: values[Database.schema.colorsTable.transparentColumn] as! Bool
+                name: values[LEGODatabase.schema.colorsTable.nameColumn] as! String,
+                rgb: values[LEGODatabase.schema.colorsTable.rgbColumn] as! String,
+                transparent: values[LEGODatabase.schema.colorsTable.transparentColumn] as! Bool
             )
         }
     }
     
     
-    func readAllParts() -> [AppDatabaseSchema.PartsTable.Row] {
+    func readAllParts() -> [LEGODatabase_Schema.PartsTable.Row] {
         
-        return readAllRows(from: Database.schema.partsTable).map { values in
+        return readAllRows(from: LEGODatabase.schema.partsTable).map { values in
             
-            return AppDatabaseSchema.PartsTable.Row(
+            return LEGODatabase_Schema.PartsTable.Row(
                 
-                name: values[Database.schema.partsTable.nameColumn] as! String,
-                imageURL: values[Database.schema.partsTable.imageURLColumn] as! String?
+                name: values[LEGODatabase.schema.partsTable.nameColumn] as! String,
+                imageURL: values[LEGODatabase.schema.partsTable.imageURLColumn] as! String?
             )
         }
     }

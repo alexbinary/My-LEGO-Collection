@@ -3,26 +3,40 @@ import Foundation
 
 
 
-struct Database {
+/// Set of global constants to access static data about the SQLite database used
+/// in the app to store official LEGO related data.
+///
+struct LEGODatabase {
 
     
-    static let schema = AppDatabaseSchema()
+    /// A description of the database structure.
+    ///
+    static let schema = LEGODatabase_Schema()
 }
 
 
 
-struct AppDatabaseSchema {
+/// A description of the structure of the database used in the app to store
+/// official LEGO related data.
+///
+struct LEGODatabase_Schema {
     
-    
+
+    /// A description of the table that stores data about the official LEGO
+    /// colors.
+    ///
     let colorsTable = ColorsTable()
     
+    
+    /// A description of the table that stores data about the official LEGO
+    /// parts.
+    ///
     let partsTable = PartsTable()
-}
-
-
-extension AppDatabaseSchema {
     
     
+    /// A description of the table that stores data about the official LEGO
+    /// colors.
+    ///
     class ColorsTable: SQLite_Table {
         
         
@@ -70,12 +84,11 @@ extension AppDatabaseSchema {
             let transparent: Bool
         }
     }
-}
-
-
-extension AppDatabaseSchema {
     
     
+    /// A description of the table that stores data about the official LEGO
+    /// parts.
+    ///
     class PartsTable: SQLite_Table {
         
         

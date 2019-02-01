@@ -3,17 +3,17 @@ import Foundation
 
 
 
-extension AppDatabaseConnection {
+extension LEGODatabase_Connection {
     
     
     func createColorsTable() {
         
-        create(table: Database.schema.colorsTable)
+        create(table: LEGODatabase.schema.colorsTable)
     }
     
     
     func createPartsTable() {
         
-        create(table: Database.schema.partsTable)
+        create(table: LEGODatabase.schema.partsTable)
     }
 }
