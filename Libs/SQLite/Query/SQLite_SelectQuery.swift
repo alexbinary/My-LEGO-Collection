@@ -15,6 +15,16 @@ struct SQLite_SelectQuery: SQLite_Query {
     let table: SQLite_Table
     
     
+    /// Creates a new query.
+    ///
+    /// - Parameter table: The table the query selects data from.
+    ///
+    init(selectingFrom table: SQLite_Table) {
+        
+        self.table = table
+    }
+    
+    
     /// The SQL code that implements the query.
     ///
     var sqlRepresentation: String {

@@ -104,7 +104,7 @@ extension SQLite_Connection {
     ///
     func readAllRows(from table: SQLite_Table) -> [SQLite_TableRow] {
         
-        let query = SQLite_SelectQuery(table: table)
+        let query = SQLite_SelectQuery(selectingFrom: table)
         
         let statement = SQLite_Statement(connection: self, query: query)
         
