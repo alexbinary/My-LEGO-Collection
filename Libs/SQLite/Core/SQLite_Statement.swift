@@ -175,7 +175,8 @@ extension SQLite_Statement {
     /// - Parameter tableDescription: A description of the table to use to read
     ///             the rows.
     ///
-    /// - Returns: The rows.
+    /// - Returns: The rows. Values are read according to the type of the
+    ///            corresponding column declared in the table description.
     ///
     func readAllRows(using tableDescription: SQLite_Table) -> [SQLite_TableRow] {
         
@@ -213,7 +214,8 @@ extension SQLite_Statement {
     /// - Parameter tableDescription: A description of the table to use to read
     ///             the row.
     ///
-    /// - Returns: The row.
+    /// - Returns: The row. Values are read according to the type of the
+    ///            corresponding column declared in the table description.
     ///
     private func readRow(using tableDescription: SQLite_Table) -> SQLite_TableRow {
         
@@ -241,7 +243,8 @@ extension SQLite_Statement {
     /// - Parameter columnDescription: A description of the column to use to
     ///             read the value.
     ///
-    /// - Returns: The value.
+    /// - Returns: The value, which is read according to the type of the
+    ///            column declared in the column description.
     ///
     private func readValue(at index: Int, using columnDescription: SQLite_Column) -> SQLite_ColumnValue {
         

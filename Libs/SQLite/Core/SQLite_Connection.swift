@@ -6,10 +6,10 @@ import SQLite3
 
 /// A connection to a SQLite database.
 ///
-/// You open a connection with the `init(toDatabaseAt:)` initializer., passing
+/// You open a connection with the `init(toDatabaseAt:)` initializer, passing
 /// the path to the SQLite database file you want to open.
 ///
-/// Instances of this class hold a pointeur to the underlying connection object.
+/// Instances of this class hold a pointer to the underlying connection object.
 /// It is important that you let the object be deallocated when you are done to
 /// close the connection and release associated resources.
 ///
@@ -100,7 +100,9 @@ extension SQLite_Connection {
     /// - Parameter table: A description of the table to read from.
     ///
     /// - Returns: An array of dictionnaries that contain the value of each
-    ///            column for each row.
+    ///            column for each row. Values are read according to the type
+    ///            of the corresponding column declared in the table
+    ///            description.
     ///
     func readAllRows(from table: SQLite_Table) -> [SQLite_TableRow] {
         
