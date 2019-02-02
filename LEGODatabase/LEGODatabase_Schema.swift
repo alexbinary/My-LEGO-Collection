@@ -11,186 +11,185 @@ struct LEGODatabase {
     
     /// A description of the database structure.
     ///
-    static let schema = LEGODatabase_Schema()
-}
-
-
-
-/// A description of the structure of the database used in the app to store
-/// official LEGO related data.
-///
-/// This type is immutable.
-///
-struct LEGODatabase_Schema {
-    
-
-    /// A description of the table that stores data about the official LEGO
-    /// colors.
-    ///
-    let colorsTable = ColorsTable()
+    static let schema = Schema()
     
     
-    /// A description of the table that stores data about the official LEGO
-    /// parts.
-    ///
-    let partsTable = PartsTable()
-    
-    
-    /// A description of the table that stores data about the official LEGO
-    /// colors.
+    /// A description of the structure of the database used in the app to store
+    /// official LEGO related data.
     ///
     /// This type is immutable.
     ///
-    struct ColorsTable: SQLite_Table {
+    struct Schema {
         
         
-        /// The table's name.
+        /// A description of the table that stores data about the official LEGO
+        /// colors.
         ///
-        let name = "colors"
+        let colorsTable = ColorsTable()
         
         
-        /// A description of the column that stores the color's name.
+        /// A description of the table that stores data about the official LEGO
+        /// parts.
         ///
-        let nameColumn = SQLite_Column(
+        let partsTable = PartsTable()
+        
+        
+        /// A description of the table that stores data about the official LEGO
+        /// colors.
+        ///
+        /// This type is immutable.
+        ///
+        struct ColorsTable: SQLite_Table {
             
-            name: "name",
-            type: .char(size: 255),
-            nullable: false
-        )
-        
-        
-        /// A description of the column that stores the color's RGB
-        /// representation.
-        ///
-        let rgbColumn = SQLite_Column(
             
-            name: "rgb",
-            type: .char(size: 6),
-            nullable: false
-        )
-        
-        
-        /// A description of the column that stores whether the color is
-        /// transparent.
-        ///
-        let transparentColumn = SQLite_Column(
+            /// The table's name.
+            ///
+            let name = "colors"
             
-            name: "transparent",
-            type: .bool,
-            nullable: false
-        )
-        
-        
-        /// The table's columns.
-        ///
-        var columns: [SQLite_Column]
-        
-        
-        /// Creates a new instance.
-        ///
-        init() {
             
-            self.columns = [
+            /// A description of the column that stores the color's name.
+            ///
+            let nameColumn = SQLite_Column(
                 
-                nameColumn,
-                rgbColumn,
-                transparentColumn,
-            ]
-        }
-        
-        
-        /// A result row in the colors table.
-        ///
-        /// This type provides a type safe way to manipulate a set of value for
-        /// the database colors table.
-        ///
-        struct Row {
+                name: "name",
+                type: .char(size: 255),
+                nullable: false
+            )
             
             
-            /// The color's name.
+            /// A description of the column that stores the color's RGB
+            /// representation.
             ///
-            let name: String
-            
-            
-            /// The colors's RGB representation.
-            ///
-            let rgb: String
-            
-            
-            /// Whether the colors is transparent.
-            ///
-            let transparent: Bool
-        }
-    }
-    
-    
-    /// A description of the table that stores data about the official LEGO
-    /// parts.
-    ///
-    /// This type is immutable.
-    ///
-    struct PartsTable: SQLite_Table {
-        
-        
-        /// The table's name.
-        ///
-        let name = "parts"
-        
-        
-        /// A description of the column that stores the part's name.
-        ///
-        let nameColumn = SQLite_Column(
-            
-            name: "name",
-            type: .char(size: 255),
-            nullable: false
-        )
-        
-        
-        /// A description of the column that stores a URL to an image that
-        /// represents the part.
-        ///
-        let imageURLColumn = SQLite_Column(
-            
-            name: "image_url",
-            type: .char(size: 1024),
-            nullable: true
-        )
-        
-        
-        /// The table's columns.
-        ///
-        var columns: [SQLite_Column]
-        
-        
-        /// Creates a new instance.
-        ///
-        init() {
-            
-            self.columns = [
+            let rgbColumn = SQLite_Column(
                 
-                nameColumn,
-                imageURLColumn,
-            ]
+                name: "rgb",
+                type: .char(size: 6),
+                nullable: false
+            )
+            
+            
+            /// A description of the column that stores whether the color is
+            /// transparent.
+            ///
+            let transparentColumn = SQLite_Column(
+                
+                name: "transparent",
+                type: .bool,
+                nullable: false
+            )
+            
+            
+            /// The table's columns.
+            ///
+            var columns: [SQLite_Column]
+            
+            
+            /// Creates a new instance.
+            ///
+            init() {
+                
+                self.columns = [
+                    
+                    nameColumn,
+                    rgbColumn,
+                    transparentColumn,
+                ]
+            }
+            
+            
+            /// A result row in the colors table.
+            ///
+            /// This type provides a type safe way to manipulate a set of value for
+            /// the database colors table.
+            ///
+            struct Row {
+                
+                
+                /// The color's name.
+                ///
+                let name: String
+                
+                
+                /// The colors's RGB representation.
+                ///
+                let rgb: String
+                
+                
+                /// Whether the colors is transparent.
+                ///
+                let transparent: Bool
+            }
         }
         
         
-        /// A result row in the colors table.
+        /// A description of the table that stores data about the official LEGO
+        /// parts.
         ///
-        /// This type provides a type safe way to manipulate a set of value for
-        /// the database parts table.
+        /// This type is immutable.
         ///
-        struct Row {
+        struct PartsTable: SQLite_Table {
             
             
-            /// The part's name.
+            /// The table's name.
             ///
-            let name: String
+            let name = "parts"
             
             
-            /// A URL to an image that represents the part.
+            /// A description of the column that stores the part's name.
             ///
-            let imageURL: String?
+            let nameColumn = SQLite_Column(
+                
+                name: "name",
+                type: .char(size: 255),
+                nullable: false
+            )
+            
+            
+            /// A description of the column that stores a URL to an image that
+            /// represents the part.
+            ///
+            let imageURLColumn = SQLite_Column(
+                
+                name: "image_url",
+                type: .char(size: 1024),
+                nullable: true
+            )
+            
+            
+            /// The table's columns.
+            ///
+            var columns: [SQLite_Column]
+            
+            
+            /// Creates a new instance.
+            ///
+            init() {
+                
+                self.columns = [
+                    
+                    nameColumn,
+                    imageURLColumn,
+                ]
+            }
+            
+            
+            /// A result row in the colors table.
+            ///
+            /// This type provides a type safe way to manipulate a set of value for
+            /// the database parts table.
+            ///
+            struct Row {
+                
+                
+                /// The part's name.
+                ///
+                let name: String
+                
+                
+                /// A URL to an image that represents the part.
+                ///
+                let imageURL: String?
+            }
         }
     }
 }

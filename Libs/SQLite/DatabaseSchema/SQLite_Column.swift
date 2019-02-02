@@ -31,7 +31,7 @@ extension SQLite_Column: SQLite_SQLRepresentable {
     ///
     /// This property returns the SQL fragment that can be used in
     /// "CREATE TABLE" queries and other type of SQL queries where a table
-    /// column need to be expressed.
+    /// column needs to be expressed.
     ///
     var sqlRepresentation: String {
         

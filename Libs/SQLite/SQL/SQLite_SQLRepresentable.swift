@@ -3,7 +3,7 @@ import Foundation
 
 
 
-/// An object that can be represented by a SQL fragment.
+/// An object that can be represented by a SQL string.
 ///
 protocol SQLite_SQLRepresentable {
     
