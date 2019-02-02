@@ -15,5 +15,5 @@ protocol SQLite_Table {
     
     /// The table's columns.
     ///
-    var columns: Set<SQLite_Column> { get }
+    var columns: [SQLite_Column] { get }
 }

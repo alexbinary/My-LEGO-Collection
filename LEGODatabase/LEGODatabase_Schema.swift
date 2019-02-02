@@ -83,7 +83,7 @@ struct LEGODatabase_Schema {
         
         /// The table's columns.
         ///
-        var columns: Set<SQLite_Column>
+        var columns: [SQLite_Column]
         
         
         /// Creates a new instance.
@@ -160,7 +160,7 @@ struct LEGODatabase_Schema {
         
         /// The table's columns.
         ///
-        var columns: Set<SQLite_Column>
+        var columns: [SQLite_Column]
         
         
         /// Creates a new instance.

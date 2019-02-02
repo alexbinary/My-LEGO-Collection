@@ -52,13 +52,12 @@ struct SQLite_InsertQuery: SQLite_Query {
     ///
     var sqlRepresentation: String {
         
-        let columns = Array(table.columns)
-        let parameters = columns.map { self.parameters[$0]! }
+        let parameters = table.columns.map { self.parameters[$0]! }
         
         return [
             
             "INSERT INTO \(table.name) (",
-            columns.map { $0.name } .joined(separator: ", "),
+            table.columns.map { $0.name } .joined(separator: ", "),
             ") VALUES(",
             parameters.map { $0.name } .joined(separator: ", "),
             ");"

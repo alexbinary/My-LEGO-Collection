@@ -23,7 +23,7 @@ class SQLite_Statement {
     /// The SQLite pointer that represents the statement.
     ///
     /// This pointer is guaranteed to always represent a valid, prepared
-    /// statment.
+    /// statement.
     ///
     private var pointer: OpaquePointer!
     
@@ -99,8 +99,8 @@ extension SQLite_Statement {
     
     /// Run the statement with values.
     ///
-    /// - Parameter parameterValue: A dictionnary that indicates values to bind
-    ///             that should be bound to parameters.
+    /// - Parameter parameterValues: A dictionnary that indicates values to bind
+    ///             to parameters.
     ///
     func run(with parameterValues: [SQLite_QueryParameter: SQLite_QueryParameterValue]) {
         
@@ -116,22 +116,23 @@ extension SQLite_Statement {
     
     /// Bind values to the statement.
     ///
-    /// - Parameter values: The values to bind to each query parameter.
+    /// - Parameter parameterValues: A dictionnary that indicates values to bind
+    ///             to parameters.
     ///
-    func bind(_ values: [SQLite_QueryParameter: SQLite_QueryParameterValue]) {
+    func bind(_ parameterValues: [SQLite_QueryParameter: SQLite_QueryParameterValue]) {
         
         sqlite3_reset(pointer)
         
-        for (parameter, value) in values {
+        for (parameter, value) in parameterValues {
         
             bind(value, to: parameter)
         }
         
-        boundValues = values
+        boundValues = parameterValues
     }
     
     
-    /// Bind a value to the statment for a specific parameter.
+    /// Bind a value to the statement for a specific parameter.
     ///
     /// - Parameter value: The value to bind.
     /// - Parameter parameter: The query parameter to bind the value to.
@@ -218,9 +219,9 @@ extension SQLite_Statement {
         
         var row = SQLite_TableRow()
         
-        for (index, column) in tableDescription.columns.enumerated() {
+        for (index, columnDescription) in tableDescription.columns.enumerated() {
             
-            row[column] = readValue(at: index, using: column)
+            row[columnDescription] = readValue(at: index, using: columnDescription)
         }
         
         return row
@@ -243,6 +244,11 @@ extension SQLite_Statement {
     /// - Returns: The value.
     ///
     private func readValue(at index: Int, using columnDescription: SQLite_Column) -> SQLite_ColumnValue {
+        
+        guard (0..<sqlite3_column_count(pointer)).contains(Int32(index)) else {
+            
+            fatalError("[DatabaseController] Column index out of range: \(index). Query: \(query.sqlRepresentation)")
+        }
         
         switch columnDescription.type {
             
