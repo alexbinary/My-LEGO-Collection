@@ -17,7 +17,7 @@ struct LEGODatabase {
     /// A description of the structure of the database used in the app to store
     /// official LEGO related data.
     ///
-    /// This type is immutable.
+    /// Instances of this type always have the same value.
     ///
     struct Schema {
         
@@ -37,7 +37,7 @@ struct LEGODatabase {
         /// A description of the table that stores data about the official LEGO
         /// colors.
         ///
-        /// This type is immutable.
+        /// Instances of this type always have the same value.
         ///
         struct ColorsTable: SQLite_Table {
             
@@ -125,7 +125,7 @@ struct LEGODatabase {
         /// A description of the table that stores data about the official LEGO
         /// parts.
         ///
-        /// This type is immutable.
+        /// Instances of this type always have the same value.
         ///
         struct PartsTable: SQLite_Table {
             
