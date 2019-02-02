@@ -170,6 +170,29 @@ extension SQLite_Statement {
 extension SQLite_Statement {
     
     
+    func crashIfTableDescriptionDoesNotMatchActualResults(description tableDescription: SQLite_Table) {
+        
+        let columnCount = sqlite3_column_count(pointer)
+        
+        if columnCount != tableDescription.columns.count {
+            
+            fatalError("[SQLite_Statement] Actual column count (\(columnCount)) does not match table description: \(tableDescription). Query: \(query.sqlRepresentation)")
+        }
+        
+        (0..<columnCount).forEach { index in
+            
+            let raw = sqlite3_column_name(pointer, index)!
+            
+            let columnName = String(cString: raw)
+            
+            if tableDescription.column(withName: columnName) == nil {
+                
+                fatalError("[SQLite_Statement] Result row has a column \"\(columnName)\" but that column was not found in the provided table description: \(tableDescription). Query: \(query.sqlRepresentation)")
+            }
+        }
+    }
+    
+    
     /// Executes a statement and reads all result rows.
     ///
     /// - Parameter tableDescription: A description of the table to use to read
@@ -180,6 +203,8 @@ extension SQLite_Statement {
     ///
     func readAllRows(using tableDescription: SQLite_Table) -> [SQLite_TableRow] {
         
+        crashIfTableDescriptionDoesNotMatchActualResults(description: tableDescription)
+        
         var rows: [SQLite_TableRow] = []
         
         while true {
@@ -188,7 +213,7 @@ extension SQLite_Statement {
             
             guard stepResult.isOneOf([SQLITE_ROW, SQLITE_DONE]) else {
                 
-                fatalError("[DatabaseController] sqlite3_step() returned \(stepResult) for query: \(query). SQLite error: \(connection.errorMessage ?? "")")
+                fatalError("[SQLite_Statement] sqlite3_step() returned \(stepResult) for query: \(query.sqlRepresentation). SQLite error: \(connection.errorMessage ?? "")")
             }
             
             if stepResult == SQLITE_ROW {
@@ -221,9 +246,15 @@ extension SQLite_Statement {
         
         var row = SQLite_TableRow()
         
-        for (index, columnDescription) in tableDescription.columns.enumerated() {
+        (0..<sqlite3_column_count(pointer)).forEach { index in
             
-            row[columnDescription] = readValue(at: index, using: columnDescription)
+            let raw = sqlite3_column_name(pointer, index)!
+            
+            let columnName = String(cString: raw)
+            
+            let columnDescription = tableDescription.column(withName: columnName)!
+            
+            row[columnDescription] = readValue(at: Int(index), using: columnDescription)
         }
         
         return row
@@ -247,11 +278,6 @@ extension SQLite_Statement {
     ///            column declared in the column description.
     ///
     private func readValue(at index: Int, using columnDescription: SQLite_Column) -> SQLite_ColumnValue {
-        
-        guard (0..<sqlite3_column_count(pointer)).contains(Int32(index)) else {
-            
-            fatalError("[DatabaseController] Column index out of range: \(index). Query: \(query.sqlRepresentation)")
-        }
         
         switch columnDescription.type {
             
@@ -305,7 +331,7 @@ extension SQLite_Statement {
         
         guard !valueIsNull(at: index) else {
             
-            fatalError("[DatabaseController] Found `NULL` while expecting non-null boolean value at index: \(index). Query: \(query.sqlRepresentation)")
+            fatalError("[SQLite_Statement] Found `NULL` while expecting non-null boolean value at index: \(index). Query: \(query.sqlRepresentation)")
         }
         
         return sqlite3_column_int(pointer, Int32(index)) != 0
@@ -326,12 +352,12 @@ extension SQLite_Statement {
         
         guard !valueIsNull(at: index) else {
             
-            fatalError("[DatabaseController] Found `NULL` while expecting non-null string value at index: \(index). Query: \(query.sqlRepresentation)")
+            fatalError("[SQLite_Statement] Found `NULL` while expecting non-null string value at index: \(index). Query: \(query.sqlRepresentation)")
         }
         
         guard let raw = sqlite3_column_text(pointer, Int32(index)) else {
             
-            fatalError("[DatabaseController] sqlite3_column_text() returned a nil pointer at index: \(index). Query: \(query.sqlRepresentation)")
+            fatalError("[SQLite_Statement] sqlite3_column_text() returned a nil pointer at index: \(index). Query: \(query.sqlRepresentation)")
         }
         
         return String(cString: raw)
