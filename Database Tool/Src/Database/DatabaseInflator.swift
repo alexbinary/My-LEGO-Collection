@@ -6,14 +6,14 @@ import Foundation
 struct DatabaseInflator {
     
 
-    private var colorInsertStatement: LEGODatabaseColorInsertStatement
-    private var partInsertStatement: LEGODatabasePartInsertStatement
+    private var colorInsertStatement: LEGODatabase_ColorInsertStatement
+    private var partInsertStatement: LEGODatabase_PartInsertStatement
     
     
     init(
         
-        colorInsertStatement: LEGODatabaseColorInsertStatement,
-        partInsertStatement: LEGODatabasePartInsertStatement
+        colorInsertStatement: LEGODatabase_ColorInsertStatement,
+        partInsertStatement: LEGODatabase_PartInsertStatement
         
     ) {
         

@@ -3,7 +3,7 @@ import Foundation
 
 
 
-class LEGODatabasePartInsertStatement: SQLite_InsertStatement {
+class LEGODatabase_PartInsertStatement: SQLite_InsertStatement {
 
     
     init(connection: SQLite_Connection) {

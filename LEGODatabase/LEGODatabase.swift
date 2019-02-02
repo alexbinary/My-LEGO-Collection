@@ -11,5 +11,5 @@ struct LEGODatabase {
     
     /// A description of the database structure.
     ///
-    static let schema = LEGODatabaseSchema()
+    static let schema = LEGODatabase_Schema()
 }

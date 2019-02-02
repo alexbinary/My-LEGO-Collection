@@ -15,7 +15,7 @@ struct DatabaseBuilder {
             fatalError("[DatabaseController] Cannot create database, file exists: \(url.path)")
         }
         
-        let connection = LEGODatabaseConnection(toDatabaseAt: url)
+        let connection = LEGODatabase_Connection(toDatabaseAt: url)
         
         connection.createColorsTable()
         connection.createPartsTable()

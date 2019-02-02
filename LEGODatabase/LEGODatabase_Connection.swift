@@ -3,12 +3,12 @@ import Foundation
 
 
 
-class LEGODatabaseConnection: SQLite_Connection {
+class LEGODatabase_Connection: SQLite_Connection {
     
 }
 
 
-extension LEGODatabaseConnection {
+extension LEGODatabase_Connection {
     
     
     func createColorsTable() {
@@ -24,30 +24,30 @@ extension LEGODatabaseConnection {
 }
 
 
-extension LEGODatabaseConnection {
+extension LEGODatabase_Connection {
     
     
-    func prepareColorInsertStatement() -> LEGODatabaseColorInsertStatement {
+    func prepareColorInsertStatement() -> LEGODatabase_ColorInsertStatement {
         
-        return LEGODatabaseColorInsertStatement(connection: self)
+        return LEGODatabase_ColorInsertStatement(connection: self)
     }
     
     
-    func preparePartInsertStatement() -> LEGODatabasePartInsertStatement {
+    func preparePartInsertStatement() -> LEGODatabase_PartInsertStatement {
         
-        return LEGODatabasePartInsertStatement(connection: self)
+        return LEGODatabase_PartInsertStatement(connection: self)
     }
 }
 
 
-extension LEGODatabaseConnection {
+extension LEGODatabase_Connection {
     
     
-    func readAllColors() -> [LEGODatabaseSchema.ColorsTable.Row] {
+    func readAllColors() -> [LEGODatabase_Schema.ColorsTable.Row] {
         
         return readAllRows(from: LEGODatabase.schema.colorsTable).map { values in
             
-            return LEGODatabaseSchema.ColorsTable.Row(
+            return LEGODatabase_Schema.ColorsTable.Row(
                 
                 name: values[LEGODatabase.schema.colorsTable.nameColumn] as! String,
                 rgb: values[LEGODatabase.schema.colorsTable.rgbColumn] as! String,
@@ -57,11 +57,11 @@ extension LEGODatabaseConnection {
     }
     
     
-    func readAllParts() -> [LEGODatabaseSchema.PartsTable.Row] {
+    func readAllParts() -> [LEGODatabase_Schema.PartsTable.Row] {
         
         return readAllRows(from: LEGODatabase.schema.partsTable).map { values in
             
-            return LEGODatabaseSchema.PartsTable.Row(
+            return LEGODatabase_Schema.PartsTable.Row(
                 
                 name: values[LEGODatabase.schema.partsTable.nameColumn] as! String,
                 imageURL: values[LEGODatabase.schema.partsTable.imageURLColumn] as! String?

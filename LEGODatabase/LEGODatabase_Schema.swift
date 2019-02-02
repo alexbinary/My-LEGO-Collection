@@ -8,7 +8,7 @@ import Foundation
 ///
 /// Instances of this type always have the same value.
 ///
-struct LEGODatabaseSchema {
+struct LEGODatabase_Schema {
     
     
     /// A description of the table that stores data about the official LEGO

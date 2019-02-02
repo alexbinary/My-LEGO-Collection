@@ -3,7 +3,7 @@ import Foundation
 
 
 
-class LEGODatabaseColorInsertStatement: SQLite_InsertStatement {
+class LEGODatabase_ColorInsertStatement: SQLite_InsertStatement {
     
     
     init(connection: SQLite_Connection) {
