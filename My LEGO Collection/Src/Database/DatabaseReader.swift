@@ -6,14 +6,14 @@ import Foundation
 struct DatabaseReader {
     
     
-    private var connection: LEGODatabase_Connection
+    private var connection: LEGODatabaseConnection
     
     
     init(forDatabaseAt url: URL) {
         
         print("[DatabaseReader] opening connection")
         
-        self.connection = LEGODatabase_Connection(toDatabaseAt: url)
+        self.connection = LEGODatabaseConnection(toDatabaseAt: url)
     }
     
     
@@ -49,7 +49,7 @@ struct DatabaseReader {
 extension DatabaseReader {
     
     
-    func color(from row: LEGODatabase.Schema.ColorsTable.Row) -> LEGO_Color {
+    func color(from row: LEGODatabaseSchema.ColorsTable.Row) -> LEGO_Color {
         
         let name = row.name
         let rgb = RGB(fromHexString: row.rgb)
@@ -64,7 +64,7 @@ extension DatabaseReader {
     }
     
     
-    private func part(from row: LEGODatabase.Schema.PartsTable.Row) -> LEGO_Part {
+    private func part(from row: LEGODatabaseSchema.PartsTable.Row) -> LEGO_Part {
         
         let name = row.name
         let imageURL = row.imageURL != nil ? URL(string: row.imageURL!) : nil
