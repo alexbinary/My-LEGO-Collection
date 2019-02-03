@@ -6,7 +6,7 @@ import Foundation
 /// A statement that reads data from a table in a SQLite database.
 ///
 /// This class provides convenience methods that facilitate the execution of
-/// "SELECT" statements.
+/// queries of the form "SELECT * FROM <table>;".
 ///
 class SQLite_SelectStatement: SQLite_Statement {
     
@@ -21,7 +21,7 @@ class SQLite_SelectStatement: SQLite_Statement {
     private let selectQuery: SQLite_SelectQuery
     
     
-    /// Creates a new statement for a given table.
+    /// Creates a new statement.
     ///
     /// - Parameter table: The table the statement reads from.
     /// - Parameter connection: The connection to use to compile the query.
@@ -39,6 +39,11 @@ class SQLite_SelectStatement: SQLite_Statement {
 extension SQLite_SelectStatement {
     
     
+    /// Read all result rows returned by the statement.
+    ///
+    /// - Returns: The rows. Values are read according to the type of the
+    ///            corresponding column declared in the table description.
+    ///
     func readAllRows() -> [SQLite_TableRow] {
         
         let rows = runThroughCompletion(readingResultRowsWith: table)

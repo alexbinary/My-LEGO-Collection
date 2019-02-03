@@ -3,10 +3,10 @@ import Foundation
 
 
 
-/// A statement that inserts data into a table.
+/// A statement that inserts data into a table in a SQLite database.
 ///
 /// This class provides convenience methods that facilitate the execution of
-/// "INSERT INTO" statements.
+/// queries of the form "INSERT INTO <table>;".
 ///
 class SQLite_InsertStatement: SQLite_Statement {
     
