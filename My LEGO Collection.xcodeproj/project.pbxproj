@@ -15,6 +15,7 @@
 		2912D0A121D7C40D00C623A4 /* Double+roundedMaxNumberOfDecimals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2912D09E21D7B3C700C623A4 /* Double+roundedMaxNumberOfDecimals.swift */; };
 		291560702206FB1D00CC2152 /* SQLite_SelectStatement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2915606F2206FB1D00CC2152 /* SQLite_SelectStatement.swift */; };
 		291560722206FB2A00CC2152 /* SQLite_CreateTableStatement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291560712206FB2A00CC2152 /* SQLite_CreateTableStatement.swift */; };
+		291560732206FE5900CC2152 /* SQLite_CreateTableStatement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291560712206FB2A00CC2152 /* SQLite_CreateTableStatement.swift */; };
 		2928C63E21E93F9D0061031C /* Part.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2928C63D21E93F9D0061031C /* Part.swift */; };
 		2932C78B21FB98BC00C481EA /* SQLite_Statement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2932C78A21FB98BC00C481EA /* SQLite_Statement.swift */; };
 		2932C78D21FB992700C481EA /* DatabaseInflator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2932C78C21FB992700C481EA /* DatabaseInflator.swift */; };
@@ -535,6 +536,7 @@
 				29413B2E22037EC70092B99C /* SQLite_ColumnType.swift in Sources */,
 				2932C78E21FB995200C481EA /* SQLite_Connection.swift in Sources */,
 				2932C79221FBA0BC00C481EA /* DatabaseBuilder.swift in Sources */,
+				291560732206FE5900CC2152 /* SQLite_CreateTableStatement.swift in Sources */,
 				29413B502203895B0092B99C /* SQLite_CreateTableQuery.swift in Sources */,
 				2912D09A21D7B37700C623A4 /* Color.swift in Sources */,
 				2963B14721D7B14600B97C19 /* main.swift in Sources */,

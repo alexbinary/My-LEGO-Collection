@@ -112,7 +112,7 @@ extension SQLite_Statement {
     }
     
     
-    func readAllRows(using tableDescription: SQLite_Table?) -> [SQLite_TableRow] {
+    private func readAllRows(using tableDescription: SQLite_Table?) -> [SQLite_TableRow] {
         
         var rows: [SQLite_TableRow] = []
         
@@ -146,7 +146,7 @@ extension SQLite_Statement {
     }
     
     
-    func crashIfTableDescriptionDoesNotMatchActualResults(description tableDescription: SQLite_Table) {
+    private func crashIfTableDescriptionDoesNotMatchActualResults(description tableDescription: SQLite_Table) {
         
         let columnCount = sqlite3_column_count(pointer)
         

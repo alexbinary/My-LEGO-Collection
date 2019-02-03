@@ -3,22 +3,22 @@ import Foundation
 
 
 
-/// A statement that inserts data into a table.
+/// A statement that creates a table in a SQLite database.
 ///
 /// This class provides convenience methods that facilitate the execution of
-/// "INSERT INTO" statements.
+/// "CREATE TABLE" statements.
 ///
 class SQLite_CreateTableStatement: SQLite_Statement {
     
     
-    /// The table the statement inserts data into.
+    /// The table the statement creates.
     ///
     private let table: SQLite_Table
     
     
-    /// The insert query that was used to compile the statement.
+    /// The query that was used to compile the statement.
     ///
-    private let insertQuery: SQLite_InsertQuery
+    private let createTableQuery: SQLite_CreateTableQuery
     
     
     /// Creates a new statement for a given table.
@@ -26,37 +26,23 @@ class SQLite_CreateTableStatement: SQLite_Statement {
     /// - Parameter table: The table the statement should insert data into.
     /// - Parameter connection: The connection to use to compile the query.
     ///
-    init(for table: SQLite_Table, connection: SQLite_Connection) {
+    init(creating table: SQLite_Table, connection: SQLite_Connection) {
         
         self.table = table
-        self.insertQuery = SQLite_InsertQuery(insertingInto: table)
+        self.createTableQuery = SQLite_CreateTableQuery(creating: table)
         
-        super.init(connection: connection, query: insertQuery)
+        super.init(connection: connection, query: createTableQuery)
     }
 }
 
 
 extension SQLite_CreateTableStatement {
     
-    
-    /// Inserts values in the table.
+
+    /// Executes the statement.
     ///
-    /// - Parameter columnValues: The value to insert in each column.
-    ///
-    func insert(_ columnValues: [SQLite_Column: SQLite_QueryParameterValue]) {
+    func run() {
         
-        var parameterValues: [SQLite_QueryParameter: SQLite_QueryParameterValue] = [:]
-        
-        for (column, parameter) in insertQuery.parameters {
-        
-            guard let value = columnValues[column] else {
-                
-                fatalError("[SQLite_InsertStatement] Missing value for column: \(column). Trying to insert into table: \(table.name), values: \(columnValues)")
-            }
-            
-            parameterValues[parameter] = value
-        }
-        
-        _ = runThroughCompletion(with: parameterValues)
+        _ = runThroughCompletion()
     }
 }

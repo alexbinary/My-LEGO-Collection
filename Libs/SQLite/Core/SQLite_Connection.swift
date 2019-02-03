@@ -83,11 +83,9 @@ extension SQLite_Connection {
     ///
     func create(_ table: SQLite_Table) {
         
-        let query = SQLite_CreateTableQuery(creating: table)
+        let statement = SQLite_CreateTableStatement(creating: table, connection: self)
         
-        let statement = SQLite_Statement(connection: self, query: query)
-        
-        _ = statement.runThroughCompletion()
+        statement.run()
     }
 }
 
