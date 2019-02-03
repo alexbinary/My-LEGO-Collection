@@ -13,6 +13,8 @@
 		2912D09D21D7B38E00C623A4 /* ResultsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2912D09C21D7B38E00C623A4 /* ResultsList.swift */; };
 		2912D09F21D7B3C700C623A4 /* Double+roundedMaxNumberOfDecimals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2912D09E21D7B3C700C623A4 /* Double+roundedMaxNumberOfDecimals.swift */; };
 		2912D0A121D7C40D00C623A4 /* Double+roundedMaxNumberOfDecimals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2912D09E21D7B3C700C623A4 /* Double+roundedMaxNumberOfDecimals.swift */; };
+		291560702206FB1D00CC2152 /* SQLite_SelectStatement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2915606F2206FB1D00CC2152 /* SQLite_SelectStatement.swift */; };
+		291560722206FB2A00CC2152 /* SQLite_CreateTableStatement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291560712206FB2A00CC2152 /* SQLite_CreateTableStatement.swift */; };
 		2928C63E21E93F9D0061031C /* Part.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2928C63D21E93F9D0061031C /* Part.swift */; };
 		2932C78B21FB98BC00C481EA /* SQLite_Statement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2932C78A21FB98BC00C481EA /* SQLite_Statement.swift */; };
 		2932C78D21FB992700C481EA /* DatabaseInflator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2932C78C21FB992700C481EA /* DatabaseInflator.swift */; };
@@ -97,6 +99,8 @@
 		2912D09921D7B37700C623A4 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		2912D09C21D7B38E00C623A4 /* ResultsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsList.swift; sourceTree = "<group>"; };
 		2912D09E21D7B3C700C623A4 /* Double+roundedMaxNumberOfDecimals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+roundedMaxNumberOfDecimals.swift"; sourceTree = "<group>"; };
+		2915606F2206FB1D00CC2152 /* SQLite_SelectStatement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLite_SelectStatement.swift; sourceTree = "<group>"; };
+		291560712206FB2A00CC2152 /* SQLite_CreateTableStatement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLite_CreateTableStatement.swift; sourceTree = "<group>"; };
 		2928C63D21E93F9D0061031C /* Part.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Part.swift; sourceTree = "<group>"; };
 		2932C78821FB988D00C481EA /* SQLite_Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLite_Connection.swift; sourceTree = "<group>"; };
 		2932C78A21FB98BC00C481EA /* SQLite_Statement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLite_Statement.swift; sourceTree = "<group>"; };
@@ -232,6 +236,8 @@
 				2932C78821FB988D00C481EA /* SQLite_Connection.swift */,
 				2932C78A21FB98BC00C481EA /* SQLite_Statement.swift */,
 				29413B46220388460092B99C /* SQLite_InsertStatement.swift */,
+				2915606F2206FB1D00CC2152 /* SQLite_SelectStatement.swift */,
+				291560712206FB2A00CC2152 /* SQLite_CreateTableStatement.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -576,11 +582,13 @@
 				2932C79021FB995C00C481EA /* SQLite_Connection.swift in Sources */,
 				2932C78B21FB98BC00C481EA /* SQLite_Statement.swift in Sources */,
 				29FECB3621FCF82400254DCC /* LEGODatabase_Connection.swift in Sources */,
+				291560702206FB1D00CC2152 /* SQLite_SelectStatement.swift in Sources */,
 				2995231F21E52967002F8CB2 /* RGB.swift in Sources */,
 				2992AB8D2204A57E001DD82C /* SQLite_QueryParameter.swift in Sources */,
 				2992AB912204B556001DD82C /* SQLite_TableRow.swift in Sources */,
 				29A77BFA21E2011D009A162E /* DatabaseReader.swift in Sources */,
 				297A579521EA3A6C00A426CA /* LegoPartsListViewController.swift in Sources */,
+				291560722206FB2A00CC2152 /* SQLite_CreateTableStatement.swift in Sources */,
 				2995232121E539AE002F8CB2 /* UIColor+fromRGB.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
