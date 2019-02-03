@@ -115,7 +115,7 @@ extension SQLite_Statement {
     ///
     func bind(_ parameterValues: [SQLite_QueryParameter: SQLite_QueryParameterValue]) {
         
-        parameterValues.forEach { (parameter, value) in 
+        parameterValues.forEach { (parameter, value) in
         
             bind(value, to: parameter)
         }
@@ -177,7 +177,7 @@ extension SQLite_Statement {
             
             let columnName = String(cString: raw)
             
-            if tableDescription.column(withName: columnName) == nil {
+            if !tableDescription.hasColumn(withName: columnName) {
                 
                 fatalError("[SQLite_Statement] Result row has a column \"\(columnName)\" but that column was not found in the provided table description: \(tableDescription). Query: \(query.sqlRepresentation)")
             }

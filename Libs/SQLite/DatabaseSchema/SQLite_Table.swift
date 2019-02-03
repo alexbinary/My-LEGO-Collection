@@ -20,7 +20,10 @@ protocol SQLite_Table {
     var columns: [SQLite_Column] { get }
     
 
-    func column(withName columnName: String) -> SQLite_Column?
+    func column(withName name: String) -> SQLite_Column?
+    
+    
+    func hasColumn(withName name: String) -> Bool
 }
 
 
@@ -30,5 +33,11 @@ extension SQLite_Table {
     func column(withName name: String) -> SQLite_Column? {
         
         return columns.first(where: { $0.name == name })
+    }
+    
+    
+    func hasColumn(withName name: String) -> Bool {
+        
+        return column(withName: name) != nil
     }
 }
