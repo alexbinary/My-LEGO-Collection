@@ -6,7 +6,7 @@ import Foundation
 /// A statement that creates a table in a SQLite database.
 ///
 /// This class provides convenience methods that facilitate the execution of
-/// "CREATE TABLE" statements.
+/// queries of the form "CREATE TABLE (<column>);".
 ///
 class SQLite_CreateTableStatement: SQLite_Statement {
     
@@ -21,9 +21,9 @@ class SQLite_CreateTableStatement: SQLite_Statement {
     private let createTableQuery: SQLite_CreateTableQuery
     
     
-    /// Creates a new statement for a given table.
+    /// Creates a new statement.
     ///
-    /// - Parameter table: The table the statement should insert data into.
+    /// - Parameter table: The table the statement should create.
     /// - Parameter connection: The connection to use to compile the query.
     ///
     init(creating table: SQLite_Table, connection: SQLite_Connection) {
