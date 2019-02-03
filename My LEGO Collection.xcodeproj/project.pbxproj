@@ -16,6 +16,7 @@
 		291560702206FB1D00CC2152 /* SQLite_SelectStatement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2915606F2206FB1D00CC2152 /* SQLite_SelectStatement.swift */; };
 		291560722206FB2A00CC2152 /* SQLite_CreateTableStatement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291560712206FB2A00CC2152 /* SQLite_CreateTableStatement.swift */; };
 		291560732206FE5900CC2152 /* SQLite_CreateTableStatement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291560712206FB2A00CC2152 /* SQLite_CreateTableStatement.swift */; };
+		291560742206FF2B00CC2152 /* SQLite_SelectStatement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2915606F2206FB1D00CC2152 /* SQLite_SelectStatement.swift */; };
 		2928C63E21E93F9D0061031C /* Part.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2928C63D21E93F9D0061031C /* Part.swift */; };
 		2932C78B21FB98BC00C481EA /* SQLite_Statement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2932C78A21FB98BC00C481EA /* SQLite_Statement.swift */; };
 		2932C78D21FB992700C481EA /* DatabaseInflator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2932C78C21FB992700C481EA /* DatabaseInflator.swift */; };
@@ -520,6 +521,7 @@
 				29FECB3421FCF7ED00254DCC /* LEGODatabase_ColorInsertStatement.swift in Sources */,
 				2912D09D21D7B38E00C623A4 /* ResultsList.swift in Sources */,
 				29413B4D220388DF0092B99C /* SQLite_InsertStatement.swift in Sources */,
+				291560742206FF2B00CC2152 /* SQLite_SelectStatement.swift in Sources */,
 				2957C6BF21E0C77600E512E5 /* AppController.swift in Sources */,
 				2972EBD022064F86003CBE33 /* LEGODatabase_PartInsertStatement.swift in Sources */,
 				29C6881821DBCEDD00B4A9E0 /* Date+elapsedTimeSince.swift in Sources */,

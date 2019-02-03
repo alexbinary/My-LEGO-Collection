@@ -3,35 +3,35 @@ import Foundation
 
 
 
-/// A statement that inserts data into a table.
+/// A statement that reads data from a table in a SQLite database.
 ///
 /// This class provides convenience methods that facilitate the execution of
-/// "INSERT INTO" statements.
+/// "SELECT" statements.
 ///
 class SQLite_SelectStatement: SQLite_Statement {
     
     
-    /// The table the statement inserts data into.
+    /// The table the statement reads from.
     ///
     private let table: SQLite_Table
     
     
-    /// The insert query that was used to compile the statement.
+    /// The query that was used to compile the statement.
     ///
-    private let insertQuery: SQLite_InsertQuery
+    private let selectQuery: SQLite_SelectQuery
     
     
     /// Creates a new statement for a given table.
     ///
-    /// - Parameter table: The table the statement should insert data into.
+    /// - Parameter table: The table the statement reads from.
     /// - Parameter connection: The connection to use to compile the query.
     ///
-    init(for table: SQLite_Table, connection: SQLite_Connection) {
+    init(selectingFrom table: SQLite_Table, connection: SQLite_Connection) {
         
         self.table = table
-        self.insertQuery = SQLite_InsertQuery(insertingInto: table)
+        self.selectQuery = SQLite_SelectQuery(selectingFrom: table)
         
-        super.init(connection: connection, query: insertQuery)
+        super.init(connection: connection, query: selectQuery)
     }
 }
 
@@ -39,24 +39,10 @@ class SQLite_SelectStatement: SQLite_Statement {
 extension SQLite_SelectStatement {
     
     
-    /// Inserts values in the table.
-    ///
-    /// - Parameter columnValues: The value to insert in each column.
-    ///
-    func insert(_ columnValues: [SQLite_Column: SQLite_QueryParameterValue]) {
+    func readAllRows() -> [SQLite_TableRow] {
         
-        var parameterValues: [SQLite_QueryParameter: SQLite_QueryParameterValue] = [:]
+        let rows = runThroughCompletion(readingResultRowsWith: table)
         
-        for (column, parameter) in insertQuery.parameters {
-        
-            guard let value = columnValues[column] else {
-                
-                fatalError("[SQLite_InsertStatement] Missing value for column: \(column). Trying to insert into table: \(table.name), values: \(columnValues)")
-            }
-            
-            parameterValues[parameter] = value
-        }
-        
-        _ = runThroughCompletion(with: parameterValues)
+        return rows
     }
 }
