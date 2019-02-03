@@ -8,7 +8,7 @@ class LEGODatabase_PartInsertStatement: SQLite_InsertStatement {
     
     init(connection: SQLite_Connection) {
         
-        super.init(insertingInto: LEGODatabase.schema.partsTable, connection: connection)
+        super.init(insertingIntoTable: LEGODatabase.schema.partsTable, connection: connection)
     }
     
     

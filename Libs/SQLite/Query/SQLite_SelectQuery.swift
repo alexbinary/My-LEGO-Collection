@@ -12,16 +12,16 @@ struct SQLite_SelectQuery: SQLite_Query {
     
     /// A description of the table the query selects data from.
     ///
-    let table: SQLite_Table
+    let tableDescription: SQLite_TableDescription
     
     
     /// Creates a new query.
     ///
-    /// - Parameter table: The table the query selects data from.
+    /// - Parameter tableDescription: The table the query selects data from.
     ///
-    init(selectingFrom table: SQLite_Table) {
+    init(selectingFromTable tableDescription: SQLite_TableDescription) {
         
-        self.table = table
+        self.tableDescription = tableDescription
     }
     
     
@@ -29,6 +29,6 @@ struct SQLite_SelectQuery: SQLite_Query {
     ///
     var sqlRepresentation: String {
         
-        return "SELECT * FROM \(table.name);"
+        return "SELECT * FROM \(tableDescription.name);"
     }
 }

@@ -17,7 +17,7 @@ struct SQLite_InsertQuery: SQLite_Query {
     
     /// A description of the table the query creates.
     ///
-    let table: SQLite_Table
+    let tableDescription: SQLite_TableDescription
     
     
     /// The query parameters used in the query.
@@ -30,16 +30,16 @@ struct SQLite_InsertQuery: SQLite_Query {
    
     /// Creates a new query.
     ///
-    /// - Parameter table: A description of the table the query inserts data
-    ///             into.
+    /// - Parameter tableDescription: A description of the table the query
+    ///             should insert data into.
     ///
-    init(insertingInto table: SQLite_Table) {
+    init(insertingIntoTable tableDescription: SQLite_TableDescription) {
         
-        self.table = table
+        self.tableDescription = tableDescription
         
         var parameters: [SQLite_Column: SQLite_QueryParameter] = [:]
         
-        for column in table.columns {
+        for column in tableDescription.columns {
             
             parameters[column] = SQLite_QueryParameter(name: ":\(column.name)")
         }
@@ -52,12 +52,12 @@ struct SQLite_InsertQuery: SQLite_Query {
     ///
     var sqlRepresentation: String {
         
-        let parameters = table.columns.map { self.parameters[$0]! }
+        let parameters = tableDescription.columns.map { self.parameters[$0]! }
         
         return [
             
-            "INSERT INTO \(table.name) (",
-            table.columns.map { $0.name } .joined(separator: ", "),
+            "INSERT INTO \(tableDescription.name) (",
+            tableDescription.columns.map { $0.name } .joined(separator: ", "),
             ") VALUES(",
             parameters.map { $0.name } .joined(separator: ", "),
             ");"

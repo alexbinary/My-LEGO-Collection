@@ -28,7 +28,7 @@ struct LEGODatabase_Schema {
     ///
     /// Instances of this type always have the same value.
     ///
-    class ColorsTable: SQLite_Table {
+    class ColorsTable: SQLite_TableDescription {
         
         
         /// A description of the column that stores the color's name.
@@ -106,7 +106,7 @@ struct LEGODatabase_Schema {
     ///
     /// Instances of this type always have the same value.
     ///
-    class PartsTable: SQLite_Table {
+    class PartsTable: SQLite_TableDescription {
         
         
         /// A description of the column that stores the part's name.

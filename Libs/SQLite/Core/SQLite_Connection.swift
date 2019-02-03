@@ -79,11 +79,11 @@ extension SQLite_Connection {
     
     /// Creates a table in the database.
     ///
-    /// - Parameter table: A description of the table to create.
+    /// - Parameter tableDescription: A description of the table to create.
     ///
-    func create(_ table: SQLite_Table) {
+    func createTable(describedBy tableDescription: SQLite_TableDescription) {
         
-        let statement = SQLite_CreateTableStatement(creating: table, connection: self)
+        let statement = SQLite_CreateTableStatement(creatingTable: tableDescription, connection: self)
         
         statement.run()
     }
@@ -95,16 +95,16 @@ extension SQLite_Connection {
     
     /// Reads all rows from a table.
     ///
-    /// - Parameter table: A description of the table to read from.
+    /// - Parameter tableDescription: A description of the table to read from.
     ///
     /// - Returns: An array of dictionnaries that contain the value of each
     ///            column for each row. Values are read according to the type
     ///            of the corresponding column declared in the table
     ///            description.
     ///
-    func readAllRows(from table: SQLite_Table) -> [SQLite_TableRow] {
+    func readAllRows(fromTableDescribedBy tableDescription: SQLite_TableDescription) -> [SQLite_TableRow] {
         
-        let statement = SQLite_SelectStatement(selectingFrom: table, connection: self)
+        let statement = SQLite_SelectStatement(selectingFromTable: tableDescription, connection: self)
         
         let rows = statement.readAllRows()
         

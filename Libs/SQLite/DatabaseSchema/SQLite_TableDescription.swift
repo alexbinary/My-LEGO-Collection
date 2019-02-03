@@ -5,7 +5,7 @@ import Foundation
 
 /// A description of a SQLite database table.
 ///
-class SQLite_Table {
+class SQLite_TableDescription {
    
     
     /// The table's name.
@@ -33,7 +33,7 @@ class SQLite_Table {
     }
     
     
-    func hasColumn(withName name: String) -> Bool {
+    func tableHasColumn(withName name: String) -> Bool {
         
         return column(withName: name) != nil
     }

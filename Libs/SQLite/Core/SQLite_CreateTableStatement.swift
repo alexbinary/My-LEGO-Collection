@@ -11,9 +11,9 @@ import Foundation
 class SQLite_CreateTableStatement: SQLite_Statement {
     
     
-    /// The table the statement creates.
+    /// A description of the table the statement creates.
     ///
-    private let table: SQLite_Table
+    private let tableDescription: SQLite_TableDescription
     
     
     /// The query that was used to compile the statement.
@@ -23,13 +23,13 @@ class SQLite_CreateTableStatement: SQLite_Statement {
     
     /// Creates a new statement.
     ///
-    /// - Parameter table: The table the statement should create.
+    /// - Parameter tableDescription: The table the statement should create.
     /// - Parameter connection: The connection to use to compile the query.
     ///
-    init(creating table: SQLite_Table, connection: SQLite_Connection) {
+    init(creatingTable tableDescription: SQLite_TableDescription, connection: SQLite_Connection) {
         
-        self.table = table
-        self.createTableQuery = SQLite_CreateTableQuery(creating: table)
+        self.tableDescription = tableDescription
+        self.createTableQuery = SQLite_CreateTableQuery(creatingTable: tableDescription)
         
         super.init(connection: connection, query: createTableQuery)
     }

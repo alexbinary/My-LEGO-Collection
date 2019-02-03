@@ -11,9 +11,9 @@ import Foundation
 class SQLite_InsertStatement: SQLite_Statement {
     
     
-    /// The table the statement inserts data into.
+    /// A description of the table the statement inserts data into.
     ///
-    private let table: SQLite_Table
+    private let tableDescription: SQLite_TableDescription
     
     
     /// The query that was used to compile the statement.
@@ -23,13 +23,14 @@ class SQLite_InsertStatement: SQLite_Statement {
     
     /// Creates a new statement.
     ///
-    /// - Parameter table: The table the statement should insert data into.
+    /// - Parameter tableDescription: The table the statement should insert data
+    ///             into.
     /// - Parameter connection: The connection to use to compile the query.
     ///
-    init(insertingInto table: SQLite_Table, connection: SQLite_Connection) {
+    init(insertingIntoTable tableDescription: SQLite_TableDescription, connection: SQLite_Connection) {
         
-        self.table = table
-        self.insertQuery = SQLite_InsertQuery(insertingInto: table)
+        self.tableDescription = tableDescription
+        self.insertQuery = SQLite_InsertQuery(insertingIntoTable: tableDescription)
         
         super.init(connection: connection, query: insertQuery)
     }
@@ -52,7 +53,7 @@ extension SQLite_InsertStatement {
         
             guard let value = columnValues[column] else {
                 
-                fatalError("[SQLite_InsertStatement] Missing value for column: \(column). Trying to insert into table: \(table.name), values: \(columnValues)")
+                fatalError("[SQLite_InsertStatement] Missing value for column: \(column). Trying to insert into table: \(tableDescription.name), values: \(columnValues)")
             }
             
             parameterValues[parameter] = value

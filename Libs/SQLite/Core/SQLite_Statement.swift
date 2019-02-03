@@ -95,11 +95,11 @@ extension SQLite_Statement {
     /// - Returns: The rows. Values are read according to the type of the
     ///            corresponding column declared in the table description.
     ///
-    func runThroughCompletion(with parameterValues: [SQLite_QueryParameter: SQLite_QueryParameterValue] = [:], readingResultRowsWith tableDescription: SQLite_Table? = nil) -> [SQLite_TableRow] {
+    func runThroughCompletion(with parameterValues: [SQLite_QueryParameter: SQLite_QueryParameterValue] = [:], readingResultRowsWith tableDescription: SQLite_TableDescription? = nil) -> [SQLite_TableRow] {
         
         if tableDescription != nil {
             
-            crashIfTableDescriptionDoesNotMatchActualResults(description: tableDescription!)
+            crashIfTableDescriptionDoesNotMatchActualResults(tableDescription!)
         }
         
         sqlite3_reset(pointer)
@@ -112,7 +112,7 @@ extension SQLite_Statement {
     }
     
     
-    private func readAllRows(using tableDescription: SQLite_Table?) -> [SQLite_TableRow] {
+    private func readAllRows(using tableDescription: SQLite_TableDescription?) -> [SQLite_TableRow] {
         
         var rows: [SQLite_TableRow] = []
         
@@ -146,7 +146,7 @@ extension SQLite_Statement {
     }
     
     
-    private func crashIfTableDescriptionDoesNotMatchActualResults(description tableDescription: SQLite_Table) {
+    private func crashIfTableDescriptionDoesNotMatchActualResults(_ tableDescription: SQLite_TableDescription) {
         
         let columnCount = sqlite3_column_count(pointer)
         
@@ -161,7 +161,7 @@ extension SQLite_Statement {
             
             let columnName = String(cString: raw)
             
-            if !tableDescription.hasColumn(withName: columnName) {
+            if !tableDescription.tableHasColumn(withName: columnName) {
                 
                 fatalError("[SQLite_Statement] Result row has a column \"\(columnName)\" but that column was not found in the provided table description: \(tableDescription). Query: \(query.sqlRepresentation)")
             }
@@ -179,7 +179,7 @@ extension SQLite_Statement {
     /// - Returns: The row. Values are read according to the type of the
     ///            corresponding column declared in the table description.
     ///
-    private func readRow(using tableDescription: SQLite_Table) -> SQLite_TableRow {
+    private func readRow(using tableDescription: SQLite_TableDescription) -> SQLite_TableRow {
         
         var row = SQLite_TableRow()
         

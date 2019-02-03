@@ -11,9 +11,9 @@ import Foundation
 class SQLite_SelectStatement: SQLite_Statement {
     
     
-    /// The table the statement reads from.
+    /// A description of the table the statement reads from.
     ///
-    private let table: SQLite_Table
+    private let tableDescription: SQLite_TableDescription
     
     
     /// The query that was used to compile the statement.
@@ -23,13 +23,13 @@ class SQLite_SelectStatement: SQLite_Statement {
     
     /// Creates a new statement.
     ///
-    /// - Parameter table: The table the statement reads from.
+    /// - Parameter tableDescription: The table the statement reads from.
     /// - Parameter connection: The connection to use to compile the query.
     ///
-    init(selectingFrom table: SQLite_Table, connection: SQLite_Connection) {
+    init(selectingFromTable tableDescription: SQLite_TableDescription, connection: SQLite_Connection) {
         
-        self.table = table
-        self.selectQuery = SQLite_SelectQuery(selectingFrom: table)
+        self.tableDescription = tableDescription
+        self.selectQuery = SQLite_SelectQuery(selectingFromTable: tableDescription)
         
         super.init(connection: connection, query: selectQuery)
     }
@@ -46,7 +46,7 @@ extension SQLite_SelectStatement {
     ///
     func readAllRows() -> [SQLite_TableRow] {
         
-        let rows = runThroughCompletion(readingResultRowsWith: table)
+        let rows = runThroughCompletion(readingResultRowsWith: tableDescription)
         
         return rows
     }

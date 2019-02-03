@@ -12,16 +12,17 @@ struct SQLite_CreateTableQuery: SQLite_Query {
     
     /// A description of the table the query creates.
     ///
-    let table: SQLite_Table
+    let tableDescription: SQLite_TableDescription
     
     
     /// Creates a new query.
     ///
-    /// - Parameter table: A description of the table the query creates.
+    /// - Parameter tableDescription: A description of the table the query
+    ///             should create.
     ///
-    init(creating table: SQLite_Table) {
+    init(creatingTable tableDescription: SQLite_TableDescription) {
      
-        self.table = table
+        self.tableDescription = tableDescription
     }
     
     
@@ -31,8 +32,8 @@ struct SQLite_CreateTableQuery: SQLite_Query {
         
         return [
         
-            "CREATE TABLE \(table.name) (",
-            table.columns.map { $0.sqlRepresentation } .joined(separator: ", "),
+            "CREATE TABLE \(tableDescription.name) (",
+            tableDescription.columns.map { $0.sqlRepresentation } .joined(separator: ", "),
             ");",
             
         ].joined()
