@@ -84,9 +84,16 @@ class SQLite_Statement {
 extension SQLite_Statement {
     
 
-    /// Executes the statement.
+    /// Run the statement with values.
     ///
-    func run() {
+    /// - Parameter parameterValues: A dictionnary that indicates values to bind
+    ///             to parameters.
+    ///
+    func run(with parameterValues: [SQLite_QueryParameter: SQLite_QueryParameterValue] = [:]) {
+        
+        sqlite3_reset(pointer)
+        
+        bind(parameterValues)
         
         let stepResult = sqlite3_step(pointer)
         
@@ -94,19 +101,6 @@ extension SQLite_Statement {
             
             fatalError("[SQLite_Statement] sqlite3_step() returned an unexpected value: \(stepResult). Expected value was: \(SQLITE_DONE). Query: \(query.sqlRepresentation). Bound values: \(boundValues). SQLite error: \(connection.errorMessage ?? "")")
         }
-    }
-    
-    
-    /// Run the statement with values.
-    ///
-    /// - Parameter parameterValues: A dictionnary that indicates values to bind
-    ///             to parameters.
-    ///
-    func run(with parameterValues: [SQLite_QueryParameter: SQLite_QueryParameterValue]) {
-        
-        bind(parameterValues)
-        
-        run()
     }
 }
 
@@ -121,9 +115,7 @@ extension SQLite_Statement {
     ///
     func bind(_ parameterValues: [SQLite_QueryParameter: SQLite_QueryParameterValue]) {
         
-        sqlite3_reset(pointer)
-        
-        for (parameter, value) in parameterValues {
+        parameterValues.forEach { (parameter, value) in 
         
             bind(value, to: parameter)
         }
