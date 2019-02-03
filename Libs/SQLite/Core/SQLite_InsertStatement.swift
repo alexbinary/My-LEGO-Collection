@@ -57,6 +57,6 @@ extension SQLite_InsertStatement {
             parameterValues[parameter] = value
         }
         
-        run(with: parameterValues)
+        _ = runThroughCompletion(with: parameterValues)
     }
 }

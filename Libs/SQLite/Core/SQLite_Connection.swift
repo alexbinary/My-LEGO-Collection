@@ -87,7 +87,7 @@ extension SQLite_Connection {
         
         let statement = SQLite_Statement(connection: self, query: query)
         
-        statement.run()
+        _ = statement.runThroughCompletion()
     }
 }
 
@@ -110,6 +110,8 @@ extension SQLite_Connection {
         
         let statement = SQLite_Statement(connection: self, query: query)
         
-        return statement.runThroughCompletion(readingRowsWith: table)
+        let rows = statement.runThroughCompletion(readingResultRowsWith: table)
+        
+        return rows
     }
 }

@@ -84,18 +84,117 @@ class SQLite_Statement {
 extension SQLite_Statement {
     
 
-    /// Run the statement with values.
+    /// Executes the statement until all result rows are returned.
     ///
-    /// - Parameter parameterValues: A dictionnary that indicates values to bind
-    ///             to parameters.
+    /// - Parameter parameterValues: A dictionnary that contains values to bind
+    ///             to the query parameters.
     ///
-    func run(with parameterValues: [SQLite_QueryParameter: SQLite_QueryParameterValue] = [:]) {
+    /// - Parameter tableDescription: A description of the table to use to read
+    ///             the rows.
+    ///
+    /// - Returns: The rows. Values are read according to the type of the
+    ///            corresponding column declared in the table description.
+    ///
+    func runThroughCompletion(with parameterValues: [SQLite_QueryParameter: SQLite_QueryParameterValue] = [:], readingResultRowsWith tableDescription: SQLite_Table? = nil) -> [SQLite_TableRow] {
+        
+        if tableDescription != nil {
+            
+            crashIfTableDescriptionDoesNotMatchActualResults(description: tableDescription!)
+        }
         
         sqlite3_reset(pointer)
         
         bind(parameterValues)
         
-        _ = runThroughCompletion(readingRowsWith: nil)
+        let rows = readAllRows(using: tableDescription)
+        
+        return rows
+    }
+    
+    
+    func readAllRows(using tableDescription: SQLite_Table?) -> [SQLite_TableRow] {
+        
+        var rows: [SQLite_TableRow] = []
+        
+        while true {
+            
+            let stepResult = sqlite3_step(pointer)
+            
+            guard stepResult.isOneOf([SQLITE_ROW, SQLITE_DONE]) else {
+                
+                fatalError("[SQLite_Statement] sqlite3_step() returned \(stepResult) for query: \(query.sqlRepresentation). SQLite error: \(connection.errorMessage ?? "")")
+            }
+            
+            if stepResult == SQLITE_ROW {
+                
+                guard tableDescription != nil else {
+                    
+                    fatalError("[SQLite_Statement] TODO")
+                }
+                
+                let row = readRow(using: tableDescription!)
+                
+                rows.append(row)
+                
+            } else {
+                
+                break
+            }
+        }
+        
+        return rows
+    }
+    
+    
+    func crashIfTableDescriptionDoesNotMatchActualResults(description tableDescription: SQLite_Table) {
+        
+        let columnCount = sqlite3_column_count(pointer)
+        
+        if columnCount != tableDescription.columns.count {
+            
+            fatalError("[SQLite_Statement] Actual column count (\(columnCount)) does not match table description: \(tableDescription). Query: \(query.sqlRepresentation)")
+        }
+        
+        (0..<columnCount).forEach { index in
+            
+            let raw = sqlite3_column_name(pointer, index)!
+            
+            let columnName = String(cString: raw)
+            
+            if !tableDescription.hasColumn(withName: columnName) {
+                
+                fatalError("[SQLite_Statement] Result row has a column \"\(columnName)\" but that column was not found in the provided table description: \(tableDescription). Query: \(query.sqlRepresentation)")
+            }
+        }
+    }
+    
+    
+    /// Reads a row of result from a statement.
+    ///
+    /// This method assumes a row of result is available for reading.
+    ///
+    /// - Parameter tableDescription: A description of the table to use to read
+    ///             the row.
+    ///
+    /// - Returns: The row. Values are read according to the type of the
+    ///            corresponding column declared in the table description.
+    ///
+    private func readRow(using tableDescription: SQLite_Table) -> SQLite_TableRow {
+        
+        var row = SQLite_TableRow()
+        
+        (0..<sqlite3_column_count(pointer)).forEach { index in
+            
+            let raw = sqlite3_column_name(pointer, index)!
+            
+            let columnName = String(cString: raw)
+            
+            let columnDescription = tableDescription.column(withName: columnName)!
+            
+            row[columnDescription] = readValue(at: Int(index), using: columnDescription)
+        }
+        
+        return row
     }
 }
 
@@ -150,109 +249,6 @@ extension SQLite_Statement {
             
             fatalError("[SQLite_Statement] Trying to bind a value of unsupported type: \(String(describing: value)) to query: \(query.sqlRepresentation)")
         }
-    }
-}
-
-
-extension SQLite_Statement {
-    
-    
-    func crashIfTableDescriptionDoesNotMatchActualResults(description tableDescription: SQLite_Table) {
-        
-        let columnCount = sqlite3_column_count(pointer)
-        
-        if columnCount != tableDescription.columns.count {
-            
-            fatalError("[SQLite_Statement] Actual column count (\(columnCount)) does not match table description: \(tableDescription). Query: \(query.sqlRepresentation)")
-        }
-        
-        (0..<columnCount).forEach { index in
-            
-            let raw = sqlite3_column_name(pointer, index)!
-            
-            let columnName = String(cString: raw)
-            
-            if !tableDescription.hasColumn(withName: columnName) {
-                
-                fatalError("[SQLite_Statement] Result row has a column \"\(columnName)\" but that column was not found in the provided table description: \(tableDescription). Query: \(query.sqlRepresentation)")
-            }
-        }
-    }
-    
-    
-    /// Executes a statement and reads all result rows.
-    ///
-    /// - Parameter tableDescription: A description of the table to use to read
-    ///             the rows.
-    ///
-    /// - Returns: The rows. Values are read according to the type of the
-    ///            corresponding column declared in the table description.
-    ///
-    func runThroughCompletion(readingRowsWith tableDescription: SQLite_Table?) -> [SQLite_TableRow] {
-        
-        if tableDescription != nil {
-        
-            crashIfTableDescriptionDoesNotMatchActualResults(description: tableDescription!)
-        }
-        
-        var rows: [SQLite_TableRow] = []
-        
-        while true {
-            
-            let stepResult = sqlite3_step(pointer)
-            
-            guard stepResult.isOneOf([SQLITE_ROW, SQLITE_DONE]) else {
-                
-                fatalError("[SQLite_Statement] sqlite3_step() returned \(stepResult) for query: \(query.sqlRepresentation). SQLite error: \(connection.errorMessage ?? "")")
-            }
-            
-            if stepResult == SQLITE_ROW {
-                
-                guard tableDescription != nil else {
-                    
-                    fatalError("[SQLite_Statement] TODO")
-                }
-                
-                let row = readRow(using: tableDescription!)
-                
-                rows.append(row)
-                
-            } else {
-                
-                break
-            }
-        }
-        
-        return rows
-    }
-    
-    
-    /// Reads a row of result from a statement.
-    ///
-    /// This method assumes a row of result is available for reading.
-    ///
-    /// - Parameter tableDescription: A description of the table to use to read
-    ///             the row.
-    ///
-    /// - Returns: The row. Values are read according to the type of the
-    ///            corresponding column declared in the table description.
-    ///
-    private func readRow(using tableDescription: SQLite_Table) -> SQLite_TableRow {
-        
-        var row = SQLite_TableRow()
-        
-        (0..<sqlite3_column_count(pointer)).forEach { index in
-            
-            let raw = sqlite3_column_name(pointer, index)!
-            
-            let columnName = String(cString: raw)
-            
-            let columnDescription = tableDescription.column(withName: columnName)!
-            
-            row[columnDescription] = readValue(at: Int(index), using: columnDescription)
-        }
-        
-        return row
     }
 }
 
