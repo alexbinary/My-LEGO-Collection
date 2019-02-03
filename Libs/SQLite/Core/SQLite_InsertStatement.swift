@@ -16,17 +16,17 @@ class SQLite_InsertStatement: SQLite_Statement {
     private let table: SQLite_Table
     
     
-    /// The insert query that was used to compile the statement.
+    /// The query that was used to compile the statement.
     ///
     private let insertQuery: SQLite_InsertQuery
     
     
-    /// Creates a new statement for a given table.
+    /// Creates a new statement.
     ///
     /// - Parameter table: The table the statement should insert data into.
     /// - Parameter connection: The connection to use to compile the query.
     ///
-    init(for table: SQLite_Table, connection: SQLite_Connection) {
+    init(insertingInto table: SQLite_Table, connection: SQLite_Connection) {
         
         self.table = table
         self.insertQuery = SQLite_InsertQuery(insertingInto: table)
@@ -39,9 +39,10 @@ class SQLite_InsertStatement: SQLite_Statement {
 extension SQLite_InsertStatement {
     
     
-    /// Inserts values in the table.
+    /// Inserts values into the table.
     ///
-    /// - Parameter columnValues: The value to insert in each column.
+    /// - Parameter columnValues: A dictionary that contain the value to insert
+    ///             in each column.
     ///
     func insert(_ columnValues: [SQLite_Column: SQLite_QueryParameterValue]) {
         
