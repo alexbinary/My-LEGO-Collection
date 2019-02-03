@@ -28,12 +28,7 @@ struct LEGODatabase_Schema {
     ///
     /// Instances of this type always have the same value.
     ///
-    struct ColorsTable: SQLite_Table {
-        
-        
-        /// The table's name.
-        ///
-        let name = "colors"
+    class ColorsTable: SQLite_Table {
         
         
         /// A description of the column that stores the color's name.
@@ -68,21 +63,16 @@ struct LEGODatabase_Schema {
         )
         
         
-        /// The table's columns.
-        ///
-        var columns: [SQLite_Column]
-        
-        
         /// Creates a new instance.
         ///
         init() {
             
-            self.columns = [
+            super.init(name: "colors", columns: [
                 
                 nameColumn,
                 rgbColumn,
                 transparentColumn,
-            ]
+            ])
         }
         
         
@@ -116,12 +106,7 @@ struct LEGODatabase_Schema {
     ///
     /// Instances of this type always have the same value.
     ///
-    struct PartsTable: SQLite_Table {
-        
-        
-        /// The table's name.
-        ///
-        let name = "parts"
+    class PartsTable: SQLite_Table {
         
         
         /// A description of the column that stores the part's name.
@@ -145,20 +130,15 @@ struct LEGODatabase_Schema {
         )
         
         
-        /// The table's columns.
-        ///
-        var columns: [SQLite_Column]
-        
-        
         /// Creates a new instance.
         ///
         init() {
             
-            self.columns = [
+            super.init(name: "parts", columns: [
                 
                 nameColumn,
                 imageURLColumn,
-            ]
+            ])
         }
         
         

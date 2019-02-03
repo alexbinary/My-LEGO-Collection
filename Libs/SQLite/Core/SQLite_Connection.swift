@@ -110,6 +110,6 @@ extension SQLite_Connection {
         
         let statement = SQLite_Statement(connection: self, query: query)
         
-        return statement.readAllRows(using: table)
+        return statement.runThroughCompletion(readingRowsWith: table)
     }
 }

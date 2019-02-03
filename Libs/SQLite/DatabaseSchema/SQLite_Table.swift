@@ -5,31 +5,28 @@ import Foundation
 
 /// A description of a SQLite database table.
 ///
-protocol SQLite_Table {
+class SQLite_Table {
    
     
     /// The table's name.
     ///
-    var name: String { get }
+    let name: String
     
     
     /// The table's columns.
     ///
     /// - Note: The order of the columns is important for reading table rows.
     ///
-    var columns: [SQLite_Column] { get }
+    let columns: [SQLite_Column]
+    
+    
+    init(name: String, columns: [SQLite_Column]) {
+        
+        self.name = name
+        self.columns = columns
+    }
     
 
-    func column(withName name: String) -> SQLite_Column?
-    
-    
-    func hasColumn(withName name: String) -> Bool
-}
-
-
-extension SQLite_Table {
-    
-    
     func column(withName name: String) -> SQLite_Column? {
         
         return columns.first(where: { $0.name == name })

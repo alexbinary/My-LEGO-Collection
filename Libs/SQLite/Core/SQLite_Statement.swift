@@ -95,12 +95,7 @@ extension SQLite_Statement {
         
         bind(parameterValues)
         
-        let stepResult = sqlite3_step(pointer)
-        
-        guard stepResult == SQLITE_DONE else {
-            
-            fatalError("[SQLite_Statement] sqlite3_step() returned an unexpected value: \(stepResult). Expected value was: \(SQLITE_DONE). Query: \(query.sqlRepresentation). Bound values: \(boundValues). SQLite error: \(connection.errorMessage ?? "")")
-        }
+        _ = runThroughCompletion(readingRowsWith: nil)
     }
 }
 
@@ -193,9 +188,12 @@ extension SQLite_Statement {
     /// - Returns: The rows. Values are read according to the type of the
     ///            corresponding column declared in the table description.
     ///
-    func readAllRows(using tableDescription: SQLite_Table) -> [SQLite_TableRow] {
+    func runThroughCompletion(readingRowsWith tableDescription: SQLite_Table?) -> [SQLite_TableRow] {
         
-        crashIfTableDescriptionDoesNotMatchActualResults(description: tableDescription)
+        if tableDescription != nil {
+        
+            crashIfTableDescriptionDoesNotMatchActualResults(description: tableDescription!)
+        }
         
         var rows: [SQLite_TableRow] = []
         
@@ -210,7 +208,12 @@ extension SQLite_Statement {
             
             if stepResult == SQLITE_ROW {
                 
-                let row = readRow(using: tableDescription)
+                guard tableDescription != nil else {
+                    
+                    fatalError("[SQLite_Statement] TODO")
+                }
+                
+                let row = readRow(using: tableDescription!)
                 
                 rows.append(row)
                 
