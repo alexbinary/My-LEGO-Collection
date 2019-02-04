@@ -153,6 +153,64 @@ extension SQLite_Statement {
             fatalError("[SQLite_Statement] No table description provided for a query that returns data. Query: \(query.sqlRepresentation)")
         }
     }
+}
+
+
+extension SQLite_Statement {
+    
+    
+    /// Bind values to the statement's query parameters.
+    ///
+    /// - Parameter parameterValues: A dictionnary that indicates values to bind
+    ///             to parameters.
+    ///
+    func bind(_ parameterValues: [SQLite_QueryParameter: SQLite_QueryParameterValue]) {
+        
+        parameterValues.forEach { (parameter, value) in
+        
+            bind(value, to: parameter)
+        }
+        
+        boundValues = parameterValues
+    }
+    
+    
+    /// Bind a value to one of the statement's query parameters.
+    ///
+    /// - Parameter value: The value to bind.
+    /// - Parameter parameter: The query parameter to bind the value to.
+    ///
+    func bind(_ value: SQLite_QueryParameterValue, to parameter: SQLite_QueryParameter) {
+        
+        let index = sqlite3_bind_parameter_index(pointer, parameter.name)
+        
+        switch (value) {
+            
+        case let stringValue as String:
+            
+            let rawValue = NSString(string: stringValue).utf8String
+            
+            sqlite3_bind_text(pointer, index, rawValue, -1, nil)
+            
+        case let boolValue as Bool:
+            
+            let rawValue = Int32(exactly: NSNumber(value: boolValue))!
+            
+            sqlite3_bind_int(pointer, index, rawValue)
+            
+        case nil:
+            
+            sqlite3_bind_null(pointer, index)
+            
+        default:
+            
+            fatalError("[SQLite_Statement] Trying to bind a value of unsupported type: \(String(describing: value)) on query: \(query.sqlRepresentation)")
+        }
+    }
+}
+
+
+extension SQLite_Statement {
     
     
     private func readAllRows(using tableDescription: SQLite_TableDescription?) -> [SQLite_TableRow] {
@@ -215,60 +273,6 @@ extension SQLite_Statement {
         }
         
         return row
-    }
-}
-
-
-extension SQLite_Statement {
-    
-    
-    /// Bind values to the statement.
-    ///
-    /// - Parameter parameterValues: A dictionnary that indicates values to bind
-    ///             to parameters.
-    ///
-    func bind(_ parameterValues: [SQLite_QueryParameter: SQLite_QueryParameterValue]) {
-        
-        parameterValues.forEach { (parameter, value) in
-        
-            bind(value, to: parameter)
-        }
-        
-        boundValues = parameterValues
-    }
-    
-    
-    /// Bind a value to the statement for a specific parameter.
-    ///
-    /// - Parameter value: The value to bind.
-    /// - Parameter parameter: The query parameter to bind the value to.
-    ///
-    func bind(_ value: SQLite_QueryParameterValue, to parameter: SQLite_QueryParameter) {
-        
-        let index = sqlite3_bind_parameter_index(pointer, parameter.name)
-        
-        switch (value) {
-            
-        case let stringValue as String:
-            
-            let rawValue = NSString(string: stringValue).utf8String
-            
-            sqlite3_bind_text(pointer, index, rawValue, -1, nil)
-            
-        case let boolValue as Bool:
-            
-            let rawValue = Int32(exactly: NSNumber(value: boolValue))!
-            
-            sqlite3_bind_int(pointer, index, rawValue)
-            
-        case nil:
-            
-            sqlite3_bind_null(pointer, index)
-            
-        default:
-            
-            fatalError("[SQLite_Statement] Trying to bind a value of unsupported type: \(String(describing: value)) to query: \(query.sqlRepresentation)")
-        }
     }
 }
 
