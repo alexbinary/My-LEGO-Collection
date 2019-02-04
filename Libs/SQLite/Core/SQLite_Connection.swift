@@ -24,12 +24,14 @@ class SQLite_Connection {
     private(set) var pointer: OpaquePointer!
 
     
-    /// Creates a connection to the database at the provided URL.
+    /// Creates a new connection to a database.
     ///
-    /// This initializer opens the connection to the database. This initializer
-    /// triggers a fatal error if the connection fails.
+    /// This initializer opens the connection to the database. A fatal error is
+    /// triggered if the connection fails.
     ///
-    /// To close the connection, you must let the instance be deallocated.
+    /// To close the connection, just let the instance be deallocated.
+    ///
+    /// - Parameter url: A URL to the database you want to connect to.
     ///
     init(toDatabaseAt url: URL) {
         
