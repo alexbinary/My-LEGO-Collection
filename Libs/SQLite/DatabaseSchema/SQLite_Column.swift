@@ -5,8 +5,8 @@ import Foundation
 
 /// A description of a column in a SQLite database table.
 ///
-struct SQLite_Column: Hashable {
-
+class SQLite_Column {
+    
     
     /// The column's name.
     ///
@@ -21,6 +21,20 @@ struct SQLite_Column: Hashable {
     /// Whether the column can contain the value NULL.
     ///
     let nullable: Bool
+    
+    
+    /// Creates a new description.
+    ///
+    /// - Parameter name: The column's name.
+    /// - Parameter type: The column's type.
+    /// - Parameter nullable: Whether the column can contain the value NULL.
+    ///
+    init(name: String, type: SQLite_ColumnType, nullable: Bool) {
+        
+        self.name = name
+        self.type = type
+        self.nullable = nullable
+    }
 }
 
 
@@ -45,3 +59,26 @@ extension SQLite_Column: SQLite_SQLRepresentable {
     }
 }
 
+
+extension SQLite_Column: Equatable {
+    
+    
+    static func == (lhs: SQLite_Column, rhs: SQLite_Column) -> Bool {
+
+        return lhs.name == rhs.name
+            && lhs.type == rhs.type
+            && lhs.nullable == rhs.nullable
+    }
+}
+
+
+extension SQLite_Column: Hashable {
+    
+    
+    func hash(into hasher: inout Hasher) {
+        
+        hasher.combine(name)
+        hasher.combine(type)
+        hasher.combine(nullable)
+    }
+}
