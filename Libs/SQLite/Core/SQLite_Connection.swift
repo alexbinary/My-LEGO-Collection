@@ -16,9 +16,9 @@ import SQLite3
 class SQLite_Connection {
     
     
-    /// The SQLite pointer that represents the connection to the database.
+    /// The SQLite pointer to the underlying connection object.
     ///
-    /// This pointer is guaranteed to always represent a valid, open connection
+    /// This pointer is guaranteed to always point to a valid, open connection
     /// to the database that was passed to the initializer.
     ///
     private(set) var pointer: OpaquePointer!

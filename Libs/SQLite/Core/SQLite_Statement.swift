@@ -20,9 +20,9 @@ import SQLite3
 class SQLite_Statement {
 
     
-    /// The SQLite pointer that represents the statement.
+    /// The SQLite pointer to the underlying statement object.
     ///
-    /// This pointer is guaranteed to always represent a valid, prepared
+    /// This pointer is guaranteed to always point to a valid, prepared
     /// statement.
     ///
     private var pointer: OpaquePointer!
@@ -72,7 +72,8 @@ class SQLite_Statement {
     
     /// Deallocates the instance.
     ///
-    /// This deinitializer destroys the statement.
+    /// This deinitializer destroys the statement and releases associated
+    /// resources.
     ///
     deinit {
         
