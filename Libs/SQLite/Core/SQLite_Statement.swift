@@ -65,7 +65,7 @@ class SQLite_Statement {
         
         guard sqlite3_prepare_v2(connection.pointer, query.sqlRepresentation, -1, &pointer, nil) == SQLITE_OK else {
             
-            fatalError("[SQLite_Statement] Preparing query: \(query.sqlRepresentation). SQLite error: \(connection.errorMessage ?? "")")
+            fatalError("[SQLite_Statement] Compiling query: \(query.sqlRepresentation). SQLite error: \(connection.errorMessage ?? "")")
         }
     }
     
