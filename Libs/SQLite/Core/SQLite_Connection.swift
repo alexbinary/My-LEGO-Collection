@@ -44,7 +44,8 @@ class SQLite_Connection {
     
     /// Deallocates the instance.
     ///
-    /// This deinitializer closes the connection to the database.
+    /// This deinitializer closes the connection to the database and releases
+    /// associated resources.
     ///
     deinit {
         
