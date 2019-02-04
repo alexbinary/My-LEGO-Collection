@@ -91,17 +91,17 @@ extension SQLite_Statement {
     ///             to the query parameters.
     ///
     /// - Parameter tableDescription: A description of the table to use to read
-    ///             the rows.
+    ///             the rows. You must provide a table description if the
+    ///             statement returns results. If a table description is
+    ///             provided, a fatal error is triggered if it does not match
+    ///             the actual results.
     ///
     /// - Returns: The rows. Values are read according to the type of the
     ///            corresponding column declared in the table description.
     ///
     func runThroughCompletion(with parameterValues: [SQLite_QueryParameter: SQLite_QueryParameterValue] = [:], readingResultRowsWith tableDescription: SQLite_TableDescription? = nil) -> [SQLite_TableRow] {
         
-        if tableDescription != nil {
-            
-            crashIfTableDescriptionDoesNotMatchActualResults(tableDescription!)
-        }
+        makeSureTableDescriptionMatchesActualResults(tableDescription)
         
         sqlite3_reset(pointer)
         
@@ -110,6 +110,48 @@ extension SQLite_Statement {
         let rows = readAllRows(using: tableDescription)
         
         return rows
+    }
+    
+    
+    /// Checks that a table description matches the data that the statement returns.
+    ///
+    /// This methos triggers a fatal error if the table description does not
+    /// match the data that the statement returns.
+    ///
+    /// - Parameter tableDescription: The table description to evaluate.
+    ///
+    private func makeSureTableDescriptionMatchesActualResults(_ tableDescription: SQLite_TableDescription?) {
+        
+        let columnCount = sqlite3_column_count(pointer)
+        
+        if let tableDescription = tableDescription {
+            
+            if columnCount == 0 {
+                
+                fatalError("[SQLite_Statement] Table description provided for a query that returns no data. Query: \(query.sqlRepresentation) Table description: \(tableDescription)")
+            }
+            
+            if columnCount != tableDescription.columns.count {
+                
+                fatalError("[SQLite_Statement] Actual column count (\(columnCount)) does not match table description. Query: \(query.sqlRepresentation) Table description: \(tableDescription)")
+            }
+            
+            (0..<columnCount).forEach { index in
+                
+                let raw = sqlite3_column_name(pointer, index)!
+                
+                let columnName = String(cString: raw)
+                
+                if !tableDescription.hasColumn(withName: columnName) {
+                    
+                    fatalError("[SQLite_Statement] Result row has a column \"\(columnName)\" but that column was not found in the provided table description. Query: \(query.sqlRepresentation) Table description: \(tableDescription)")
+                }
+            }
+            
+        } else if columnCount > 0 {
+            
+            fatalError("[SQLite_Statement] No table description provided for a query that returns data. Query: \(query.sqlRepresentation)")
+        }
     }
     
     
@@ -130,7 +172,7 @@ extension SQLite_Statement {
                 
                 guard tableDescription != nil else {
                     
-                    fatalError("[SQLite_Statement] TODO")
+                    fatalError("")
                 }
                 
                 let row = readRow(using: tableDescription!)
@@ -144,29 +186,6 @@ extension SQLite_Statement {
         }
         
         return rows
-    }
-    
-    
-    private func crashIfTableDescriptionDoesNotMatchActualResults(_ tableDescription: SQLite_TableDescription) {
-        
-        let columnCount = sqlite3_column_count(pointer)
-        
-        if columnCount != tableDescription.columns.count {
-            
-            fatalError("[SQLite_Statement] Actual column count (\(columnCount)) does not match table description: \(tableDescription). Query: \(query.sqlRepresentation)")
-        }
-        
-        (0..<columnCount).forEach { index in
-            
-            let raw = sqlite3_column_name(pointer, index)!
-            
-            let columnName = String(cString: raw)
-            
-            if !tableDescription.tableHasColumn(withName: columnName) {
-                
-                fatalError("[SQLite_Statement] Result row has a column \"\(columnName)\" but that column was not found in the provided table description: \(tableDescription). Query: \(query.sqlRepresentation)")
-            }
-        }
     }
     
     

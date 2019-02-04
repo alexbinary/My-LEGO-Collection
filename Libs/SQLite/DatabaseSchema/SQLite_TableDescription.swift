@@ -31,7 +31,7 @@ class SQLite_TableDescription {
     }
     
     
-    func tableHasColumn(withName name: String) -> Bool {
+    func hasColumn(withName name: String) -> Bool {
         
         return column(withName: name) != nil
     }
