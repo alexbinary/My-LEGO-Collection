@@ -213,6 +213,15 @@ extension SQLite_Statement {
 extension SQLite_Statement {
     
     
+    /// Executes the statement and read each result row.
+    ///
+    /// - Parameter tableDescription: A description of the table to use to read
+    ///             the rows. A table description must be provided if the
+    ///             statement returns results.
+    ///
+    /// - Returns: The rows. Values are read according to the type of the
+    ///            corresponding column declared in the table description.
+    ///
     private func readAllRows(using tableDescription: SQLite_TableDescription?) -> [SQLite_TableRow] {
         
         var rows: [SQLite_TableRow] = []
@@ -228,12 +237,12 @@ extension SQLite_Statement {
             
             if stepResult == SQLITE_ROW {
                 
-                guard tableDescription != nil else {
+                guard let tableDescription = tableDescription else {
                     
-                    fatalError("")
+                    fatalError("[SQLite_Statement] The query returned result rows but no table description was provided. Query: \(query.sqlRepresentation)")
                 }
                 
-                let row = readRow(using: tableDescription!)
+                let row = readRow(using: tableDescription)
                 
                 rows.append(row)
                 
@@ -263,22 +272,18 @@ extension SQLite_Statement {
         
         (0..<sqlite3_column_count(pointer)).forEach { index in
             
-            let raw = sqlite3_column_name(pointer, index)!
+            let rawColumnName = sqlite3_column_name(pointer, index)!
             
-            let columnName = String(cString: raw)
+            let columnName = String(cString: rawColumnName)
             
             let columnDescription = tableDescription.column(withName: columnName)!
             
-            row[columnDescription] = readValue(at: Int(index), using: columnDescription)
+            row[columnDescription] = readValue(at: index, using: columnDescription)
         }
         
         return row
     }
-}
 
-
-extension SQLite_Statement {
-    
     
     /// Reads a single value from a statement.
     ///
@@ -292,7 +297,7 @@ extension SQLite_Statement {
     /// - Returns: The value, which is read according to the type of the
     ///            column declared in the column description.
     ///
-    private func readValue(at index: Int, using columnDescription: SQLite_ColumnDescription) -> SQLite_ColumnValue {
+    private func readValue(at index: Int32, using columnDescription: SQLite_ColumnDescription) -> SQLite_ColumnValue {
         
         switch columnDescription.type {
             
@@ -326,9 +331,9 @@ extension SQLite_Statement {
     ///
     /// - Returns: `true` if the value is `NULL`, `false` otherwise.
     ///
-    private func valueIsNull(at index: Int) -> Bool {
+    private func valueIsNull(at index: Int32) -> Bool {
         
-        return sqlite3_column_type(pointer, Int32(index)) == SQLITE_NULL
+        return sqlite3_column_type(pointer, index) == SQLITE_NULL
     }
     
     
@@ -336,20 +341,20 @@ extension SQLite_Statement {
     ///
     /// This method assumes a row of result is available for reading.
     ///
-    /// This method triggers a fatal error if the value is `NULL`.
+    /// Triggers a fatal error if the value is `NULL`.
     ///
     /// - Parameter index: The index of the value in the result row.
     ///
     /// - Returns: The value as a boolean.
     ///
-    private func readBool(at index: Int) -> Bool {
+    private func readBool(at index: Int32) -> Bool {
         
         guard !valueIsNull(at: index) else {
             
             fatalError("[SQLite_Statement] Found `NULL` while expecting non-null boolean value at index: \(index). Query: \(query.sqlRepresentation)")
         }
         
-        return sqlite3_column_int(pointer, Int32(index)) != 0
+        return sqlite3_column_int(pointer, index) != 0
     }
     
     
@@ -357,20 +362,20 @@ extension SQLite_Statement {
     ///
     /// This method assumes a row of result is available for reading.
     ///
-    /// This method triggers a fatal error if the value is `NULL`.
+    /// Triggers a fatal error if the value is `NULL`.
     ///
     /// - Parameter index: The index of the value in the result row.
     ///
     /// - Returns: The value as a string.
     ///
-    private func readString(at index: Int) -> String {
+    private func readString(at index: Int32) -> String {
         
         guard !valueIsNull(at: index) else {
             
             fatalError("[SQLite_Statement] Found `NULL` while expecting non-null string value at index: \(index). Query: \(query.sqlRepresentation)")
         }
         
-        guard let raw = sqlite3_column_text(pointer, Int32(index)) else {
+        guard let raw = sqlite3_column_text(pointer, index) else {
             
             fatalError("[SQLite_Statement] sqlite3_column_text() returned a nil pointer at index: \(index). Query: \(query.sqlRepresentation)")
         }
@@ -388,7 +393,7 @@ extension SQLite_Statement {
     ///
     /// - Returns: The value as a string if not `NULL`, `nil` otherwise.
     ///
-    private func readOptionalString(at index: Int) -> String? {
+    private func readOptionalString(at index: Int32) -> String? {
         
         if valueIsNull(at: index) {
             
