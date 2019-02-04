@@ -31,7 +31,7 @@ class SQLite_SelectStatement: SQLite_Statement {
         self.tableDescription = tableDescription
         self.selectQuery = SQLite_SelectQuery(selectingFromTable: tableDescription)
         
-        super.init(connection: connection, query: selectQuery)
+        super.init(compiling: selectQuery, on: connection)
     }
 }
 

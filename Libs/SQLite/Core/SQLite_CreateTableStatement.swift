@@ -31,7 +31,7 @@ class SQLite_CreateTableStatement: SQLite_Statement {
         self.tableDescription = tableDescription
         self.createTableQuery = SQLite_CreateTableQuery(creatingTable: tableDescription)
         
-        super.init(connection: connection, query: createTableQuery)
+        super.init(compiling: createTableQuery, on: connection)
     }
 }
 

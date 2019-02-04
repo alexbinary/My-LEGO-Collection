@@ -44,24 +44,24 @@ class SQLite_Statement {
     private var query: SQLite_Query
     
     
-    /// The values that have been bound to the statement.
+    /// The values that have been bound to the statement's query parameters.
     ///
     /// This property stores the values that have been bound to the statement
-    /// using the `bind(values:)` method. Previous bound values or replaces
-    /// each time `bind(values:)` is called.
+    /// by the latest call to the `bind(parameterValues:)` method. Each call to
+    /// `bind(parameterValues:)` updates theses values.
     ///
     private var boundValues: [SQLite_QueryParameter: SQLite_QueryParameterValue] = [:]
     
     
-    /// Creates a new prepared statement on a given connection from a SQL query.
+    /// Creates a new prepared statement.
     ///
-    /// - Parameter connection: The connection to use to compile the query.
     /// - Parameter query: The SQL query to compile.
+    /// - Parameter connection: The connection to use to compile the query.
     ///
-    init(connection: SQLite_Connection, query: SQLite_Query) {
+    init(compiling query: SQLite_Query, on connection: SQLite_Connection) {
         
-        self.connection = connection
         self.query = query
+        self.connection = connection
         
         guard sqlite3_prepare_v2(connection.pointer, query.sqlRepresentation, -1, &pointer, nil) == SQLITE_OK else {
             

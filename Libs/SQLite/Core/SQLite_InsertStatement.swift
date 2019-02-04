@@ -32,7 +32,7 @@ class SQLite_InsertStatement: SQLite_Statement {
         self.tableDescription = tableDescription
         self.insertQuery = SQLite_InsertQuery(insertingIntoTable: tableDescription)
         
-        super.init(connection: connection, query: insertQuery)
+        super.init(compiling: insertQuery, on: connection)
     }
 }
 
