@@ -5,7 +5,7 @@ import Foundation
 
 /// A description of a column in a SQLite database table.
 ///
-class SQLite_Column {
+class SQLite_ColumnDescription {
     
     
     /// The column's name.
@@ -38,7 +38,7 @@ class SQLite_Column {
 }
 
 
-extension SQLite_Column: SQLite_SQLRepresentable {
+extension SQLite_ColumnDescription: SQLite_SQLRepresentable {
     
     
     /// The SQL string that represents the column.
@@ -60,10 +60,10 @@ extension SQLite_Column: SQLite_SQLRepresentable {
 }
 
 
-extension SQLite_Column: Equatable {
+extension SQLite_ColumnDescription: Equatable {
     
     
-    static func == (lhs: SQLite_Column, rhs: SQLite_Column) -> Bool {
+    static func == (lhs: SQLite_ColumnDescription, rhs: SQLite_ColumnDescription) -> Bool {
 
         return lhs.name == rhs.name
             && lhs.type == rhs.type
@@ -72,7 +72,7 @@ extension SQLite_Column: Equatable {
 }
 
 
-extension SQLite_Column: Hashable {
+extension SQLite_ColumnDescription: Hashable {
     
     
     func hash(into hasher: inout Hasher) {

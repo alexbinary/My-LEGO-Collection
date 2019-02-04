@@ -33,7 +33,7 @@ struct LEGODatabase_Schema {
         
         /// A description of the column that stores the color's name.
         ///
-        let nameColumn = SQLite_Column(
+        let nameColumn = SQLite_ColumnDescription(
             
             name: "name",
             type: .char(size: 255),
@@ -44,7 +44,7 @@ struct LEGODatabase_Schema {
         /// A description of the column that stores the color's RGB
         /// representation.
         ///
-        let rgbColumn = SQLite_Column(
+        let rgbColumn = SQLite_ColumnDescription(
             
             name: "rgb",
             type: .char(size: 6),
@@ -55,7 +55,7 @@ struct LEGODatabase_Schema {
         /// A description of the column that stores whether the color is
         /// transparent.
         ///
-        let transparentColumn = SQLite_Column(
+        let transparentColumn = SQLite_ColumnDescription(
             
             name: "transparent",
             type: .bool,
@@ -111,7 +111,7 @@ struct LEGODatabase_Schema {
         
         /// A description of the column that stores the part's name.
         ///
-        let nameColumn = SQLite_Column(
+        let nameColumn = SQLite_ColumnDescription(
             
             name: "name",
             type: .char(size: 255),
@@ -122,7 +122,7 @@ struct LEGODatabase_Schema {
         /// A description of the column that stores a URL to an image that
         /// represents the part.
         ///
-        let imageURLColumn = SQLite_Column(
+        let imageURLColumn = SQLite_ColumnDescription(
             
             name: "image_url",
             type: .char(size: 1024),

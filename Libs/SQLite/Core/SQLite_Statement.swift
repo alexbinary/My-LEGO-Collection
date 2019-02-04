@@ -268,7 +268,7 @@ extension SQLite_Statement {
     /// - Returns: The value, which is read according to the type of the
     ///            column declared in the column description.
     ///
-    private func readValue(at index: Int, using columnDescription: SQLite_Column) -> SQLite_ColumnValue {
+    private func readValue(at index: Int, using columnDescription: SQLite_ColumnDescription) -> SQLite_ColumnValue {
         
         switch columnDescription.type {
             

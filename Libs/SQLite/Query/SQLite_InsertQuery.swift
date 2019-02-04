@@ -25,7 +25,7 @@ struct SQLite_InsertQuery: SQLite_Query {
     /// This property returns a dictionary that indicates the parameters used in
     /// the query and the table column they correspond to.
     ///
-    let parameters: [SQLite_Column: SQLite_QueryParameter]
+    let parameters: [SQLite_ColumnDescription: SQLite_QueryParameter]
     
    
     /// Creates a new query.
@@ -37,7 +37,7 @@ struct SQLite_InsertQuery: SQLite_Query {
         
         self.tableDescription = tableDescription
         
-        var parameters: [SQLite_Column: SQLite_QueryParameter] = [:]
+        var parameters: [SQLite_ColumnDescription: SQLite_QueryParameter] = [:]
         
         for column in tableDescription.columns {
             

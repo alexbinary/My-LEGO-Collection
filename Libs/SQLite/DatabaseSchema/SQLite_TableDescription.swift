@@ -17,17 +17,17 @@ class SQLite_TableDescription {
     ///
     /// - Note: The order of the columns is important for reading table rows.
     ///
-    let columns: [SQLite_Column]
+    let columns: [SQLite_ColumnDescription]
     
     
-    init(name: String, columns: [SQLite_Column]) {
+    init(name: String, columns: [SQLite_ColumnDescription]) {
         
         self.name = name
         self.columns = columns
     }
     
 
-    func column(withName name: String) -> SQLite_Column? {
+    func column(withName name: String) -> SQLite_ColumnDescription? {
         
         return columns.first(where: { $0.name == name })
     }
