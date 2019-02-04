@@ -15,12 +15,10 @@ class SQLite_TableDescription {
     
     /// The table's columns.
     ///
-    /// - Note: The order of the columns is important for reading table rows.
-    ///
-    let columns: [SQLite_ColumnDescription]
+    let columns: Set<SQLite_ColumnDescription>
     
     
-    init(name: String, columns: [SQLite_ColumnDescription]) {
+    init(name: String, columns: Set<SQLite_ColumnDescription>) {
         
         self.name = name
         self.columns = columns
