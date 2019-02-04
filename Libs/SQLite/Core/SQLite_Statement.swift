@@ -31,7 +31,7 @@ class SQLite_Statement {
     /// The connection the statement is bound to.
     ///
     /// A statement is bound to the connection that was used to compile the
-    /// query.
+    /// query. You provide the connection in the initializer.
     ///
     private var connection: SQLite_Connection!
     
