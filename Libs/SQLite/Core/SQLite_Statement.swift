@@ -101,6 +101,8 @@ extension SQLite_Statement {
     ///
     func runThroughCompletion(with parameterValues: [SQLite_QueryParameter: SQLite_QueryParameterValue] = [:], readingResultRowsWith tableDescription: SQLite_TableDescription? = nil) -> [SQLite_TableRow] {
         
+        makeSureParameterValuesMatchActualQueryParameters(parameterValues)
+        
         makeSureTableDescriptionMatchesActualResults(tableDescription)
         
         sqlite3_reset(pointer)
@@ -113,9 +115,42 @@ extension SQLite_Statement {
     }
     
     
-    /// Checks that a table description matches the data that the statement returns.
+    /// Checks that a set of parameter values matches the query parameters that
+    /// the statement actually uses.
     ///
-    /// This methos triggers a fatal error if the table description does not
+    /// This method triggers a fatal error if the parameter values do not match
+    /// the query parameters that the statement actually uses.
+    ///
+    /// - Parameter parameterValues: A dictionnary that contains values to bind
+    ///             to the query parameters.
+    ///
+    private func makeSureParameterValuesMatchActualQueryParameters(_ parameterValues: [SQLite_QueryParameter: SQLite_QueryParameterValue]) {
+        
+        let parameterCount = sqlite3_bind_parameter_count(pointer)
+        
+        guard parameterCount == parameterValues.count else {
+            
+            fatalError("[SQLite_Statement] Trying to bind \(parameterCount) parameter(s) to a statement that has only \(parameterCount) parameter(s). Query: \(query.sqlRepresentation) Parameter values: \(parameterValues)")
+        }
+        
+        (0..<parameterCount).forEach { index in
+            
+            let rawParameterName = sqlite3_bind_parameter_name(pointer, index)!
+            
+            let parameterName = String(cString: rawParameterName)
+            
+            guard parameterValues.keys.contains(where: { $0.name == parameterName }) else {
+            
+                fatalError("[SQLite_Statement] Statement has a query parameter \"\(parameterName)\" but no value was provided for that parameter. Query: \(query.sqlRepresentation) Parameter values: \(parameterValues)")
+            }
+        }
+    }
+        
+        
+    /// Checks that a table description matches the data that the statement
+    /// actually returns.
+    ///
+    /// This method triggers a fatal error if the table description does not
     /// match the data that the statement returns.
     ///
     /// - Parameter tableDescription: The table description to evaluate.
@@ -138,9 +173,9 @@ extension SQLite_Statement {
             
             (0..<columnCount).forEach { index in
                 
-                let raw = sqlite3_column_name(pointer, index)!
+                let rawColumnName = sqlite3_column_name(pointer, index)!
                 
-                let columnName = String(cString: raw)
+                let columnName = String(cString: rawColumnName)
                 
                 if !tableDescription.hasColumn(withName: columnName) {
                     
@@ -164,7 +199,7 @@ extension SQLite_Statement {
     /// - Parameter parameterValues: A dictionnary that indicates values to bind
     ///             to parameters.
     ///
-    func bind(_ parameterValues: [SQLite_QueryParameter: SQLite_QueryParameterValue]) {
+    private func bind(_ parameterValues: [SQLite_QueryParameter: SQLite_QueryParameterValue]) {
         
         parameterValues.forEach { (parameter, value) in
         
@@ -180,9 +215,14 @@ extension SQLite_Statement {
     /// - Parameter value: The value to bind.
     /// - Parameter parameter: The query parameter to bind the value to.
     ///
-    func bind(_ value: SQLite_QueryParameterValue, to parameter: SQLite_QueryParameter) {
+    private func bind(_ value: SQLite_QueryParameterValue, to parameter: SQLite_QueryParameter) {
         
         let index = sqlite3_bind_parameter_index(pointer, parameter.name)
+        
+        guard index != 0 else {
+            
+            fatalError("[SQLite_Statement] Attempted to bind parameter \"\(parameter.name)\" but the statement does not define such parameter. Query: \(query.sqlRepresentation)")
+        }
         
         switch (value) {
             
