@@ -6,7 +6,7 @@ import Foundation
 /// A statement that creates a table in a SQLite database.
 ///
 /// This class provides convenience methods that facilitate the execution of
-/// queries of the form "CREATE TABLE (<column>);".
+/// queries of the form "CREATE TABLE (<columns>);".
 ///
 class SQLite_CreateTableStatement: SQLite_Statement {
     
