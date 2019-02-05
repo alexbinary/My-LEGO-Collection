@@ -68,36 +68,38 @@ extension LEGODatabase_Connection {
 extension LEGODatabase_Connection {
     
     
-    /// Read all colors in the database.
+    /// Reads all colors in the database.
     ///
-    /// - Returns: An array of rows from the table that stores the colors.
+    /// - Returns: An array that contains all the rows in the table that stores
+    ///            the colors.
     ///
     func readAllColors() -> [LEGODatabase_ColorsTableDescription.Row] {
         
-        return readAllRows(fromTable: LEGODatabase.schema.colorsTableDescription).map { values in
+        return readAllRows(fromTable: LEGODatabase.schema.colorsTableDescription).map { columnValues in
             
             return LEGODatabase_ColorsTableDescription.Row(
                 
-                name: values[LEGODatabase.schema.colorsTableDescription.nameColumn] as! String,
-                rgb: values[LEGODatabase.schema.colorsTableDescription.rgbColumn] as! String,
-                transparent: values[LEGODatabase.schema.colorsTableDescription.transparentColumn] as! Bool
+                name: columnValues[LEGODatabase.schema.colorsTableDescription.nameColumn] as! String,
+                rgb: columnValues[LEGODatabase.schema.colorsTableDescription.rgbColumn] as! String,
+                transparent: columnValues[LEGODatabase.schema.colorsTableDescription.transparentColumn] as! Bool
             )
         }
     }
     
     
-    /// Read all parts in the database.
+    /// Reads all parts in the database.
     ///
-    /// - Returns: An array of rows from the table that stores the parts.
+    /// - Returns: An array that contains all the rows in the table that stores
+    ///            the parts.
     ///
     func readAllParts() -> [LEGODatabase_PartsTableDescription.Row] {
         
-        return readAllRows(fromTable: LEGODatabase.schema.partsTableDescription).map { values in
+        return readAllRows(fromTable: LEGODatabase.schema.partsTableDescription).map { columnValues in
             
             return LEGODatabase_PartsTableDescription.Row(
                 
-                name: values[LEGODatabase.schema.partsTableDescription.nameColumn] as! String,
-                imageURL: values[LEGODatabase.schema.partsTableDescription.imageURLColumn] as! String?
+                name: columnValues[LEGODatabase.schema.partsTableDescription.nameColumn] as! String,
+                imageURL: columnValues[LEGODatabase.schema.partsTableDescription.imageURLColumn] as! String?
             )
         }
     }
