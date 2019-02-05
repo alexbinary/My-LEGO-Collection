@@ -25,6 +25,7 @@ class SQLite_InsertStatement: SQLite_Statement {
     ///
     /// - Parameter tableDescription: The table the statement should insert data
     ///             into.
+    ///
     /// - Parameter connection: The connection to use to compile the query.
     ///
     init(insertingIntoTable tableDescription: SQLite_TableDescription, connection: SQLite_Connection) {
