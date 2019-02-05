@@ -133,13 +133,15 @@ extension SQLite_Statement {
             fatalError("[SQLite_Statement] Trying to bind \(parameterCount) parameter(s) to a statement that has only \(parameterCount) parameter(s). Query: \(query.sqlRepresentation) Parameter values: \(parameterValues)")
         }
         
+        let parameterNames = parameterValues.keys.map { $0.name }
+        
         (0..<parameterCount).forEach { index in
             
             let rawParameterName = sqlite3_bind_parameter_name(pointer, index)!
             
             let parameterName = String(cString: rawParameterName)
             
-            guard parameterValues.keys.contains(where: { $0.name == parameterName }) else {
+            guard parameterNames.contains(parameterName) else {
             
                 fatalError("[SQLite_Statement] Statement has a query parameter \"\(parameterName)\" but no value was provided for that parameter. Query: \(query.sqlRepresentation) Parameter values: \(parameterValues)")
             }
@@ -171,13 +173,15 @@ extension SQLite_Statement {
                 fatalError("[SQLite_Statement] Actual column count (\(columnCount)) does not match table description. Query: \(query.sqlRepresentation) Table description: \(tableDescription)")
             }
             
+            let columnNames = tableDescription.columnNames
+            
             (0..<columnCount).forEach { index in
                 
                 let rawColumnName = sqlite3_column_name(pointer, index)!
                 
                 let columnName = String(cString: rawColumnName)
                 
-                if !tableDescription.hasColumn(withName: columnName) {
+                if !columnNames.contains(columnName) {
                     
                     fatalError("[SQLite_Statement] Result row has a column \"\(columnName)\" but that column was not found in the provided table description. Query: \(query.sqlRepresentation) Table description: \(tableDescription)")
                 }

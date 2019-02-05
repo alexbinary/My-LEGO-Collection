@@ -28,6 +28,18 @@ class SQLite_TableDescription {
         self.name = name
         self.columns = columns
     }
+}
+
+
+extension SQLite_TableDescription {
+    
+    
+    /// Returns the names of the columns.
+    ///
+    var columnNames: Set<String> {
+        
+        return Set(columns.map { $0.name })
+    }
     
 
     /// Returns a column from its name.
