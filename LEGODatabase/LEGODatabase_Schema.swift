@@ -14,11 +14,11 @@ struct LEGODatabase_Schema {
     /// A description of the table that stores data about the official LEGO
     /// colors.
     ///
-    let colorsTable = LEGODatabase_ColorsTableDescription()
+    let colorsTableDescription = LEGODatabase_ColorsTableDescription()
     
     
     /// A description of the table that stores data about the official LEGO
     /// parts.
     ///
-    let partsTable = LEGODatabase_PartsTableDescription()
+    let partsTableDescription = LEGODatabase_PartsTableDescription()
 }

@@ -8,7 +8,7 @@ class LEGODatabase_ColorInsertStatement: SQLite_InsertStatement {
     
     init(connection: SQLite_Connection) {
         
-        super.init(insertingIntoTable: LEGODatabase.schema.colorsTable, connection: connection)
+        super.init(insertingIntoTable: LEGODatabase.schema.colorsTableDescription, connection: connection)
     }
     
     
@@ -16,9 +16,9 @@ class LEGODatabase_ColorInsertStatement: SQLite_InsertStatement {
         
         insert([
             
-            LEGODatabase.schema.colorsTable.nameColumn: name,
-            LEGODatabase.schema.colorsTable.rgbColumn: rgb,
-            LEGODatabase.schema.colorsTable.transparentColumn: transparent,
+            LEGODatabase.schema.colorsTableDescription.nameColumn: name,
+            LEGODatabase.schema.colorsTableDescription.rgbColumn: rgb,
+            LEGODatabase.schema.colorsTableDescription.transparentColumn: transparent,
         ])
     }
 }

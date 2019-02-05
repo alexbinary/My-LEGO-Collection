@@ -28,7 +28,7 @@ extension LEGODatabase_Connection {
     ///
     func createColorsTable() {
         
-        createTable(describedBy: LEGODatabase.schema.colorsTable)
+        createTable(describedBy: LEGODatabase.schema.colorsTableDescription)
     }
     
     
@@ -36,7 +36,7 @@ extension LEGODatabase_Connection {
     ///
     func createPartsTable() {
         
-        createTable(describedBy: LEGODatabase.schema.partsTable)
+        createTable(describedBy: LEGODatabase.schema.partsTableDescription)
     }
 }
 
@@ -74,13 +74,13 @@ extension LEGODatabase_Connection {
     ///
     func readAllColors() -> [LEGODatabase_ColorsTableDescription.Row] {
         
-        return readAllRows(fromTable: LEGODatabase.schema.colorsTable).map { values in
+        return readAllRows(fromTable: LEGODatabase.schema.colorsTableDescription).map { values in
             
             return LEGODatabase_ColorsTableDescription.Row(
                 
-                name: values[LEGODatabase.schema.colorsTable.nameColumn] as! String,
-                rgb: values[LEGODatabase.schema.colorsTable.rgbColumn] as! String,
-                transparent: values[LEGODatabase.schema.colorsTable.transparentColumn] as! Bool
+                name: values[LEGODatabase.schema.colorsTableDescription.nameColumn] as! String,
+                rgb: values[LEGODatabase.schema.colorsTableDescription.rgbColumn] as! String,
+                transparent: values[LEGODatabase.schema.colorsTableDescription.transparentColumn] as! Bool
             )
         }
     }
@@ -92,12 +92,12 @@ extension LEGODatabase_Connection {
     ///
     func readAllParts() -> [LEGODatabase_PartsTableDescription.Row] {
         
-        return readAllRows(fromTable: LEGODatabase.schema.partsTable).map { values in
+        return readAllRows(fromTable: LEGODatabase.schema.partsTableDescription).map { values in
             
             return LEGODatabase_PartsTableDescription.Row(
                 
-                name: values[LEGODatabase.schema.partsTable.nameColumn] as! String,
-                imageURL: values[LEGODatabase.schema.partsTable.imageURLColumn] as! String?
+                name: values[LEGODatabase.schema.partsTableDescription.nameColumn] as! String,
+                imageURL: values[LEGODatabase.schema.partsTableDescription.imageURLColumn] as! String?
             )
         }
     }
