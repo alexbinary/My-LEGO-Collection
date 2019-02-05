@@ -49,7 +49,7 @@ struct DatabaseReader {
 extension DatabaseReader {
     
     
-    func color(from row: LEGODatabase_Schema.ColorsTable.Row) -> LEGO_Color {
+    func color(from row: LEGODatabase_ColorsTable.Row) -> LEGO_Color {
         
         let name = row.name
         let rgb = RGB(fromHexString: row.rgb)
@@ -64,7 +64,7 @@ extension DatabaseReader {
     }
     
     
-    private func part(from row: LEGODatabase_Schema.PartsTable.Row) -> LEGO_Part {
+    private func part(from row: LEGODatabase_PartsTable.Row) -> LEGO_Part {
         
         let name = row.name
         let imageURL = row.imageURL != nil ? URL(string: row.imageURL!) : nil

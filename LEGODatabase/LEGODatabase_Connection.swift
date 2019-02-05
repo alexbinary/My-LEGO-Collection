@@ -72,11 +72,11 @@ extension LEGODatabase_Connection {
     ///
     /// - Returns: An array of rows from the table that stores the colors.
     ///
-    func readAllColors() -> [LEGODatabase_Schema.ColorsTable.Row] {
+    func readAllColors() -> [LEGODatabase_ColorsTable.Row] {
         
         return readAllRows(fromTable: LEGODatabase.schema.colorsTable).map { values in
             
-            return LEGODatabase_Schema.ColorsTable.Row(
+            return LEGODatabase_ColorsTable.Row(
                 
                 name: values[LEGODatabase.schema.colorsTable.nameColumn] as! String,
                 rgb: values[LEGODatabase.schema.colorsTable.rgbColumn] as! String,
@@ -90,11 +90,11 @@ extension LEGODatabase_Connection {
     ///
     /// - Returns: An array of rows from the table that stores the parts.
     ///
-    func readAllParts() -> [LEGODatabase_Schema.PartsTable.Row] {
+    func readAllParts() -> [LEGODatabase_PartsTable.Row] {
         
         return readAllRows(fromTable: LEGODatabase.schema.partsTable).map { values in
             
-            return LEGODatabase_Schema.PartsTable.Row(
+            return LEGODatabase_PartsTable.Row(
                 
                 name: values[LEGODatabase.schema.partsTable.nameColumn] as! String,
                 imageURL: values[LEGODatabase.schema.partsTable.imageURLColumn] as! String?
