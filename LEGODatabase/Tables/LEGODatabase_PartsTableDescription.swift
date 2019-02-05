@@ -8,7 +8,7 @@ import Foundation
 ///
 /// Instances of this type always have the same value.
 ///
-class LEGODatabase_PartsTable: SQLite_TableDescription {
+class LEGODatabase_PartsTableDescription: SQLite_TableDescription {
     
     
     /// A description of the column that stores the part's name.

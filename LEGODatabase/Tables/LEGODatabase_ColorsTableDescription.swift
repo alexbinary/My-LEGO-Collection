@@ -8,7 +8,7 @@ import Foundation
 ///
 /// Instances of this type always have the same value.
 ///
-class LEGODatabase_ColorsTable: SQLite_TableDescription {
+class LEGODatabase_ColorsTableDescription: SQLite_TableDescription {
     
     
     /// A description of the column that stores the color's name.

@@ -38,10 +38,10 @@
 		2972EBCF22064EEF003CBE33 /* LEGODatabase_PartInsertStatement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2972EBCE22064EEF003CBE33 /* LEGODatabase_PartInsertStatement.swift */; };
 		2972EBD022064F86003CBE33 /* LEGODatabase_PartInsertStatement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2972EBCE22064EEF003CBE33 /* LEGODatabase_PartInsertStatement.swift */; };
 		2972EBD122064F98003CBE33 /* LEGODatabase_Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2972EBCC22064EAF003CBE33 /* LEGODatabase_Schema.swift */; };
-		2978161A220A2447000600A5 /* LEGODatabase_ColorsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29781619220A2447000600A5 /* LEGODatabase_ColorsTable.swift */; };
-		2978161B220A2447000600A5 /* LEGODatabase_ColorsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29781619220A2447000600A5 /* LEGODatabase_ColorsTable.swift */; };
-		2978161D220A2481000600A5 /* LEGODatabase_PartsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2978161C220A2481000600A5 /* LEGODatabase_PartsTable.swift */; };
-		2978161E220A2481000600A5 /* LEGODatabase_PartsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2978161C220A2481000600A5 /* LEGODatabase_PartsTable.swift */; };
+		2978161A220A2447000600A5 /* LEGODatabase_ColorsTableDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29781619220A2447000600A5 /* LEGODatabase_ColorsTableDescription.swift */; };
+		2978161B220A2447000600A5 /* LEGODatabase_ColorsTableDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29781619220A2447000600A5 /* LEGODatabase_ColorsTableDescription.swift */; };
+		2978161D220A2481000600A5 /* LEGODatabase_PartsTableDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2978161C220A2481000600A5 /* LEGODatabase_PartsTableDescription.swift */; };
+		2978161E220A2481000600A5 /* LEGODatabase_PartsTableDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2978161C220A2481000600A5 /* LEGODatabase_PartsTableDescription.swift */; };
 		297A579321EA365F00A426CA /* Part.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297A579221EA365F00A426CA /* Part.swift */; };
 		297A579521EA3A6C00A426CA /* LegoPartsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297A579421EA3A6C00A426CA /* LegoPartsListViewController.swift */; };
 		297A579721EA3B0D00A426CA /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297A579621EA3B0D00A426CA /* DataViewController.swift */; };
@@ -126,8 +126,8 @@
 		2970F8A921D797D600AC42D5 /* cli.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = cli.md; sourceTree = "<group>"; };
 		2972EBCC22064EAF003CBE33 /* LEGODatabase_Schema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LEGODatabase_Schema.swift; sourceTree = "<group>"; };
 		2972EBCE22064EEF003CBE33 /* LEGODatabase_PartInsertStatement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LEGODatabase_PartInsertStatement.swift; sourceTree = "<group>"; };
-		29781619220A2447000600A5 /* LEGODatabase_ColorsTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LEGODatabase_ColorsTable.swift; sourceTree = "<group>"; };
-		2978161C220A2481000600A5 /* LEGODatabase_PartsTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LEGODatabase_PartsTable.swift; sourceTree = "<group>"; };
+		29781619220A2447000600A5 /* LEGODatabase_ColorsTableDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LEGODatabase_ColorsTableDescription.swift; sourceTree = "<group>"; };
+		2978161C220A2481000600A5 /* LEGODatabase_PartsTableDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LEGODatabase_PartsTableDescription.swift; sourceTree = "<group>"; };
 		297A579221EA365F00A426CA /* Part.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Part.swift; sourceTree = "<group>"; };
 		297A579421EA3A6C00A426CA /* LegoPartsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegoPartsListViewController.swift; sourceTree = "<group>"; };
 		297A579621EA3B0D00A426CA /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
@@ -291,8 +291,8 @@
 		2978161F220A24A9000600A5 /* Tables */ = {
 			isa = PBXGroup;
 			children = (
-				29781619220A2447000600A5 /* LEGODatabase_ColorsTable.swift */,
-				2978161C220A2481000600A5 /* LEGODatabase_PartsTable.swift */,
+				29781619220A2447000600A5 /* LEGODatabase_ColorsTableDescription.swift */,
+				2978161C220A2481000600A5 /* LEGODatabase_PartsTableDescription.swift */,
 			);
 			path = Tables;
 			sourceTree = "<group>";
@@ -549,7 +549,7 @@
 				2957C6BF21E0C77600E512E5 /* AppController.swift in Sources */,
 				2972EBD022064F86003CBE33 /* LEGODatabase_PartInsertStatement.swift in Sources */,
 				29C6881821DBCEDD00B4A9E0 /* Date+elapsedTimeSince.swift in Sources */,
-				2978161B220A2447000600A5 /* LEGODatabase_ColorsTable.swift in Sources */,
+				2978161B220A2447000600A5 /* LEGODatabase_ColorsTableDescription.swift in Sources */,
 				2932C78D21FB992700C481EA /* DatabaseInflator.swift in Sources */,
 				29413B4C220388CE0092B99C /* SQLite_SQLRepresentable.swift in Sources */,
 				2932C78F21FB995600C481EA /* SQLite_Statement.swift in Sources */,
@@ -557,7 +557,7 @@
 				2992AB8822049ED3001DD82C /* SQLite_ColumnValue.swift in Sources */,
 				2992AB8F2204B34C001DD82C /* SQLite_SelectQuery.swift in Sources */,
 				2912D09F21D7B3C700C623A4 /* Double+roundedMaxNumberOfDecimals.swift in Sources */,
-				2978161E220A2481000600A5 /* LEGODatabase_PartsTable.swift in Sources */,
+				2978161E220A2481000600A5 /* LEGODatabase_PartsTableDescription.swift in Sources */,
 				29AAA5FD22038B6500876DF9 /* SQLite_InsertQuery.swift in Sources */,
 				29C6881621DBBC5300B4A9E0 /* APIKey.swift in Sources */,
 				2992AB8422049E2C001DD82C /* SQLite_QueryParameterValue.swift in Sources */,
@@ -585,7 +585,7 @@
 			files = (
 				29A77C0621E21A69009A162E /* Int32+isOneOf.swift in Sources */,
 				29C3F97421FCCADD0011E1E5 /* SQLite_ColumnDescription.swift in Sources */,
-				2978161D220A2481000600A5 /* LEGODatabase_PartsTable.swift in Sources */,
+				2978161D220A2481000600A5 /* LEGODatabase_PartsTableDescription.swift in Sources */,
 				29C3F97221FCCAD30011E1E5 /* SQLite_TableDescription.swift in Sources */,
 				2992AB942204D731001DD82C /* LEGODatabase_ColorInsertStatement.swift in Sources */,
 				2992AB8522049E82001DD82C /* SQLite_QueryParameterValue.swift in Sources */,
@@ -612,7 +612,7 @@
 				29413B3C220381720092B99C /* SQLite_SelectQuery.swift in Sources */,
 				2932C79021FB995C00C481EA /* SQLite_Connection.swift in Sources */,
 				2932C78B21FB98BC00C481EA /* SQLite_Statement.swift in Sources */,
-				2978161A220A2447000600A5 /* LEGODatabase_ColorsTable.swift in Sources */,
+				2978161A220A2447000600A5 /* LEGODatabase_ColorsTableDescription.swift in Sources */,
 				29FECB3621FCF82400254DCC /* LEGODatabase_Connection.swift in Sources */,
 				291560702206FB1D00CC2152 /* SQLite_SelectStatement.swift in Sources */,
 				2995231F21E52967002F8CB2 /* RGB.swift in Sources */,
