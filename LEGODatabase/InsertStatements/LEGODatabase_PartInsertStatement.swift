@@ -14,10 +14,12 @@ class LEGODatabase_PartInsertStatement: SQLite_InsertStatement {
     
     func insert(name: String, imageURL: String?) {
         
+        let table = LEGODatabase.schema.partsTableDescription
+        
         insert([
             
-            LEGODatabase.schema.partsTableDescription.nameColumnDescription: name,
-            LEGODatabase.schema.partsTableDescription.imageURLColumnDescription: imageURL,
+            table.nameColumnDescription: name,
+            table.imageURLColumnDescription: imageURL,
         ])
     }
 }

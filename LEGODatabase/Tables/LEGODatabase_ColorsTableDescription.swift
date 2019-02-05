@@ -3,8 +3,8 @@ import Foundation
 
 
 
-/// A description of the table that stores data about the official LEGO
-/// colors.
+/// A description of the SQLite database table that stores data about the
+/// official LEGO colors.
 ///
 /// Instances of this type always have the same value.
 ///

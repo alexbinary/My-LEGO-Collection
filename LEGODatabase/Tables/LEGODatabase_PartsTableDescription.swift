@@ -3,8 +3,8 @@ import Foundation
 
 
 
-/// A description of the table that stores data about the official LEGO
-/// parts.
+/// A description of the SQLite database table that stores data about the
+/// official LEGO parts.
 ///
 /// Instances of this type always have the same value.
 ///
@@ -40,7 +40,7 @@ class LEGODatabase_PartsTableDescription: SQLite_TableDescription {
             
             nameColumnDescription,
             imageURLColumnDescription,
-            ])
+        ])
     }
     
     

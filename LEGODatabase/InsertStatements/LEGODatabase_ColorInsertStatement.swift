@@ -14,11 +14,13 @@ class LEGODatabase_ColorInsertStatement: SQLite_InsertStatement {
     
     func insert(name: String, rgb: String, transparent: Bool) {
         
+        let table = LEGODatabase.schema.colorsTableDescription
+        
         insert([
             
-            LEGODatabase.schema.colorsTableDescription.nameColumnDescription: name,
-            LEGODatabase.schema.colorsTableDescription.rgbColumnDescription: rgb,
-            LEGODatabase.schema.colorsTableDescription.transparentColumnDescription: transparent,
+            table.nameColumnDescription: name,
+            table.rgbColumnDescription: rgb,
+            table.transparentColumnDescription: transparent,
         ])
     }
 }
