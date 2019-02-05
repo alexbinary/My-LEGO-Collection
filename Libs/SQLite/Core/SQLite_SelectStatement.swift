@@ -6,7 +6,7 @@ import Foundation
 /// A statement that reads data from a table in a SQLite database.
 ///
 /// This class provides convenience methods that facilitate the execution of
-/// queries of the form "SELECT * FROM <table>;".
+/// queries of the form `SELECT * FROM <table>;`.
 ///
 class SQLite_SelectStatement: SQLite_Statement {
     

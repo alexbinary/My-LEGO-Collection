@@ -3,27 +3,27 @@ import Foundation
 
 
 
-/// A SQL query that inserts data into a SQLite database table.
+/// A SQL query that inserts data into a table in a SQLite database.
 ///
 /// This type represents queries of the form
 /// `INSERT INTO <table> (<columns>) VALUES(<values>);`.
 ///
-/// The query usually uses query parameters as placeholders for the actual
-/// values. You can access the query parameters that are used in the query along
-/// with the table column they correspond to with the `parameters` property.
+/// The query uses query parameters as placeholders for the actual values. You
+/// can access the query parameters that are used in the query along with the
+/// table column they correspond to with the `parameters` property.
 ///
 struct SQLite_InsertQuery: SQLite_Query {
     
     
-    /// A description of the table the query creates.
+    /// A description of the table the query should insert data into.
     ///
     let tableDescription: SQLite_TableDescription
     
     
     /// The query parameters used in the query.
     ///
-    /// This property returns a dictionary that indicates the parameters used in
-    /// the query and the table column they correspond to.
+    /// This property returns a dictionary that indicates the parameter used to
+    /// represent the value that should be inserted into each column.
     ///
     let parameters: [SQLite_ColumnDescription: SQLite_QueryParameter]
     
@@ -52,12 +52,13 @@ struct SQLite_InsertQuery: SQLite_Query {
     ///
     var sqlRepresentation: String {
         
-        let parameters = tableDescription.columns.map { self.parameters[$0]! }
+        let columns = Array(tableDescription.columns)
+        let parameters = columns.map { self.parameters[$0]! }
         
         return [
             
             "INSERT INTO \(tableDescription.name) (",
-            tableDescription.columns.map { $0.name } .joined(separator: ", "),
+            columns.map { $0.name } .joined(separator: ", "),
             ") VALUES(",
             parameters.map { $0.name } .joined(separator: ", "),
             ");"

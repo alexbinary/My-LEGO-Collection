@@ -3,14 +3,14 @@ import Foundation
 
 
 
-/// A SQL query that creates a SQLite database table.
+/// A SQL query that creates a table in a SQLite database.
 ///
 /// This type represents queries of the form `CREATE TABLE (<columns>);`.
 ///
 struct SQLite_CreateTableQuery: SQLite_Query {
     
     
-    /// A description of the table the query creates.
+    /// A description of the table the query should create.
     ///
     let tableDescription: SQLite_TableDescription
     

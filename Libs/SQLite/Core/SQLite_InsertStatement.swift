@@ -6,7 +6,7 @@ import Foundation
 /// A statement that inserts data into a table in a SQLite database.
 ///
 /// This class provides convenience methods that facilitate the execution of
-/// queries of the form "INSERT INTO <table>;".
+/// queries of the form `INSERT INTO <table>;`.
 ///
 class SQLite_InsertStatement: SQLite_Statement {
     
