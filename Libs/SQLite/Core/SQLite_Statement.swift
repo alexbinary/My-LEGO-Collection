@@ -173,15 +173,13 @@ extension SQLite_Statement {
                 fatalError("[SQLite_Statement] Actual column count (\(columnCount)) does not match table description. Query: \(query.sqlRepresentation) Table description: \(tableDescription)")
             }
             
-            let columnNames = tableDescription.columnNames
-            
             (0..<columnCount).forEach { index in
                 
                 let rawColumnName = sqlite3_column_name(pointer, index)!
                 
                 let columnName = String(cString: rawColumnName)
                 
-                if !columnNames.contains(columnName) {
+                if !tableDescription.hasColumn(withName: columnName) {
                     
                     fatalError("[SQLite_Statement] Result row has a column \"\(columnName)\" but that column was not found in the provided table description. Query: \(query.sqlRepresentation) Table description: \(tableDescription)")
                 }
@@ -257,7 +255,7 @@ extension SQLite_Statement {
 extension SQLite_Statement {
     
     
-    /// Executes the statement and read each result row.
+    /// Executes the statement, reading each result row.
     ///
     /// - Parameter tableDescription: A description of the table to use to read
     ///             the rows. A table description must be provided if the

@@ -18,6 +18,26 @@ class SQLite_TableDescription {
     let columns: Set<SQLite_ColumnDescription>
     
     
+    /// Returns the names of the columns.
+    ///
+    lazy var columnNames: Set<String> = Set(columns.map { $0.name })
+    
+    
+    /// Returns the columns indexed by their name.
+    ///
+    lazy var columnsByName: [String: SQLite_ColumnDescription] = {
+        
+        var columnsByName: [String: SQLite_ColumnDescription] = [:]
+       
+        columns.forEach { column in
+         
+            columnsByName[column.name] = column
+        }
+        
+        return columnsByName
+    }()
+    
+    
     /// Creates a new description of a table.
     ///
     /// - Parameter name: The table's name.
@@ -32,16 +52,8 @@ class SQLite_TableDescription {
 
 
 extension SQLite_TableDescription {
-    
-    
-    /// Returns the names of the columns.
-    ///
-    var columnNames: Set<String> {
-        
-        return Set(columns.map { $0.name })
-    }
-    
 
+    
     /// Returns a column from its name.
     ///
     /// - Parameter name: The column's name.
@@ -49,9 +61,11 @@ extension SQLite_TableDescription {
     /// - Returns: The column whose name matches the provided name, or `nil` if
     ///            the table has no column whose name matches the provided name.
     ///
+    /// - Complexity: O(1)
+    ///
     func column(withName name: String) -> SQLite_ColumnDescription? {
         
-        return columns.first(where: { $0.name == name })
+        return columnsByName[name]
     }
     
     
@@ -62,8 +76,10 @@ extension SQLite_TableDescription {
     /// - Returns: `true` if the table has a column whose name matches the
     ///            provided name, `false` otherwise.
     ///
+    /// - Complexity: O(1)
+    ///
     func hasColumn(withName name: String) -> Bool {
         
-        return column(withName: name) != nil
+        return columnNames.contains(name)
     }
 }
