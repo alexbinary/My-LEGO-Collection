@@ -16,9 +16,9 @@ class LEGODatabase_ColorInsertStatement: SQLite_InsertStatement {
         
         insert([
             
-            LEGODatabase.schema.colorsTableDescription.nameColumn: name,
-            LEGODatabase.schema.colorsTableDescription.rgbColumn: rgb,
-            LEGODatabase.schema.colorsTableDescription.transparentColumn: transparent,
+            LEGODatabase.schema.colorsTableDescription.nameColumnDescription: name,
+            LEGODatabase.schema.colorsTableDescription.rgbColumnDescription: rgb,
+            LEGODatabase.schema.colorsTableDescription.transparentColumnDescription: transparent,
         ])
     }
 }

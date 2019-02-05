@@ -79,9 +79,9 @@ extension LEGODatabase_Connection {
             
             return LEGODatabase_ColorsTableDescription.Row(
                 
-                name: columnValues[LEGODatabase.schema.colorsTableDescription.nameColumn] as! String,
-                rgb: columnValues[LEGODatabase.schema.colorsTableDescription.rgbColumn] as! String,
-                transparent: columnValues[LEGODatabase.schema.colorsTableDescription.transparentColumn] as! Bool
+                name: columnValues[LEGODatabase.schema.colorsTableDescription.nameColumnDescription] as! String,
+                rgb: columnValues[LEGODatabase.schema.colorsTableDescription.rgbColumnDescription] as! String,
+                transparent: columnValues[LEGODatabase.schema.colorsTableDescription.transparentColumnDescription] as! Bool
             )
         }
     }
@@ -98,8 +98,8 @@ extension LEGODatabase_Connection {
             
             return LEGODatabase_PartsTableDescription.Row(
                 
-                name: columnValues[LEGODatabase.schema.partsTableDescription.nameColumn] as! String,
-                imageURL: columnValues[LEGODatabase.schema.partsTableDescription.imageURLColumn] as! String?
+                name: columnValues[LEGODatabase.schema.partsTableDescription.nameColumnDescription] as! String,
+                imageURL: columnValues[LEGODatabase.schema.partsTableDescription.imageURLColumnDescription] as! String?
             )
         }
     }

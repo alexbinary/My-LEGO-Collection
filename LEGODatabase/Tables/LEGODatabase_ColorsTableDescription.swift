@@ -13,7 +13,7 @@ class LEGODatabase_ColorsTableDescription: SQLite_TableDescription {
     
     /// A description of the column that stores the color's name.
     ///
-    let nameColumn = SQLite_ColumnDescription(
+    let nameColumnDescription = SQLite_ColumnDescription(
         
         name: "name",
         type: .char(size: 255),
@@ -24,7 +24,7 @@ class LEGODatabase_ColorsTableDescription: SQLite_TableDescription {
     /// A description of the column that stores the color's RGB
     /// representation.
     ///
-    let rgbColumn = SQLite_ColumnDescription(
+    let rgbColumnDescription = SQLite_ColumnDescription(
         
         name: "rgb",
         type: .char(size: 6),
@@ -35,7 +35,7 @@ class LEGODatabase_ColorsTableDescription: SQLite_TableDescription {
     /// A description of the column that stores whether the color is
     /// transparent.
     ///
-    let transparentColumn = SQLite_ColumnDescription(
+    let transparentColumnDescription = SQLite_ColumnDescription(
         
         name: "transparent",
         type: .bool,
@@ -49,9 +49,9 @@ class LEGODatabase_ColorsTableDescription: SQLite_TableDescription {
         
         super.init(name: "colors", columns: [
             
-            nameColumn,
-            rgbColumn,
-            transparentColumn,
+            nameColumnDescription,
+            rgbColumnDescription,
+            transparentColumnDescription,
         ])
     }
     

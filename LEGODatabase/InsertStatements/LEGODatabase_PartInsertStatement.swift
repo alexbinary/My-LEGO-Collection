@@ -16,8 +16,8 @@ class LEGODatabase_PartInsertStatement: SQLite_InsertStatement {
         
         insert([
             
-            LEGODatabase.schema.partsTableDescription.nameColumn: name,
-            LEGODatabase.schema.partsTableDescription.imageURLColumn: imageURL,
+            LEGODatabase.schema.partsTableDescription.nameColumnDescription: name,
+            LEGODatabase.schema.partsTableDescription.imageURLColumnDescription: imageURL,
         ])
     }
 }

@@ -13,7 +13,7 @@ class LEGODatabase_PartsTableDescription: SQLite_TableDescription {
     
     /// A description of the column that stores the part's name.
     ///
-    let nameColumn = SQLite_ColumnDescription(
+    let nameColumnDescription = SQLite_ColumnDescription(
         
         name: "name",
         type: .char(size: 255),
@@ -24,7 +24,7 @@ class LEGODatabase_PartsTableDescription: SQLite_TableDescription {
     /// A description of the column that stores a URL to an image that
     /// represents the part.
     ///
-    let imageURLColumn = SQLite_ColumnDescription(
+    let imageURLColumnDescription = SQLite_ColumnDescription(
         
         name: "image_url",
         type: .char(size: 1024),
@@ -38,8 +38,8 @@ class LEGODatabase_PartsTableDescription: SQLite_TableDescription {
         
         super.init(name: "parts", columns: [
             
-            nameColumn,
-            imageURLColumn,
+            nameColumnDescription,
+            imageURLColumnDescription,
             ])
     }
     
