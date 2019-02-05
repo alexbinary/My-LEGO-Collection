@@ -47,6 +47,8 @@ extension SQLite_ColumnDescription: SQLite_SQLRepresentable {
     /// "CREATE TABLE" queries and other type of SQL queries where a table
     /// column needs to be expressed.
     ///
+    /// Example: `name CHAR(6) NOT NULL`
+    ///
     var sqlRepresentation: String {
         
         return [

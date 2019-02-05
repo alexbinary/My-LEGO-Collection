@@ -3,7 +3,7 @@ import Foundation
 
 
 
-/// The set of possible data types for column in a SQLite database table.
+/// The set of possible data types for columns in a SQLite database table.
 ///
 enum SQLite_ColumnType: Hashable {
     
@@ -29,7 +29,7 @@ extension SQLite_ColumnType: SQLite_SQLRepresentable {
     ///
     /// This property returns the SQL fragment that can be used in
     /// "CREATE TABLE" queries and other type of SQL queries where a column type
-    /// need to be expressed.
+    /// needs to be expressed.
     ///
     var sqlRepresentation: String {
         

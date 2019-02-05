@@ -18,12 +18,12 @@ class SQLite_TableDescription {
     let columns: Set<SQLite_ColumnDescription>
     
     
-    /// Returns the names of the columns.
+    /// The names of the columns.
     ///
     lazy var columnNames: Set<String> = Set(columns.map { $0.name })
     
     
-    /// Returns the columns indexed by their name.
+    /// The columns indexed by their name.
     ///
     lazy var columnsByName: [String: SQLite_ColumnDescription] = {
         
