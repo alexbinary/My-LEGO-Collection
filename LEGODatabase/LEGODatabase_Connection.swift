@@ -75,13 +75,15 @@ extension LEGODatabase_Connection {
     ///
     func readAllColors() -> [LEGODatabase_ColorsTableDescription.Row] {
         
+        let colorsTable = LEGODatabase.schema.colorsTableDescription
+        
         return readAllRows(fromTable: LEGODatabase.schema.colorsTableDescription).map { columnValues in
             
             return LEGODatabase_ColorsTableDescription.Row(
                 
-                name: columnValues[LEGODatabase.schema.colorsTableDescription.nameColumnDescription] as! String,
-                rgb: columnValues[LEGODatabase.schema.colorsTableDescription.rgbColumnDescription] as! String,
-                transparent: columnValues[LEGODatabase.schema.colorsTableDescription.transparentColumnDescription] as! Bool
+                name: columnValues[colorsTable.nameColumnDescription] as! String,
+                rgb: columnValues[colorsTable.rgbColumnDescription] as! String,
+                transparent: columnValues[colorsTable.transparentColumnDescription] as! Bool
             )
         }
     }
@@ -94,12 +96,14 @@ extension LEGODatabase_Connection {
     ///
     func readAllParts() -> [LEGODatabase_PartsTableDescription.Row] {
         
+        let partsTable = LEGODatabase.schema.partsTableDescription
+        
         return readAllRows(fromTable: LEGODatabase.schema.partsTableDescription).map { columnValues in
             
             return LEGODatabase_PartsTableDescription.Row(
                 
-                name: columnValues[LEGODatabase.schema.partsTableDescription.nameColumnDescription] as! String,
-                imageURL: columnValues[LEGODatabase.schema.partsTableDescription.imageURLColumnDescription] as! String?
+                name: columnValues[partsTable.nameColumnDescription] as! String,
+                imageURL: columnValues[partsTable.imageURLColumnDescription] as! String?
             )
         }
     }
