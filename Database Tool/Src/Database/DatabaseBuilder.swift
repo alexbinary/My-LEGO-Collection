@@ -3,8 +3,8 @@ import Foundation
 
 
 
-/// A utility class that helps you create and initialize a SQLite database to
-/// use as the database used in the app to store official LEGO related data.
+/// A utility class that helps you create and initialize a database to use as
+/// the database used in the app to store official LEGO related data.
 ///
 struct DatabaseBuilder {
     
