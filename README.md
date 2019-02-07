@@ -65,20 +65,40 @@ Crashing the app is ok and should be the preferred way to handle errors.
 
 ## Design notes
 
+### SQLite type-safe wrapper
+
+SQLite C style API is all but type safe. It's super easy to write bad code due to the use of
+"opaque pointers" to designate connections and statements, both of which you must
+manipulate following a state machine. This require you to keep rigorous track of what your
+pointers actually point to as welle as which state the object they point to are in. And SQL
+queries are just plain strings, with no compile time checks. We have to do better than that.
+
+First, calls to the SQLite C style API are wrapped in fancy Swift classes that 1- make sure you 
+don't mistake a pointer for another, and 2-  make sure you don't make calls that you shouldn't 
+do given the state of the object.
+
+Second, SQL queries are abstracted into structured types that generate the SQL code for us. 
+"Don't touch SQL code yourself and you'll be fine."
+
+Finally, the database structure is represented with structured types that make it easy to declare
+- and document! - the structure once and reuse the information everywhere it is needed (e.g.
+when building queries, reading from a table, etc).
+
 ### Data models and the database
 
 There are three distinct data models:
 
-#### The Rebrickable data model
+- the Rebrickable data model
 
-Used to work with data retrieved from the Rebrickable web service. These models map exactly
-to the data representation used by the web service.
+    Used to work with data retrieved from the Rebrickable web service. These models map exactly to the data representation used by the web service.
 
-#### The database data model
+- the database data model
 
-Used to store data in the database. These models should not be tied to the Rebrickable
-webservice, as in the future the database may store data from other sources. 
+    Used to store data in the database. These models should not be tied to the Rebrickable webservice, as in the future the database may store data from other sources. 
 
-#### The app data model
+- the app data model
 
-Used in the app to manipulate data. These models provide more strict typing.
+    Used in the app to manipulate data. These models provide more strict typing.
+    
+In the database tool, the objects that insert data into the database take Rebrickable models and convert them to database models.
+In the app, the objects that read data from the database read database models and convert them to app models.

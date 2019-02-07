@@ -2,6 +2,7 @@
 import Foundation
 
 
+
 /// A LEGO part.
 ///
 struct LEGO_Part {
@@ -12,7 +13,7 @@ struct LEGO_Part {
     var name: String
     
     
-    /// The URL of an image that represents this part.
+    /// A URL of an image of this part.
     ///
     var imageURL: URL?
 }
