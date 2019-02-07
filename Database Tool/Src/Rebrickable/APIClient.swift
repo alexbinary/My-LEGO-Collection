@@ -2,6 +2,7 @@
 import Foundation
 
 
+
 /// An object that interracts with the Rebrickable web service.
 ///
 struct Rebrickable_APIClient {

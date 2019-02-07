@@ -61,3 +61,24 @@ Error handling code should only exist to :
 - protect the integrity of the system or its outputs
 - reveal errors when they occur instead of when they start breaking things
 Crashing the app is ok and should be the preferred way to handle errors.
+
+
+## Design notes
+
+### Data models and the database
+
+There are three distinct data models:
+
+#### The Rebrickable data model
+
+Used to work with data retrieved from the Rebrickable web service. These models map exactly
+to the data representation used by the web service.
+
+#### The database data model
+
+Used to store data in the database. These models should not be tied to the Rebrickable
+webservice, as in the future the database may store data from other sources. 
+
+#### The app data model
+
+Used in the app to manipulate data. These models provide more strict typing.

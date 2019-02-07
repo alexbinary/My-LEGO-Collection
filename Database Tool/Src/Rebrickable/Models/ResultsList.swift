@@ -2,6 +2,7 @@
 import Foundation
 
 
+
 /// A type that maps to the JSON model used by Rebrickable API endpoints that
 /// return multiple results.
 ///

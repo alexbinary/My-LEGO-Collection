@@ -2,7 +2,8 @@
 import Foundation
 
 
-/// A type that stores values for red, green and blue components of a color.
+
+/// A type that stores values for a color's red, green and blue components.
 ///
 /// Use this type when you need a lightweight and type-safe way to store colors
 /// without relying on UI frameworks like `UIKit` or `CoreGraphics`.
@@ -34,11 +35,12 @@ extension RGB {
     /// https://www.hackingwithswift.com/example-code/language/how-to-add-a-custom-initializer-to-a-struct-without-losing-its-memberwise-initializer
     
     
-    /// Creates a new instance from a 6-digit hexadecimal representation e.g. "A0D8F4".
+    /// Creates a new instance from a 6-digit hexadecimal representation
+    /// e.g. "A0D8F4".
     ///
     /// This initializer expects the input string to be a valid hexadecimal
-    /// representation of a number with exactly six digits, and terminates with
-    /// a fatal error if this is not the case.
+    /// representation of a number with exactly six digits, and triggers a fatal
+    /// error if this is not the case.
     ///
     /// Example of valid values: `fe4e57`, `FE4E57`, `748990`
     /// Example of invalid values: `0xfe4e57`, `eee`, `brown`
@@ -56,7 +58,7 @@ extension RGB {
         }
         
         self.red = Float((number & 0xFF0000) >> 16) / 255.0
-        self.green = Float((number & 0x00FF00) >>  8) / 255.0
-        self.blue = Float((number & 0x0000FF) >>  0) / 255.0
+        self.green = Float((number & 0x00FF00) >> 8) / 255.0
+        self.blue = Float((number & 0x0000FF) >> 0) / 255.0
     }
 }

@@ -2,6 +2,7 @@
 import Foundation
 
 
+
 /// A color in the LEGO color palette.
 ///
 struct LEGO_Color {
