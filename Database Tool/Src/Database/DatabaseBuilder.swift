@@ -32,10 +32,6 @@ struct DatabaseBuilder {
         connection.createColorsTable()
         connection.createPartsTable()
         
-        return DatabaseInflator(
-            
-            colorInsertStatement: connection.prepareColorInsertStatement(),
-            partInsertStatement: connection.preparePartInsertStatement()
-        )
+        return DatabaseInflator(with: connection)
     }
 }
