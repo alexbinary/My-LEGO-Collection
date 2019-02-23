@@ -1,3 +1,3 @@
-[submodule "Libs/SQLite"]
-	path = Libs/SQLite
+[submodule "Libs/SQLite.swiftly"]
+	path = Libs/SQLite.swiftly
 	url = https://github.com/alexbinary/SQLite.swiftly.git

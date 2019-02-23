@@ -204,7 +204,7 @@
 				29C6881721DBCEDD00B4A9E0 /* Date+elapsedTimeSince.swift */,
 				2912D09E21D7B3C700C623A4 /* Double+roundedMaxNumberOfDecimals.swift */,
 				29A77C0521E21A69009A162E /* Int32+isOneOf.swift */,
-				2932C78721FB987900C481EA /* SQLite */,
+				2932C78721FB987900C481EA /* SQLite.swiftly */,
 			);
 			path = Libs;
 			sourceTree = "<group>";
@@ -219,7 +219,7 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		2932C78721FB987900C481EA /* SQLite */ = {
+		2932C78721FB987900C481EA /* SQLite.swiftly */ = {
 			isa = PBXGroup;
 			children = (
 				29413B3022037FE20092B99C /* Core */,
@@ -227,7 +227,7 @@
 				29413B2F22037FDA0092B99C /* SQL */,
 				29413B3D220381BE0092B99C /* Query */,
 			);
-			path = SQLite;
+			path = SQLite.swiftly;
 			sourceTree = "<group>";
 		};
 		29413B2F22037FDA0092B99C /* SQL */ = {
