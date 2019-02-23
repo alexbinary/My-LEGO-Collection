@@ -148,6 +148,7 @@
 		29C6881521DBBC5300B4A9E0 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		29C6881721DBCEDD00B4A9E0 /* Date+elapsedTimeSince.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+elapsedTimeSince.swift"; sourceTree = "<group>"; };
 		29CCEAF821EE642D00CB5EFB /* LegoPartsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegoPartsListTableViewCell.swift; sourceTree = "<group>"; };
+		29CE1D4E2221493A009F83F3 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		29D194AB21FDA6BE0095483F /* SQLite_Query.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLite_Query.swift; sourceTree = "<group>"; };
 		29F4EA1D21C972780000B8A1 /* My LEGO Collection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My LEGO Collection.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		29F4EA2021C972780000B8A1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -222,6 +223,7 @@
 		2932C78721FB987900C481EA /* SQLite.swiftly */ = {
 			isa = PBXGroup;
 			children = (
+				29CE1D4E2221493A009F83F3 /* README.md */,
 				29413B3022037FE20092B99C /* Core */,
 				29C3F97021FCCAB40011E1E5 /* DatabaseSchema */,
 				29413B2F22037FDA0092B99C /* SQL */,
